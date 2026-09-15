@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل ورشة آخر أيام الصيفية | ENSI Events</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; direction: rtl; }
+
+    body {
+      background: linear-gradient(135deg, #ffd1d8 0%, #fdbb7d 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; 
+    }
+
+    .floating-bg { position: absolute; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    .custom-flower { position: absolute; opacity: 0.6; animation: floatUp 15s infinite linear; width: auto; }
+    
+    .f1 { left: 10%; bottom: -100px; animation-duration: 18s; height: 120px; }
+    .f2 { left: 45%; bottom: -150px; animation-duration: 22s; height: 80px; }
+    .f3 { left: 75%; bottom: -120px; animation-duration: 16s; height: 150px; }
+    .f4 { left: 90%; bottom: -80px; animation-duration: 25s; height: 90px; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    .glass-container {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+      z-index: 1;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(216, 64, 116, 0.15);
+    }
+
+    .logo-small { color: #0b3c33; font-size: 16px; letter-spacing: 2px; margin-bottom: 15px; font-weight: 700; }
+    .theme-title { color: #d84074; font-size: 32px; font-weight: 700; margin-bottom: 5px; }
+    .theme-subtitle { color: #0b3c33; font-size: 18px; font-weight: 700; margin-bottom: 15px; }
+    .desc { color: #4a4a4a; font-size: 15px; margin-bottom: 30px; line-height: 1.5; }
+
+    .input-row { display: flex; gap: 15px; }
+    .input-group { position: relative; margin-bottom: 25px; width: 100%; }
+    .input-group input {
+      width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(216, 64, 116, 0.3); border-radius: 10px;
+      color: #0b3c33; font-size: 16px; outline: none; transition: all 0.3s ease;
+    }
+    .input-group label {
+      position: absolute; right: 15px; top: 15px; color: rgba(11, 60, 51, 0.6);
+      transition: all 0.3s ease; pointer-events: none;
+    }
+
+    .input-group input:focus, .input-group input:not(:placeholder-shown) {
+      border-color: #d84074; background: #ffffff; box-shadow: 0 0 10px rgba(216, 64, 116, 0.1);
+    }
+    .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label {
+      top: -12px; right: 15px; font-size: 13px; background-color: #ffffff;
+      padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 500;
+    }
+
+    .submit-btn {
+      width: 100%; background-color: #0b3c33; color: #d4af37; border: none;
+      padding: 15px; font-size: 18px; font-weight: bold; border-radius: 10px;
+      cursor: pointer; margin-top: 10px; transition: all 0.3s ease;
+    }
+    .submit-btn:hover { background-color: #082d26; box-shadow: 0 8px 20px rgba(11, 60, 51, 0.3); transform: translateY(-2px); }
+
+    .hidden { display: none !important; }
+    .success-icon { font-size: 60px; margin-bottom: 20px; }
+    /* ربطنا زر العودة بالصفحة الرئيسية للموقع */
+    .back-link { display: inline-block; margin-top: 20px; color: #0b3c33; text-decoration: none; font-weight: bold; }
+    .back-link:hover { color: #d84074; }
+  </style>
+
+</head>
+<body>
+
+  <div class="workshop-landing">
+    
+    <div class="floating-bg">
+      <img src="https://cdn-icons-png.flaticon.com/512/10858/10858852.png" class="element custom-flower f1" alt="flower">
+      <img src="https://cdn-icons-png.flaticon.com/512/6122/6122858.png" class="element custom-flower f2" alt="flower">
+      <img src="https://cdn-icons-png.flaticon.com/512/10858/10858852.png" class="element custom-flower f3" alt="flower">
+      <img src="https://cdn-icons-png.flaticon.com/512/6122/6122858.png" class="element custom-flower f4" alt="flower">
+    </div>
+
+    <div class="glass-container" id="formContainer">
+      <div class="logo-small">ENSI EVENTS</div>
+      <h2 class="theme-title">آخر أيام الصيفية</h2>
+      <p class="theme-subtitle">ورشة تنسيق وتزيين الورد</p>
+      <p class="desc">سجّل بياناتك لتأكيد مقعدك، وسيتم التواصل معك عبر واتساب</p>
+      
+      <form id="registrationForm">
+        <div class="input-row">
+          <div class="input-group">
+            <input type="text" id="firstName" required placeholder=" ">
+            <label for="firstName">الاسم الأول</label>
+          </div>
+          <div class="input-group">
+            <input type="text" id="lastName" required placeholder=" ">
+            <label for="lastName">الاسم الأخير</label>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input type="tel" id="whatsapp" required placeholder=" ">
+          <label for="whatsapp">رقم الواتساب (مع رمز الدولة)</label> 
+        </div>
+
+        <button type="submit" class="submit-btn">تأكيد التسجيل</button>
+      </form>
+    </div>
+
+    <div class="glass-container hidden" id="thankYouMessage">
+      <div class="success-icon">🌸</div>
+      <h2 class="theme-title">شكراً لتسجيلك!</h2>
+      <p class="desc">تم استلام طلبك بنجاح. سيقوم فريقنا بالتواصل معك قريباً عبر الواتساب لتزويدك بكافة التفاصيل.</p>
+      <!-- السهمان (../) يوجهان الزر للعودة للصفحة الرئيسية خارج المجلد -->
+      <a href="../index.html" class="back-link">العودة للصفحة الرئيسية</a>
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const formContainer = document.getElementById('formContainer');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      // سيتم إضافة كود الإرسال الفعلي لاحقاً
+      formContainer.classList.add('hidden');
+      thankYouMessage.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

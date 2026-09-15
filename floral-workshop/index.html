@@ -19,31 +19,34 @@
       overflow: hidden; 
     }
 
+    /* حركات الخلفية */
     .floating-bg { position: absolute; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-    .custom-flower { position: absolute; opacity: 0.6; animation: floatUp 15s infinite linear; width: auto; }
+    
+    .custom-flower { position: absolute; opacity: 0.65; animation: floatUp 15s infinite linear; width: auto; object-fit: contain; }
     
     .f1 { left: 10%; bottom: -100px; animation-duration: 18s; height: 120px; }
-    .f2 { left: 45%; bottom: -150px; animation-duration: 22s; height: 80px; }
-    .f3 { left: 75%; bottom: -120px; animation-duration: 16s; height: 150px; }
-    .f4 { left: 90%; bottom: -80px; animation-duration: 25s; height: 90px; }
+    .f2 { left: 45%; bottom: -150px; animation-duration: 22s; height: 90px; }
+    .f3 { left: 75%; bottom: -120px; animation-duration: 16s; height: 140px; }
+    .f4 { left: 90%; bottom: -80px; animation-duration: 25s; height: 100px; }
 
     @keyframes floatUp {
       0% { transform: translateY(0) rotate(0deg); }
       100% { transform: translateY(-120vh) rotate(360deg); }
     }
 
+    /* تصميم الفورم الزجاجي */
     .glass-container {
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: 20px;
       padding: 40px;
       width: 90%;
       max-width: 500px;
       z-index: 1;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(216, 64, 116, 0.15);
+      box-shadow: 0 15px 35px rgba(216, 64, 116, 0.2);
     }
 
     .logo-small { color: #0b3c33; font-size: 16px; letter-spacing: 2px; margin-bottom: 15px; font-weight: 700; }
@@ -54,7 +57,7 @@
     .input-row { display: flex; gap: 15px; }
     .input-group { position: relative; margin-bottom: 25px; width: 100%; }
     .input-group input {
-      width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.7);
+      width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.8);
       border: 1px solid rgba(216, 64, 116, 0.3); border-radius: 10px;
       color: #0b3c33; font-size: 16px; outline: none; transition: all 0.3s ease;
     }
@@ -71,13 +74,13 @@
       padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 500;
     }
 
+    /* تنسيق زر التسجيل الصحيح باللون الوردي */
     .submit-btn {
-          .submit-btn {
       width: 100%; 
-      background-color: #d84074; /* لون وردي متناسق مع ثيم البوستر الصيفي */
-      color: #ffffff; /* نص أبيض ليكون بارزاً وأنيقاً */
+      background-color: #d84074; 
+      color: #ffffff; 
       border: none;
-      padding: 15px; 
+      padding: 16px; 
       font-size: 18px; 
       font-weight: bold; 
       border-radius: 10px;
@@ -86,28 +89,28 @@
       transition: all 0.3s ease;
     }
     .submit-btn:hover { 
-      background-color: #b82b5a; /* لون أغمق قليلاً عند تمرير الماوس */
+      background-color: #b82b5a; 
       box-shadow: 0 8px 20px rgba(216, 64, 116, 0.4); 
       transform: translateY(-2px); 
     }
 
-    }
-    .submit-btn:hover { background-color: #082d26; box-shadow: 0 8px 20px rgba(11, 60, 51, 0.3); transform: translateY(-2px); }
-
     .hidden { display: none !important; }
     .success-icon { font-size: 60px; margin-bottom: 20px; }
-    /* ربطنا زر العودة بالصفحة الرئيسية للموقع */
     .back-link { display: inline-block; margin-top: 20px; color: #0b3c33; text-decoration: none; font-weight: bold; }
     .back-link:hover { color: #d84074; }
   </style>
-
 </head>
 <body>
 
   <div class="workshop-landing">
     
+    <!-- صور الزهور المتحركة في الخلفية -->
+    <!-- تنويه: تأكد أنك رفعت صورة الأوركيد في GitHub باسم flower.png بالضبط -->
     <div class="floating-bg">
-     ⁠../flower.png
+      <img src="../flower.png" class="element custom-flower f1" alt="flower">
+      <img src="../flower.png" class="element custom-flower f2" alt="flower">
+      <img src="../flower.png" class="element custom-flower f3" alt="flower">
+      <img src="../flower.png" class="element custom-flower f4" alt="flower">
     </div>
 
     <div class="glass-container" id="formContainer">
@@ -137,11 +140,11 @@
       </form>
     </div>
 
+    <!-- رسالة الشكر -->
     <div class="glass-container hidden" id="thankYouMessage">
       <div class="success-icon">🌸</div>
       <h2 class="theme-title">شكراً لتسجيلك!</h2>
       <p class="desc">تم استلام طلبك بنجاح. سيقوم فريقنا بالتواصل معك قريباً عبر الواتساب لتزويدك بكافة التفاصيل.</p>
-      <!-- السهمان (../) يوجهان الزر للعودة للصفحة الرئيسية خارج المجلد -->
       <a href="../index.html" class="back-link">العودة للصفحة الرئيسية</a>
     </div>
 
@@ -154,7 +157,7 @@
 
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-      // سيتم إضافة كود الإرسال الفعلي لاحقاً
+      // سيتم ربط الفورم لاحقاً
       formContainer.classList.add('hidden');
       thankYouMessage.classList.remove('hidden');
     });

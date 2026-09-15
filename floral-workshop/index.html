@@ -10,16 +10,15 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; direction: rtl; }
 
-    /* حل مشكلة الخلفية وانقطاع الألوان */
     body {
       background: linear-gradient(135deg, #ffd1d8 0%, #fdbb7d 100%);
-      background-attachment: fixed; /* يمنع انقطاع الخلفية عند النزول */
+      background-attachment: fixed;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow-x: hidden;
-      padding: 40px 20px; /* مساحة للتنفس حول التصميم */
+      padding: 40px 20px;
     }
 
     /* حركات الخلفية */
@@ -37,7 +36,7 @@
       100% { transform: translateY(-120vh) rotate(360deg); }
     }
 
-    /* الحاوية الرئيسية التي تقسم الشاشة لنصفين */
+    /* الحاوية الرئيسية */
     .landing-wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -48,7 +47,6 @@
       z-index: 1;
     }
 
-    /* تنسيق الصناديق الزجاجية الموحد */
     .glass-box {
       background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(10px);
@@ -58,33 +56,57 @@
       padding: 40px;
       box-shadow: 0 15px 35px rgba(216, 64, 116, 0.15);
       flex: 1;
-      min-width: 320px; /* لضمان نزولها تحت بعض في الجوال */
+      min-width: 320px;
     }
 
-    /* --- تنسيق قسم الشرح (اليمين) --- */
+    /* --- قسم الشرح (اليمين) --- */
     .details-section {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
-    .logo-small { color: #0b3c33; font-size: 16px; letter-spacing: 2px; margin-bottom: 10px; font-weight: 700; }
+    /* تعديل الهيدر ليكون على اليسار باللغة الإنجليزية */
+    .brand-header {
+      color: #0b3c33;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-align: left;
+      direction: ltr; /* اتجاه النص الإنجليزي من اليسار لليمين */
+    }
+
     .theme-title { color: #d84074; font-size: 38px; font-weight: 700; margin-bottom: 5px; }
     .theme-subtitle { color: #0b3c33; font-size: 20px; font-weight: 700; margin-bottom: 25px; }
     
+    /* تنسيق نصوص الشرح الاحترافية */
     .desc-text {
       color: #4a4a4a;
       font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    /* تصميم البطاقات الإبداعية لمعلومات الورشة */
-    .info-badges {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .desc-text p { margin-bottom: 12px; }
+    
+    .features-list {
+      list-style: none;
+      margin-bottom: 20px;
+      padding-right: 10px;
     }
+    
+    .features-list li {
+      font-size: 15px;
+      color: #4a4a4a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .info-badges { display: flex; flex-direction: column; gap: 15px; margin-top: 10px;}
 
     .badge-item {
       display: flex;
@@ -95,12 +117,12 @@
       border-radius: 12px;
       border: 1px solid rgba(216, 64, 116, 0.2);
       transition: all 0.3s ease;
-      text-decoration: none; /* مهم للرابط */
+      text-decoration: none;
       color: inherit;
     }
 
     .badge-item:hover {
-      transform: translateX(-5px); /* حركة لليسار عند التمرير */
+      transform: translateX(-5px);
       box-shadow: 0 5px 15px rgba(216, 64, 116, 0.1);
       border-color: #d84074;
     }
@@ -121,11 +143,16 @@
     .badge-text strong { color: #d84074; font-size: 15px; margin-bottom: 3px; }
     .badge-text span { color: #0b3c33; font-size: 14px; font-weight: 500; }
 
-    /* تأثير خاص لزر الخريطة */
     .location-link { cursor: pointer; border: 1px dashed #d84074; }
     .location-link:hover { background-color: rgba(216, 64, 116, 0.05); }
 
-    /* --- تنسيق قسم الفورم (اليسار) --- */
+    /* --- قسم الفورم (اليسار) --- */
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* يوسّط الفورم إذا كان الشرح أطول */
+    }
+
     .form-title { color: #0b3c33; font-size: 24px; margin-bottom: 10px; text-align: center; }
     .form-desc { color: #4a4a4a; font-size: 14px; margin-bottom: 25px; text-align: center; }
 
@@ -165,33 +192,49 @@
 </head>
 <body>
 
-  <!-- صور الزهور: المسار معدل ليعمل دائماً من المصدر -->
+  <!-- مسار الصورة المعدل -->
   <div class="floating-bg">
-    <img src="/flower.png" class="element custom-flower f1" alt="flower">
-    <img src="/flower.png" class="element custom-flower f2" alt="flower">
-    <img src="/flower.png" class="element custom-flower f3" alt="flower">
-    <img src="/flower.png" class="element custom-flower f4" alt="flower">
+    <img src="../flower.png" class="element custom-flower f1" alt="flower">
+    <img src="../flower.png" class="element custom-flower f2" alt="flower">
+    <img src="../flower.png" class="element custom-flower f3" alt="flower">
+    <img src="../flower.png" class="element custom-flower f4" alt="flower">
   </div>
 
   <div class="landing-wrapper">
     
     <!-- القسم الأيمن: الشرح والتفاصيل -->
     <div class="details-section glass-box" id="detailsBox">
-      <div class="logo-small">ENSI EVENTS</div>
+      <!-- الشعار إلى اليسار باللغة الإنجليزية -->
+      <div class="brand-header">Ensi Events - Rosaria</div>
+      
       <h1 class="theme-title">آخر أيام الصيفية</h1>
       <h2 class="theme-subtitle">ورشة تنسيق وتزيين الورد</h2>
       
-      <p class="desc-text">
-        تجربة إبداعية استثنائية نصنع فيها معاً أجمل باقات الورد التي تعكس ذوقك الخاص. دعينا نودع الصيف بألوان زاهية وذكريات لا تُنسى!
-        نوفر لكِ كافة أنواع الزهور، أدوات التنسيق، ومستلزمات التزيين، بالإضافة إلى ضيافة راقية لتكتمل تجربتك.
-      </p>
+      <div class="desc-text">
+        <p>🌷 ماذا لو تحوّل حبكِ للورد إلى مهارة حقيقية؟</p>
+        <p>انضمّي إلينا في ورشة تنسيق الورود في إسطنبول وتعلّمي خلال 4 ساعات فقط أساسيات تنسيق وتصميم الورود، من اختيار العناصر وتناسق الألوان إلى التكوين والتفاصيل التي تصنع الفرق. ✨</p>
+        <p>🌸 ولأن التعلّم يصبح أجمل عندما يكون ممتعاً… حضّرنا لكِ مجموعة من الفعاليات والتفاصيل التي ستجعل يومكِ مختلفاً:</p>
+      </div>
+
+      <!-- قائمة الفعاليات بتنسيق مرتب -->
+      <ul class="features-list">
+        <li>💐 تزيين البوكيه الكرتوني الخاص بكِ بالكرستالات الترند</li>
+        <li>✨ تاتو بالكلتر لإطلالة مميزة</li>
+        <li>💎 تزيين الوجه بالكرستالات الملونة الترند</li>
+        <li>🎀 ألعاب وفعاليات جماعية</li>
+        <li>💬 حديث فعّال وتعارف وتبادل الأفكار</li>
+      </ul>
+
+      <div class="desc-text">
+        <p>☀️ <strong>وثيمنا؟ آخر أيام الصيفية!</strong></p>
+        <p>أجواء صيفية بألوان زاهية ومبهجة مع موسيقى فيروز، مصممة لتكون مثالية للتصوير وصناعة لحظات لا تُنسى. 📸🌸</p>
+      </div>
 
       <div class="info-badges">
         <div class="badge-item">
           <span class="badge-icon">💰</span>
           <div class="badge-text">
             <strong>تكلفة التسجيل</strong>
-            <!-- يمكنك تعديل السعر هنا -->
             <span>1500 ليرة تركية (شاملة كافة الأدوات والضيافة)</span> 
           </div>
         </div>
@@ -204,7 +247,6 @@
           </div>
         </div>
 
-        <!-- رابط الموقع يفتح خرائط جوجل مباشرة -->
         <a href="https://www.google.com/maps/search/?api=1&query=Al-baraka+cafe+Istanbul" target="_blank" class="badge-item location-link" title="اضغط لفتح الخريطة">
           <span class="badge-icon">📍</span>
           <div class="badge-text">
@@ -217,7 +259,7 @@
 
     <!-- القسم الأيسر: الفورم -->
     <div class="form-section glass-box" id="formContainer">
-      <h3 class="form-title">تأكيد الحجز</h3>
+      <h3 class="form-title">التسجيل في الورشة</h3>
       <p class="form-desc">سجلي بياناتك الآن، المقاعد محدودة جداً.</p>
       
       <form id="registrationForm">
@@ -241,12 +283,12 @@
       </form>
     </div>
 
-    <!-- رسالة الشكر (تأخذ مساحة الفورم عند الانتهاء) -->
-    <div class="form-section glass-box hidden" id="thankYouMessage" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <!-- رسالة الشكر -->
+    <div class="form-section glass-box hidden" id="thankYouMessage" style="text-align: center; align-items: center;">
       <div class="success-icon">🌸</div>
       <h2 class="theme-title">شكراً لتسجيلك!</h2>
-      <p class="desc-text" style="text-align: center; margin-bottom: 0;">تم استلام طلبك بنجاح. سيقوم فريقنا بالتواصل معك قريباً عبر الواتساب لتزويدك بكافة التفاصيل.</p>
-      <a href="/" class="back-link">العودة للصفحة الرئيسية</a>
+      <p class="desc-text" style="text-align: center;">تم استلام طلبك بنجاح. سيقوم فريقنا بالتواصل معك قريباً عبر الواتساب لتزويدك بكافة التفاصيل.</p>
+      <a href="../index.html" class="back-link">العودة للصفحة الرئيسية</a>
     </div>
 
   </div>

@@ -22,7 +22,6 @@
     }
 
     .floating-bg { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: -1; pointer-events: none; }
-    
     .custom-flower { position: absolute; opacity: 0.7; animation: floatUp 15s infinite linear; width: auto; object-fit: contain; }
     
     .f1 { left: 10%; bottom: -100px; animation-duration: 18s; height: 120px; }
@@ -45,7 +44,6 @@
       z-index: 1;
     }
 
-    /* تعديل شفافية الزجاج ليبرز الورد في الخلفية */
     .glass-box {
       background: rgba(255, 255, 255, 0.45); 
       backdrop-filter: blur(10px);
@@ -58,93 +56,29 @@
       min-width: 320px;
     }
 
-    /* --- قسم الشرح (اليمين) --- */
-    .details-section {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+    .details-section { display: flex; flex-direction: column; justify-content: flex-start; }
+
+    .brand-header {
+      color: #0b3c33; font-size: 16px; letter-spacing: 1px; margin-bottom: 20px;
+      font-weight: 700; text-align: center; direction: ltr;
     }
 
-    /* توسيط الشعار */
-    .brand-header {
-      color: #0b3c33;
-      font-size: 16px;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-      font-weight: 700;
-      text-align: center; /* تم التوسيط */
-      direction: ltr;
-    }
-    /* تنسيق صورة عنوان الورشة */
-    .custom-title-img {
-      max-width: 250px; /* يمكنك زيادة أو تقليل هذا الرقم حسب حجم صورتك */
-      height: auto;
-      margin: 0 auto 10px auto; /* لتوسيط الصورة إذا أردت، مع ترك مسافة بالأسفل */
-      display: block; /* ضروري لتوسيط الصورة */
-    }
-    .theme-title { color: #d84074; font-size: 38px; font-weight: 700; margin-bottom: 5px; text-align: center; }
+    /* تنسيق صورة التايتل */
+    .custom-title-img { max-width: 250px; height: auto; margin: 0 auto 10px auto; display: block; }
+    
+    .theme-title { color: #d84074; font-size: 38px; font-weight: 700; margin-bottom: 5px; text-align: center; display: none;} /* أخفينا النص لصالح الصورة */
     .theme-subtitle { color: #0b3c33; font-size: 20px; font-weight: 700; margin-bottom: 25px; text-align: center; }
     
-    .desc-text {
-      color: #333333; /* لون أغمق قليلاً ليتناسب مع زيادة الشفافية */
-      font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-
+    .desc-text { color: #333333; font-size: 16px; line-height: 1.8; margin-bottom: 15px; font-weight: 500; }
     .desc-text p { margin-bottom: 10px; }
     
-    .features-list {
-      list-style: none;
-      margin-bottom: 20px;
-      padding-right: 10px;
-    }
-    
-    .features-list li {
-      font-size: 16px;
-      color: #333333;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
-      font-weight: 500;
-    }
+    .features-list { list-style: none; margin-bottom: 20px; padding-right: 10px; }
+    .features-list li { font-size: 16px; color: #333333; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; font-weight: 500; }
 
     .info-badges { display: flex; flex-direction: column; gap: 15px; margin-top: 10px;}
-
-    .badge-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(216, 64, 116, 0.2);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .badge-item:hover {
-      transform: translateX(-5px);
-      box-shadow: 0 5px 15px rgba(216, 64, 116, 0.1);
-      border-color: #d84074;
-    }
-
-    .badge-icon {
-      font-size: 24px;
-      background: rgba(253, 251, 247, 0.9);
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
+    .badge-item { display: flex; align-items: center; gap: 15px; background: rgba(255, 255, 255, 0.7); padding: 15px; border-radius: 12px; border: 1px solid rgba(216, 64, 116, 0.2); transition: all 0.3s ease; text-decoration: none; color: inherit; }
+    .badge-item:hover { transform: translateX(-5px); box-shadow: 0 5px 15px rgba(216, 64, 116, 0.1); border-color: #d84074; }
+    .badge-icon { font-size: 24px; background: rgba(253, 251, 247, 0.9); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     .badge-text { display: flex; flex-direction: column; }
     .badge-text strong { color: #d84074; font-size: 15px; margin-bottom: 3px; }
     .badge-text span { color: #0b3c33; font-size: 14px; font-weight: 700; }
@@ -152,37 +86,18 @@
     .location-link { cursor: pointer; border: 1px dashed #d84074; }
     .location-link:hover { background-color: rgba(216, 64, 116, 0.1); }
 
-    /* --- قسم الفورم (اليسار) --- */
     .form-section { display: flex; flex-direction: column; justify-content: center; }
     .form-title { color: #0b3c33; font-size: 24px; margin-bottom: 10px; text-align: center; }
     .form-desc { color: #333; font-size: 14px; margin-bottom: 25px; text-align: center; font-weight: 500; }
 
     .input-row { display: flex; gap: 15px; }
     .input-group { position: relative; margin-bottom: 20px; width: 100%; }
-    .input-group input {
-      width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(216, 64, 116, 0.3); border-radius: 10px;
-      color: #0b3c33; font-size: 16px; outline: none; transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    .input-group label {
-      position: absolute; right: 15px; top: 15px; color: rgba(11, 60, 51, 0.7);
-      transition: all 0.3s ease; pointer-events: none; font-weight: 500;
-    }
+    .input-group input { width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(216, 64, 116, 0.3); border-radius: 10px; color: #0b3c33; font-size: 16px; outline: none; transition: all 0.3s ease; font-weight: 500; }
+    .input-group label { position: absolute; right: 15px; top: 15px; color: rgba(11, 60, 51, 0.7); transition: all 0.3s ease; pointer-events: none; font-weight: 500; }
+    .input-group input:focus, .input-group input:not(:placeholder-shown) { border-color: #d84074; background: #ffffff; box-shadow: 0 0 10px rgba(216, 64, 116, 0.1); }
+    .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; }
 
-    .input-group input:focus, .input-group input:not(:placeholder-shown) {
-      border-color: #d84074; background: #ffffff; box-shadow: 0 0 10px rgba(216, 64, 116, 0.1);
-    }
-    .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label {
-      top: -12px; right: 15px; font-size: 13px; background-color: #ffffff;
-      padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700;
-    }
-
-    .submit-btn {
-      width: 100%; background-color: #d84074; color: #ffffff; border: none;
-      padding: 16px; font-size: 18px; font-weight: bold; border-radius: 10px;
-      cursor: pointer; margin-top: 10px; transition: all 0.3s ease;
-    }
+    .submit-btn { width: 100%; background-color: #d84074; color: #ffffff; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 10px; transition: all 0.3s ease; }
     .submit-btn:hover { background-color: #b82b5a; box-shadow: 0 8px 20px rgba(216, 64, 116, 0.4); transform: translateY(-2px); }
 
     .hidden { display: none !important; }
@@ -193,7 +108,7 @@
 </head>
 <body>
 
-  <!-- الروابط المباشرة لصور الزهور (ضع الرابط الطويل الذي نسخته داخل علامات التنصيص) -->
+  <!-- الروابط المباشرة لصور الزهور -->
   <div class="floating-bg">
     <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/%20flower.png?raw=true" class="element custom-flower f1" alt="flower">
     <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/%20flower.png?raw=true" class="element custom-flower f2" alt="flower">
@@ -203,12 +118,11 @@
 
   <div class="landing-wrapper">
     
-    <!-- القسم الأيمن: الشرح والتفاصيل -->
     <div class="details-section glass-box" id="detailsBox">
-      <!-- الشعار في المنتصف -->
       <div class="brand-header">Ensi Events - Rosaria</div>
       
-      ⁠<img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3804.png?raw=true" alt="آخر أيام الصيفية" class="custom-title-img">⁠
+      <!-- صورة التايتل بدلاً من النص -->
+      <img src="رابط_الصورة" alt="آخر أيام الصيفية" class="custom-title-img">
       <h2 class="theme-subtitle">ورشة تنسيق وتزيين الورد</h2>
       
       <div class="desc-text">
@@ -217,7 +131,6 @@
         <p>🌸 <strong>بالإضافة إلى:</strong></p>
       </div>
 
-      <!-- قائمة الفعاليات -->
       <ul class="features-list">
         <li>💎 تزيين البوكيه بالكرستالات</li>
         <li>✨ تاتو كلتر وكرستالات للوجه</li>
@@ -234,7 +147,7 @@
           <span class="badge-icon">💰</span>
           <div class="badge-text">
             <strong>تكلفة التسجيل</strong>
-            <span>950 ليرة تركية (شاملة كافة الأدوات)</span> 
+            <span>1500 ليرة تركية (شاملة كافة الأدوات والضيافة)</span> 
           </div>
         </div>
 
@@ -242,7 +155,7 @@
           <span class="badge-icon">📅</span>
           <div class="badge-text">
             <strong>الموعد</strong>
-            <span>يوم السبت 19.09.2026 | 5:00 - 9:00 مساءً</span>
+            <span>يوم السبت 19.09.2026 | 5:30 - 8:00 مساءً</span>
           </div>
         </div>
 
@@ -256,7 +169,6 @@
       </div>
     </div>
 
-        <!-- القسم الأيسر: الفورم -->
     <div class="form-section glass-box" id="formContainer">
       <h3 class="form-title">التسجيل في الورشة</h3>
       <p class="form-desc">سجلي بياناتك الآن، المقاعد محدودة جداً.</p>
@@ -285,10 +197,9 @@
       </form>
     </div>
 
-    <!-- رسالة الشكر -->
-    <div class="form-section glass-box hidden" id="thankYouMessage" style="text-align: center; align-items: center;">
+    <div class="form-section glass-box hidden" id="thankYouMessage" style="text-align: center; justify-content: center; display: flex; flex-direction: column;">
       <div class="success-icon">🌸</div>
-      <h2 class="theme-title">شكراً لتسجيلك!</h2>
+      <h2 class="theme-title" style="display: block;">شكراً لتسجيلك!</h2>
       <p class="desc-text" style="text-align: center;">تم استلام طلبك بنجاح. سيقوم فريقنا بالتواصل معك قريباً عبر الواتساب لتزويدك بكافة التفاصيل.</p>
       <a href="../index.html" class="back-link">العودة للصفحة الرئيسية</a>
     </div>
@@ -324,17 +235,6 @@
     });
   </script>
 
-    const form = document.getElementById('registrationForm');
-    const formContainer = document.getElementById('formContainer');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      // سيتم ربط الفورم لاحقاً
-      formContainer.classList.add('hidden');
-      thankYouMessage.classList.remove('hidden');
-    });
-  </script>
-
 </body>
 </html>
+

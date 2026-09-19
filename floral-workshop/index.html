@@ -256,25 +256,28 @@
       </div>
     </div>
 
-    <!-- القسم الأيسر: الفورم -->
+        <!-- القسم الأيسر: الفورم -->
     <div class="form-section glass-box" id="formContainer">
       <h3 class="form-title">التسجيل في الورشة</h3>
       <p class="form-desc">سجلي بياناتك الآن، المقاعد محدودة جداً.</p>
       
       <form id="registrationForm">
+        <!-- الحقل المخفي لاسم الورشة (ضروري لإنشاء الشيت) -->
+        <input type="hidden" name="اسم الورشة" value="آخر أيام الصيفية">
+
         <div class="input-row">
           <div class="input-group">
-            <input type="text" id="firstName" required placeholder=" ">
+            <input type="text" id="firstName" name="الاسم الأول" required placeholder=" ">
             <label for="firstName">الاسم الأول</label>
           </div>
           <div class="input-group">
-            <input type="text" id="lastName" required placeholder=" ">
+            <input type="text" id="lastName" name="الاسم الأخير" required placeholder=" ">
             <label for="lastName">الاسم الأخير</label>
           </div>
         </div>
 
         <div class="input-group">
-          <input type="tel" id="whatsapp" required placeholder=" ">
+          <input type="tel" id="whatsapp" name="رقم الواتساب" required placeholder=" ">
           <label for="whatsapp">رقم الواتساب (مع رمز الدولة)</label> 
         </div>
 
@@ -293,6 +296,34 @@
   </div>
 
   <script>
+    const form = document.getElementById('registrationForm');
+    const formContainer = document.getElementById('formContainer');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    // الصق رابط جوجل الطويل هنا داخل علامتي التنصيص
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyQrf27W29Fg9AdWJ1xSu79KBcYXP6uvyMGzXssx6c4XFgcyUIZDrn8_6TaeD_34jKB/exec';
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'جاري تأكيد التسجيل...';
+      submitBtn.disabled = true;
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          formContainer.classList.add('hidden');
+          thankYouMessage.classList.remove('hidden');
+        })
+        .catch(error => {
+          alert('حدث خطأ في الاتصال، يرجى المحاولة مرة أخرى.');
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
+    });
+  </script>
+
     const form = document.getElementById('registrationForm');
     const formContainer = document.getElementById('formContainer');
     const thankYouMessage = document.getElementById('thankYouMessage');

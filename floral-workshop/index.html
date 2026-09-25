@@ -66,7 +66,7 @@
     /* تنسيق صورة التايتل */
     .custom-title-img { max-width: 250px; height: auto; margin: 0 auto 10px auto; display: block; }
     
-    .theme-title { color: #d84074; font-size: 38px; font-weight: 700; margin-bottom: 5px; text-align: center; display: none;} /* أخفينا النص لصالح الصورة */
+    .theme-title { color: #d84074; font-size: 38px; font-weight: 700; margin-bottom: 5px; text-align: center; display: none;} 
     .theme-subtitle { color: #0b3c33; font-size: 20px; font-weight: 700; margin-bottom: 25px; text-align: center; }
     
     .desc-text { color: #333333; font-size: 16px; line-height: 1.8; margin-bottom: 15px; font-weight: 500; }
@@ -106,16 +106,7 @@
     .back-link:hover { color: #d84074; border-color: #d84074; }
   </style>
 </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-20DJSP2P1C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-20DJSP2P1C');
-</script>
-  <body>
+<body>
 
   <!-- الروابط المباشرة لصور الزهور -->
   <div class="floating-bg">
@@ -183,7 +174,6 @@
       <p class="form-desc">سجلي بياناتك الآن، المقاعد محدودة جداً.</p>
       
       <form id="registrationForm">
-        <!-- الحقل المخفي لاسم الورشة (ضروري لإنشاء الشيت) -->
         <input type="hidden" name="اسم الورشة" value="آخر أيام الصيفية">
 
         <div class="input-row">
@@ -220,7 +210,6 @@
     const formContainer = document.getElementById('formContainer');
     const thankYouMessage = document.getElementById('thankYouMessage');
 
-    // الصق رابط جوجل الطويل هنا داخل علامتي التنصيص
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyQrf27W29Fg9AdWJ1xSu79KBcYXP6uvyMGzXssx6c4XFgcyUIZDrn8_6TaeD_34jKB/exec';
 
     form.addEventListener('submit', function(event) {
@@ -244,6 +233,11 @@
     });
   </script>
 
+  <!-- كود Vercel Analytics الرسمي -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>
-

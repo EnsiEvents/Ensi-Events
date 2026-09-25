@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>تسجيل ورشة آخر أيام الصيفية | ENSI Events</title>
   
   <!-- استدعاء مكتبة أعلام الدول وتنسيقاتها -->
@@ -13,10 +13,9 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; direction: rtl; }
 
-    /* الإضافة الجديدة: إجبار الموقع على عدم تجاوز عرض الشاشة ومنع السحب الأفقي نهائياً */
     html, body {
       max-width: 100vw;
-      overflow-x: hidden;
+      overflow-x: hidden; /* منع السحب الأفقي */
     }
 
     body {
@@ -107,27 +106,42 @@
     .whatsapp-group { width: 100%; position: relative; margin-bottom: 20px; }
     .iti { width: 100%; direction: ltr; display: block; }
     
-    /* تحديد عرض وطول القائمة لتناسب الهواتف */
+    /* تحديد عرض وطول القائمة لتناسب الهواتف، وتجنب الخروج عن الإطار */
     .iti__country-list { 
-      background: rgba(255, 255, 255, 0.95) !important; 
+      background: rgba(255, 255, 255, 0.98) !important; 
       backdrop-filter: blur(10px); 
       border-radius: 10px; 
       border: 1px solid rgba(216, 64, 116, 0.3); 
-      font-family: 'Tajawal', sans-serif; 
+      font-family: Arial, sans-serif !important; /* استخدام خط إنجليزي لأسماء الدول */
       text-align: left; 
-      width: 280px !important; /* عرض آمن */
-      max-width: 100% !important; /* عدم التمدد خارج الإطار */
-      max-height: 200px !important; /* طول مناسب لعدم تغطية الشاشة */
-      overflow-x: hidden !important; 
+      width: 100% !important; /* تأخذ عرض الحقل فقط */
+      max-width: 300px !important; /* حد أقصى للعرض */
+      max-height: 250px !important; /* طول مناسب */
+      overflow-y: auto !important; /* تفعيل التمرير العمودي */
+      overflow-x: hidden !important; /* منع التمرير الأفقي داخل القائمة */
       white-space: normal !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      z-index: 10 !important; /* إبقاء القائمة فوق العناصر الأخرى */
     }
     
-    /* منع الكلمات الطويلة (مثل أسماء الدول) من تخريب العرض */
-    .iti__country-name { white-space: normal !important; word-break: break-word; font-size: 14px; }
+    /* تنسيق مربع البحث داخل قائمة الدول */
+    .iti__search-input {
+      width: 90% !important;
+      margin: 10px 5% !important;
+      padding: 8px !important;
+      border: 1px solid rgba(216, 64, 116, 0.3) !important;
+      border-radius: 5px !important;
+      font-size: 14px !important;
+      outline: none !important;
+    }
+    .iti__search-input:focus { border-color: #d84074 !important; }
+
+    .iti__country-name { font-size: 14px; color: #333; }
+    .iti__dial-code { color: #666; font-size: 13px; }
     
-    #whatsapp { text-align: left !important; direction: ltr !important; font-family: Arial, sans-serif; letter-spacing: 1px; width: 100%; }
+    #whatsapp { text-align: left !important; direction: ltr !important; font-family: Arial, sans-serif; letter-spacing: 1px; width: 100%; padding-left: 50px !important; /* مساحة للعلم */}
     
-    .whatsapp-group:focus-within label, .whatsapp-group label.active { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; }
+    .whatsapp-group:focus-within label, .whatsapp-group label.active { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; z-index: 6; }
 
     .submit-btn { width: 100%; background-color: #d84074; color: #ffffff; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 10px; transition: all 0.3s ease; }
     .submit-btn:hover { background-color: #b82b5a; box-shadow: 0 8px 20px rgba(216, 64, 116, 0.4); transform: translateY(-2px); }
@@ -136,6 +150,12 @@
     .success-icon { font-size: 60px; margin-bottom: 20px; color: #d84074; }
     .back-link { display: inline-block; margin-top: 20px; color: #0b3c33; text-decoration: none; font-weight: bold; border-bottom: 2px solid #0b3c33; padding-bottom: 3px; }
     .back-link:hover { color: #d84074; border-color: #d84074; }
+    
+    /* ميديا كويري مخصصة للهواتف للتأكد من عدم الخروج من الإطار */
+    @media (max-width: 600px) {
+        .glass-box { padding: 30px 20px; min-width: 100%; }
+        .input-row { flex-direction: column; gap: 0; }
+    }
   </style>
 </head>
 <body>
@@ -240,14 +260,18 @@
     const phoneInput = document.querySelector("#whatsapp");
     const waLabel = document.querySelector("#wa-label");
 
+    // تفعيل مكتبة الأعلام مع خصائص البحث واللغة الإنجليزية
     const iti = window.intlTelInput(phoneInput, {
       initialCountry: "tr", 
       preferredCountries: ["tr", "iq", "sa", "ae", "kw", "qa", "om", "bh"], 
       separateDialCode: true, 
-      autoPlaceholder: "off", 
+      autoPlaceholder: "off",
+      formatOnDisplay: true,
+      customContainer: "iti--rtl", // تجنب مشاكل الـ RTL
       utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
     });
 
+    // المحافظة على حركة الليبل
     phoneInput.addEventListener('input', () => {
       if (phoneInput.value.trim() !== '') waLabel.classList.add('active');
       else waLabel.classList.remove('active');
@@ -285,6 +309,41 @@
           submitBtn.disabled = false;
         });
     });
+
+    // إضافة مربع البحث برمجياً بعد تحميل المكتبة
+    document.addEventListener("DOMContentLoaded", function() {
+        const countryList = document.querySelector('.iti__country-list');
+        if(countryList) {
+            const searchBox = document.createElement('input');
+            searchBox.type = 'text';
+            searchBox.placeholder = 'البحث عن دولة (Search country)...';
+            searchBox.className = 'iti__search-input';
+            
+            // منع إغلاق القائمة عند النقر على مربع البحث
+            searchBox.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // وظيفة البحث (فلترة الدول)
+            searchBox.addEventListener('keyup', function() {
+                const filter = this.value.toLowerCase();
+                const items = countryList.querySelectorAll('.iti__country');
+                
+                items.forEach(function(item) {
+                    const countryName = item.querySelector('.iti__country-name').textContent.toLowerCase();
+                    if (countryName.includes(filter)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // إدراج مربع البحث في أعلى القائمة
+            countryList.insertBefore(searchBox, countryList.firstChild);
+        }
+    });
+
   </script>
 
   <!-- كود Vercel Analytics -->

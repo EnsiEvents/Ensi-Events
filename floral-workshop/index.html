@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تسجيل ورشة آخر أيام الصيفية | ENSI Events</title>
   
+  <!-- استدعاء مكتبة أعلام الدول وتنسيقاتها -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
 
@@ -63,9 +66,7 @@
       font-weight: 700; text-align: center; direction: ltr;
     }
 
-    /* تنسيق صورة التايتل */
     .custom-title-img { max-width: 250px; height: auto; margin: 0 auto 10px auto; display: block; }
-    
     .theme-title { color: #d84074; font-size: 38px; font-weight: 700; margin-bottom: 5px; text-align: center; display: none;} 
     .theme-subtitle { color: #0b3c33; font-size: 20px; font-weight: 700; margin-bottom: 25px; text-align: center; }
     
@@ -93,9 +94,19 @@
     .input-row { display: flex; gap: 15px; }
     .input-group { position: relative; margin-bottom: 20px; width: 100%; }
     .input-group input { width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(216, 64, 116, 0.3); border-radius: 10px; color: #0b3c33; font-size: 16px; outline: none; transition: all 0.3s ease; font-weight: 500; }
-    .input-group label { position: absolute; right: 15px; top: 15px; color: rgba(11, 60, 51, 0.7); transition: all 0.3s ease; pointer-events: none; font-weight: 500; }
-    .input-group input:focus, .input-group input:not(:placeholder-shown) { border-color: #d84074; background: #ffffff; box-shadow: 0 0 10px rgba(216, 64, 116, 0.1); }
+    
+    /* تنسيق الليبل الطافي للحقول العادية */
+    .input-group label { position: absolute; right: 15px; top: 15px; color: rgba(11, 60, 51, 0.7); transition: all 0.3s ease; pointer-events: none; font-weight: 500; z-index: 5; }
     .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; }
+
+    /* --- تعديلات مكتبة أعلام الدول لدمجها مع التصميم الزجاجي --- */
+    .whatsapp-group { width: 100%; position: relative; margin-bottom: 20px; }
+    .iti { width: 100%; direction: ltr; } /* إجبار الحقل على الكتابة من اليسار لليمين */
+    .iti__country-list { background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(10px); border-radius: 10px; border: 1px solid rgba(216, 64, 116, 0.3); font-family: 'Tajawal', sans-serif; text-align: left; }
+    #whatsapp { text-align: left !important; direction: ltr !important; font-family: Arial, sans-serif; letter-spacing: 1px; }
+    
+    /* تنسيق الليبل الطافي لحقل الواتساب المخصص */
+    .whatsapp-group:focus-within label, .whatsapp-group label.active { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; }
 
     .submit-btn { width: 100%; background-color: #d84074; color: #ffffff; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 10px; transition: all 0.3s ease; }
     .submit-btn:hover { background-color: #b82b5a; box-shadow: 0 8px 20px rgba(216, 64, 116, 0.4); transform: translateY(-2px); }
@@ -108,7 +119,6 @@
 </head>
 <body>
 
-  <!-- الروابط المباشرة لصور الزهور -->
   <div class="floating-bg">
     <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/%20flower.png?raw=true" class="element custom-flower f1" alt="flower">
     <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/%20flower.png?raw=true" class="element custom-flower f2" alt="flower">
@@ -121,7 +131,6 @@
     <div class="details-section glass-box" id="detailsBox">
       <div class="brand-header">Ensi Events - Rosaria</div>
       
-      <!-- صورة التايتل بدلاً من النص -->
       <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3804.png?raw=true" alt="آخر أيام الصيفية" class="custom-title-img">
       <h2 class="theme-subtitle">ورشة تنسيق وتزيين الورد</h2>
       
@@ -150,7 +159,6 @@
             <span>1500 ليرة تركية (شاملة كافة الأدوات والضيافة)</span> 
           </div>
         </div>
-
         <div class="badge-item">
           <span class="badge-icon">📅</span>
           <div class="badge-text">
@@ -158,7 +166,6 @@
             <span>يوم السبت 19.09.2026 | 5:30 - 8:00 مساءً</span>
           </div>
         </div>
-
         <a href="https://www.google.com/maps/search/?api=1&query=Al-baraka+cafe+Istanbul" target="_blank" class="badge-item location-link" title="اضغط لفتح الخريطة">
           <span class="badge-icon">📍</span>
           <div class="badge-text">
@@ -187,9 +194,10 @@
           </div>
         </div>
 
-        <div class="input-group">
-          <input type="tel" id="whatsapp" name="رقم الواتساب" required placeholder=" ">
-          <label for="whatsapp">رقم الواتساب (مع رمز الدولة)</label> 
+        <!-- حقل الواتساب المطور بالأعلام -->
+        <div class="input-group whatsapp-group">
+          <input type="tel" id="whatsapp" required placeholder=" ">
+          <label for="whatsapp" id="wa-label">رقم الواتساب</label> 
         </div>
 
         <button type="submit" class="submit-btn">تأكيد التسجيل</button>
@@ -205,22 +213,54 @@
 
   </div>
 
+  <!-- سكربتات مكتبة الأعلام -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+  
   <script>
+    // 1. تفعيل مكتبة الأعلام على حقل الواتساب
+    const phoneInput = document.querySelector("#whatsapp");
+    const waLabel = document.querySelector("#wa-label");
+
+    const iti = window.intlTelInput(phoneInput, {
+      initialCountry: "tr", // تركيا كدولة افتراضية
+      preferredCountries: ["tr", "iq", "sa", "ae", "kw", "qa", "om", "bh"], // الدول المفضلة في أعلى القائمة
+      separateDialCode: true, // فصل الكود عن الرقم لمنع التداخل
+      autoPlaceholder: "off", // إغلاق البليس هولدر التلقائي للحفاظ على جمالية الفورم
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+    });
+
+    // 2. المحافظة على حركة (الليبل) الخاص بالواتساب
+    phoneInput.addEventListener('input', () => {
+      if (phoneInput.value.trim() !== '') waLabel.classList.add('active');
+      else waLabel.classList.remove('active');
+    });
+
+    // 3. إعدادات الإرسال لـ Google Sheets
     const form = document.getElementById('registrationForm');
     const formContainer = document.getElementById('formContainer');
     const thankYouMessage = document.getElementById('thankYouMessage');
-
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyQrf27W29Fg9AdWJ1xSu79KBcYXP6uvyMGzXssx6c4XFgcyUIZDrn8_6TaeD_34jKB/exec';
 
     form.addEventListener('submit', function(event) {
       event.preventDefault();
+
+      // التحقق من صحة الرقم قبل الإرسال
+      if (!iti.isValidNumber()) {
+        alert("عذراً، رقم الهاتف المدخل غير صحيح. يرجى التأكد من الرقم ورمز الدولة.");
+        return;
+      }
 
       const submitBtn = form.querySelector('.submit-btn');
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'جاري تأكيد التسجيل...';
       submitBtn.disabled = true;
 
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      // أخذ البيانات وتجهيزها
+      const formData = new FormData(form);
+      // دمج كود الدولة مع الرقم ليرسل بشكل كامل إلى الشيت (مثال: +905551234567)
+      formData.set("رقم الواتساب", iti.getNumber());
+
+      fetch(scriptURL, { method: 'POST', body: formData })
         .then(response => {
           formContainer.classList.add('hidden');
           thankYouMessage.classList.remove('hidden');

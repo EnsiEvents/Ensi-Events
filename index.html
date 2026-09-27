@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENSI Events | نحو تجربة تُصنع بإحساس</title>
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* تنسيقات الشعار والأيقونات الجديدة (يمكنك نقلها لملف style.css لاحقاً لترتيب الكود) */
+    .hero-logo-img {
+      max-width: 220px; /* يمكنك تكبير أو تصغير الشعار من هنا */
+      height: auto;
+      margin: 0 auto 25px auto;
+      display: block;
+    }
+    
+    .custom-icon {
+      width: 38px;
+      height: 38px;
+      stroke: #d4af37; /* اللون الذهبي الفاخر */
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    /* تأثير بسيط عند مرور الماوس على الأيقونات */
+    .feature-card:hover .custom-icon, 
+    .service-card:hover .custom-icon {
+      transform: scale(1.1);
+      stroke: #0b3c33; /* تتغير للزمردي عند التأشير */
+    }
+
+    .icon, .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -25,11 +56,14 @@
   <!-- القسم الرئيسي (واجهة البداية) -->
   <section class="hero">
     <div class="hero-content">
+      <!-- مكان شعار ENSI (ضع الرابط داخل علامتي التنصيص) -->
+      <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/EVENTS%20-%201.png?raw=true" alt="ENSI Logo" class="hero-logo-img">
+      
       <h2>نحو تجربة تُصنع بإحساس</h2>
-      <p>نُظّم المناسبات ونصمم التجارب التي تبقى في الذاكرة</p>
+      <p>نُنظم المناسبات ونصمم التجارب التي تبقى في الذاكرة</p>
       <div class="hero-buttons">
         <button class="primary-btn">استكشف خدماتنا</button>
-        <button class="secondary-btn">احجز استشارة</button>
+        <button class="secondary-btn">احجز مقابلة</button>
       </div>
     </div>
   </section>
@@ -39,19 +73,31 @@
     <h3 class="section-title">لماذا نحن؟</h3>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="icon">✨</div>
+        <div class="icon">
+          <!-- أيقونة بريق / تجارب -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        </div>
         <h4>نصنع تجارب تحكى</h4>
       </div>
       <div class="feature-card">
-        <div class="icon">💡</div>
+        <div class="icon">
+          <!-- أيقونة مصباح / ابتكار -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+        </div>
         <h4>أفكار إبداعية وحلول مبتكرة</h4>
       </div>
       <div class="feature-card">
-        <div class="icon">💎</div>
+        <div class="icon">
+          <!-- أيقونة جوهرة / جودة -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+        </div>
         <h4>اهتمام بالتفاصيل وجودة التنفيذ</h4>
       </div>
       <div class="feature-card">
-        <div class="icon">🤝</div>
+        <div class="icon">
+          <!-- أيقونة فريق / ترابط -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <h4>فريق متخصص وشغوف</h4>
       </div>
     </div>
@@ -62,32 +108,50 @@
     <h3 class="section-title">خدماتنا</h3>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">🗓️</div>
+        <div class="service-icon">
+          <!-- أيقونة تقويم / تنظيم -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        </div>
         <h4>تنظيم المناسبات</h4>
         <p>تنظيم متكامل للمؤتمرات، الحفلات، التخرج والمناسبات الخاصة.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">📋</div>
+        <div class="service-icon">
+          <!-- أيقونة لوحة مهام / إدارة -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
+        </div>
         <h4>إدارة المناسبات</h4>
         <p>إدارة احترافية تهتم بكل التفاصيل قبل، أثناء، وبعد الفعالية.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🎪</div>
+        <div class="service-icon">
+          <!-- أيقونة تخطيط / تجهيز -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
+        </div>
         <h4>تصميم وتجهيز الفعاليات</h4>
         <p>تصميم ديكورات وتجهيزات تتناسب مع هوية وهدف كل مناسبة.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🎨</div>
+        <div class="service-icon">
+          <!-- أيقونة لوحة ألوان / ورش عمل -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </div>
         <h4>ورش العمل والأنشطة</h4>
         <p>ورش تفاعلية وأنشطة إبداعية تضيف قيمة وتجربة مختلفة.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🖋️</div>
+        <div class="service-icon">
+          <!-- أيقونة ريشة / هوية بصرية -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </div>
         <h4>الهوية البصرية والمطبوعات</h4>
         <p>تصميم هوية بصرية ومطبوعات تعبر عن طابع فعاليتك باحتراف.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">⭐</div>
+        <div class="service-icon">
+          <!-- أيقونة دقة / تفاصيل -->
+          <svg class="custom-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
         <h4>اهتمام بالتفاصيل</h4>
         <p>نعتني بأدق التفاصيل لنضمن تجربة مميزة ومناسبة استثنائية.</p>
       </div>
@@ -116,7 +180,6 @@
             <span>5:30 - 8:00 مساءً</span>
           </div>
         </div>
-        <!-- الزر يوجه لصفحة الورشة التي أتممناها -->
         <a href="floral-workshop/index.html" class="register-link-btn">سجل في الورشة الآن</a>
       </div>
       <div class="workshop-image-box">
@@ -130,7 +193,7 @@
     <div class="footer-container">
       <div class="footer-col brand-col">
         <h2 class="footer-logo">ENSI</h2>
-        <p class="footer-desc">نُظّم المناسبات ونصمم التجارب التي تبقى في الذاكرة. نعتني بأدق التفاصيل لنضمن لك مناسبة استثنائية.</p>
+        <p class="footer-desc">نُنظم المناسبات ونصمم التجارب التي تبقى في الذاكرة. نعتني بأدق التفاصيل لنضمن لك مناسبة استثنائية.</p>
       </div>
       <div class="footer-col links-col">
         <h4>روابط سريعة</h4>

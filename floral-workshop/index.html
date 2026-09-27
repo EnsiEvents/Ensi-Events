@@ -2,16 +2,15 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تسجيل ورشة آخر أيام الصيفية | ENSI Events</title>
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; direction: rtl; }
 
+    /* منع السحب الأفقي واهتزاز الشاشة في الجوال */
     html, body {
       max-width: 100vw;
       overflow-x: hidden;
@@ -101,47 +100,8 @@
     .input-group label { position: absolute; right: 15px; top: 15px; color: rgba(11, 60, 51, 0.7); transition: all 0.3s ease; pointer-events: none; font-weight: 500; z-index: 5; }
     .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; }
 
-    /* --- تنسيقات مكتبة الأعلام (مبسطة ونظيفة) --- */
-    .whatsapp-group { width: 100%; position: relative; margin-bottom: 20px; }
-    .iti { width: 100%; direction: ltr; display: block; }
-    
-    #whatsapp { text-align: left !important; direction: ltr !important; font-family: Arial, sans-serif; letter-spacing: 1px; width: 100%; padding-left: 50px !important; }
-    
-    .whatsapp-group:focus-within label, .whatsapp-group label.active { top: -12px; right: 15px; font-size: 13px; background-color: #ffffff; padding: 0 8px; color: #d84074; border-radius: 4px; font-weight: 700; z-index: 6; }
-
-    /* تنسيقات قائمة الدول المرفقة بالـ Body (مهم جداً للآيفون) */
-    .iti-container {
-        position: absolute;
-        z-index: 9999;
-        direction: ltr; /* قائمة الدول يجب أن تكون باللغة الإنجليزية ومن اليسار لليمين */
-        font-family: Arial, sans-serif;
-    }
-    
-    .iti__country-list {
-        background: rgba(255, 255, 255, 0.98) !important;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(216, 64, 116, 0.3);
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        max-width: 320px !important;
-        white-space: normal !important;
-    }
-
-    /* مربع البحث */
-    .iti__search-input {
-        width: 90% !important;
-        margin: 10px 5% !important;
-        padding: 8px !important;
-        border: 1px solid rgba(216, 64, 116, 0.3) !important;
-        border-radius: 5px !important;
-        font-size: 14px !important;
-        outline: none !important;
-        display: block !important;
-    }
-    
-    .iti__search-input:focus { border-color: #d84074 !important; }
-    .iti__country-name { font-size: 14px; color: #333; }
-    .iti__dial-code { color: #666; font-size: 13px; }
+    /* جعل حقل الواتساب يكتب الأرقام من اليسار لليمين لترتيب شكل الرقم مع الرمز */
+    #whatsapp { text-align: left; direction: ltr; font-family: Arial, sans-serif; letter-spacing: 1px; }
 
     .submit-btn { width: 100%; background-color: #d84074; color: #ffffff; border: none; padding: 16px; font-size: 18px; font-weight: bold; border-radius: 10px; cursor: pointer; margin-top: 10px; transition: all 0.3s ease; }
     .submit-btn:hover { background-color: #b82b5a; box-shadow: 0 8px 20px rgba(216, 64, 116, 0.4); transform: translateY(-2px); }
@@ -151,11 +111,10 @@
     .back-link { display: inline-block; margin-top: 20px; color: #0b3c33; text-decoration: none; font-weight: bold; border-bottom: 2px solid #0b3c33; padding-bottom: 3px; }
     .back-link:hover { color: #d84074; border-color: #d84074; }
     
+    /* استجابة الشاشات الصغيرة */
     @media (max-width: 600px) {
         .glass-box { padding: 30px 20px; min-width: 100%; }
         .input-row { flex-direction: column; gap: 0; }
-        .iti-container { width: 90% !important; left: 5% !important; } /* توسيط القائمة في الجوال */
-        .iti__country-list { max-width: 100% !important; }
     }
   </style>
 </head>
@@ -236,9 +195,10 @@
           </div>
         </div>
 
-        <div class="input-group whatsapp-group">
-          <input type="tel" id="whatsapp" required placeholder=" ">
-          <label for="whatsapp" id="wa-label">رقم الواتساب</label> 
+        <div class="input-group">
+          <!-- رجعنا للحقل الطبيعي مع بقاء الكتابة من اليسار لليمين LTR -->
+          <input type="tel" id="whatsapp" name="رقم الواتساب" required placeholder=" ">
+          <label for="whatsapp">رقم الواتساب (مع رمز الدولة)</label> 
         </div>
 
         <button type="submit" class="submit-btn">تأكيد التسجيل</button>
@@ -254,101 +214,22 @@
 
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
-  
   <script>
-    const phoneInput = document.querySelector("#whatsapp");
-    const waLabel = document.querySelector("#wa-label");
-
-    // تفعيل مكتبة الأعلام بالاستعانة بـ dropdownContainer لفك ارتباط القائمة بالفورم (حل مشكلة الآيفون والآيباد)
-    const iti = window.intlTelInput(phoneInput, {
-      initialCountry: "tr", 
-      preferredCountries: ["tr", "iq", "sa", "ae", "kw", "qa", "om", "bh"], 
-      separateDialCode: true, 
-      autoPlaceholder: "off",
-      formatOnDisplay: true,
-      dropdownContainer: document.body, // **السر هنا**: عرض القائمة بشكل حر في الصفحة
-      localizedCountries: {
-        'tr': 'Turkey', 'iq': 'Iraq', 'sa': 'Saudi Arabia', 'ae': 'United Arab Emirates', 'kw': 'Kuwait', 'qa': 'Qatar', 'om': 'Oman', 'bh': 'Bahrain', 'jo': 'Jordan', 'lb': 'Lebanon', 'eg': 'Egypt', 'sy': 'Syria', 'ps': 'Palestine'
-      },
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
-    });
-
-    // إزالة الأسماء العربية لتبقى إنجليزية فقط
-    document.body.addEventListener('click', function(e) {
-        if(e.target.closest('.iti__selected-flag')) {
-            setTimeout(() => {
-                document.querySelectorAll('.iti__country-name').forEach(el => {
-                    let text = el.textContent;
-                    let match = text.match(/^([^\(]+)/);
-                    if (match) { el.textContent = match[1].trim(); }
-                });
-            }, 50); // الانتظار قليلاً حتى تظهر القائمة
-        }
-    });
-
-    phoneInput.addEventListener('input', () => {
-      if (phoneInput.value.trim() !== '') waLabel.classList.add('active');
-      else waLabel.classList.remove('active');
-    });
-
-    // إضافة مربع البحث برمجياً بمجرد فتح القائمة (لتجنب مشاكل التكرار)
-    phoneInput.addEventListener("open:countrydropdown", function() {
-        const countryList = document.querySelector('.iti-container .iti__country-list');
-        
-        // التأكد من عدم إضافة مربع البحث أكثر من مرة
-        if(countryList && !countryList.querySelector('.iti__search-input')) {
-            const searchBox = document.createElement('input');
-            searchBox.type = 'text';
-            searchBox.placeholder = 'Search country...';
-            searchBox.className = 'iti__search-input';
-            
-            searchBox.addEventListener('click', function(e) { e.stopPropagation(); });
-            searchBox.addEventListener('keydown', function(e) { e.stopPropagation(); }); // منع تدخل المكتبة عند الكتابة
-
-            searchBox.addEventListener('input', function() {
-                const filter = this.value.toLowerCase();
-                const items = countryList.querySelectorAll('.iti__country');
-                
-                items.forEach(function(item) {
-                    const countryName = item.querySelector('.iti__country-name').textContent.toLowerCase();
-                    if (countryName.includes(filter)) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-
-            countryList.insertBefore(searchBox, countryList.firstChild);
-            
-            // التركيز على مربع البحث تلقائياً عند فتح القائمة (اختياري)
-            setTimeout(() => { searchBox.focus(); }, 100);
-        }
-    });
-
     const form = document.getElementById('registrationForm');
     const formContainer = document.getElementById('formContainer');
     const thankYouMessage = document.getElementById('thankYouMessage');
+
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyQrf27W29Fg9AdWJ1xSu79KBcYXP6uvyMGzXssx6c4XFgcyUIZDrn8_6TaeD_34jKB/exec';
 
     form.addEventListener('submit', function(event) {
       event.preventDefault();
-
-      if (!iti.isValidNumber()) {
-        alert("عذراً، رقم الهاتف المدخل غير صحيح. يرجى التأكد من الرقم ورمز الدولة.");
-        return;
-      }
 
       const submitBtn = form.querySelector('.submit-btn');
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'جاري تأكيد التسجيل...';
       submitBtn.disabled = true;
 
-      const formData = new FormData(form);
-      formData.set("رقم الواتساب", iti.getNumber());
-
-      fetch(scriptURL, { method: 'POST', body: formData })
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(response => {
           formContainer.classList.add('hidden');
           thankYouMessage.classList.remove('hidden');
@@ -361,7 +242,7 @@
     });
   </script>
 
-  <!-- كود Vercel Analytics -->
+  <!-- كود Vercel Analytics الرسمي -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>

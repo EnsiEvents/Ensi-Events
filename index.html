@@ -19,23 +19,39 @@
     }
 
     /* =========================================
-       تجاوز (Overrides) لألوان النصوص والأزرار من style.css القديم
+       تجاوز (Overrides) شامل لجميع الألوان القديمة
        ========================================= */
     
-    /* العناوين الرئيسية والفرعية */
+    /* العناوين الرئيسية، الفرعية، عناوين التذييل، واللوجو النصي */
     .hero-content h2, 
     .section-title,
-    .footer-logo {
+    .footer-logo,
+    .feature-card h4,
+    .service-card h4,
+    .workshop-title,
+    .footer-col h4 {
         color: var(--brand-gold) !important;
     }
 
-    /* الروابط عند تمرير الماوس */
+    /* الخطوط التزيينية التي تظهر أسفل عناوين الأقسام */
+    .section-title::after,
+    .section-title::before {
+        background-color: var(--brand-gold) !important;
+    }
+
+    /* أيقونات الميتا في قسم ورش العمل */
+    .meta-icon {
+        color: var(--brand-gold) !important;
+    }
+
+    /* تفاعلات الروابط في الموقع بالكامل */
     .nav-links li a:hover,
+    .links-col ul li a:hover,
     .footer-links a:hover {
         color: var(--brand-gold) !important;
     }
 
-    /* الأزرار الأساسية (الممتلئة) */
+    /* الأزرار الأساسية (الممتلئة) والشارات */
     .primary-btn,
     .register-link-btn,
     .active-badge {
@@ -51,6 +67,17 @@
         transform: translateY(-2px) !important;
     }
 
+    /* زر/خانة إنستغرام في التذييل */
+    .social-icon {
+        color: var(--brand-gold) !important;
+        border: 1px solid var(--brand-gold) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .social-icon:hover {
+        background-color: var(--brand-gold) !important;
+        color: #0b3c33 !important;
+    }
 
     /* =========================================
        تنسيقات الشريط العلوي

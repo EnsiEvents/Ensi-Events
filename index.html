@@ -8,38 +8,60 @@
   
   <style>
     /* =========================================
+       متغيرات التحكم السريع (CSS Variables)
+       ========================================= */
+    :root {
+      /* قم بزيادة هذا الرقم لتكبير الشعار على شاشات الكمبيوتر */
+      --desktop-logo-width: 150px; 
+      
+      /* قم بزيادة هذا الرقم لتكبير الشعار على شاشات الهواتف */
+      --mobile-logo-width: 100px; 
+    }
+
+    /* =========================================
        تنسيقات الشريط العلوي
        ========================================= */
     .main-header {
       position: absolute !important; 
       top: 0; left: 0; right: 0;
       height: 90px;
-      display: flex !important;
+      /* استخدام الشبكة (Grid) يعطينا تحكماً أدق في توسيط العناصر بغض النظر عن أحجامها */
+      display: grid !important;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center !important;
-      justify-content: center !important; 
       background: linear-gradient(to bottom, rgba(4, 25, 20, 0.95) 0%, rgba(11, 60, 51, 0) 100%) !important;
       border-bottom: none !important; 
       z-index: 1000;
       padding: 0 5% !important;
     }
 
-    .logo {
+    /* =========================================
+       الشعار في المنتصف
+       ========================================= */
+    .logo-container {
       display: flex;
       justify-content: center;
       align-items: center;
+      grid-column: 2; /* يضمن بقاءه في المنتصف التام */
     }
     
-    /* التنسيق النظيف للشعار بعد معالجته في Canva */
     .navbar-logo {
-      height: 40px !important; /* الارتفاع المثالي للكمبيوتر */
-      width: auto !important;
+      /* الحل النهائي: الاعتماد على العرض كعامل أساسي، وترك الطول يتكيف تلقائياً */
+      width: var(--desktop-logo-width) !important;
+      height: auto !important; 
+      /* إزالة القيود الصارمة السابقة */
+      max-height: none !important;
+      max-width: none !important;
       object-fit: contain;
-      /* تم إزالة كل خصائص التكبير العشوائي (transform: scale) */
     }
 
+    /* =========================================
+       اليمين: زر التواصل
+       ========================================= */
     .header-action {
-      position: absolute;
-      right: 5%;
+      display: flex;
+      justify-content: flex-end;
+      grid-column: 3;
     }
 
     .cta-btn {
@@ -60,9 +82,13 @@
         box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2) !important;
     }
 
+    /* =========================================
+       اليسار: أيقونة القائمة
+       ========================================= */
     .menu-toggle-wrapper {
-      position: absolute;
-      left: 5%;
+      display: flex;
+      justify-content: flex-start;
+      grid-column: 1;
     }
 
     .menu-toggle {
@@ -226,25 +252,15 @@
             padding: 0 15px !important; 
         }
         
-        .header-action { 
-            display: block !important; 
-            right: 15px; 
-        }
-        
-        .menu-toggle-wrapper {
-            left: 15px;
-        }
-        
         .cta-btn { 
             padding: 6px 12px !important; 
             font-size: 12px !important; 
             border-width: 1px !important;
         }
         
-        /* ضبط حجم الشعار للهاتف بدقة */
         .navbar-logo {
-            height: 28px !important; /* الارتفاع المثالي للهاتف */
-            width: auto !important;
+            /* تطبيق المتغير الخاص بالهاتف */
+            width: var(--mobile-logo-width) !important; 
         }
     }
   </style>
@@ -252,20 +268,20 @@
 <body>
 
   <header class="main-header">
-    <div class="header-action">
-      <button class="cta-btn">تواصل معنا</button>
-    </div>
-
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events" class="navbar-logo">
-    </div>
-
     <div class="menu-toggle-wrapper">
       <button class="menu-toggle" id="mobile-menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
+    </div>
+
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events" class="navbar-logo">
+    </div>
+
+    <div class="header-action">
+      <button class="cta-btn">تواصل معنا</button>
     </div>
   </header>
 

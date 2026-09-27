@@ -7,18 +7,161 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* 1. تنسيق شعار الشريط العلوي */
-    .navbar-logo {
-      max-height: 150px; /* يمكنك تعديل الارتفاع حسب حجم الصورة */
-      width: auto;
-      display: block;
+    /* =========================================
+       تنسيقات الشريط العلوي الجديد (الفاخر)
+       ========================================= */
+    .main-header {
+      position: absolute !important; /* تداخل ديناميكي مع الصفحة */
+      top: 0; left: 0; right: 0;
+      height: 90px;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important; /* الشعار في المنتصف دائماً */
+      /* تدرج لوني من لون داكن إلى شفاف */
+      background: linear-gradient(to bottom, rgba(4, 25, 20, 0.95) 0%, rgba(11, 60, 51, 0) 100%) !important;
+      border-bottom: none !important; /* إزالة الخط الفاصل */
+      z-index: 1000;
+      padding: 0 5% !important;
     }
 
-    /* 2. تنسيقات الأيقونات الفخمة وإلغاء خلفيات style.css القديمة */
+    /* الشعار في المنتصف */
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .navbar-logo {
+      /* تحديد أقصى ارتفاع يمنع الشريط من التمدد وتخريب الشاشة */
+      height: 45px !important; 
+      width: auto !important;
+      object-fit: contain;
+    }
+
+    /* زر التواصل على اليمين */
+    .header-action {
+      position: absolute;
+      right: 5%;
+    }
+
+    .cta-btn {
+       background: transparent !important;
+       border: 1px solid #d4af37 !important;
+       color: #d4af37 !important;
+       padding: 8px 20px !important;
+       border-radius: 5px !important;
+       font-weight: bold !important;
+       font-family: inherit;
+       cursor: pointer;
+       transition: all 0.3s ease !important;
+    }
+
+    .cta-btn:hover { 
+        background: #d4af37 !important; 
+        color: #0b3c33 !important; 
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2) !important;
+    }
+
+    /* أيقونة القائمة على اليسار */
+    .menu-toggle-wrapper {
+      position: absolute;
+      left: 5%;
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 32px;
+      height: 2px;
+      background-color: #d4af37;
+      transition: 0.3s ease;
+    }
+
+    .menu-toggle:hover span {
+        background-color: #fff;
+    }
+
+    /* =========================================
+       تنسيقات القائمة المنبثقة (Overlay Menu)
+       ========================================= */
+    .nav-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(7, 40, 32, 0.95); /* لون زمردي داكن بشفافية */
+      backdrop-filter: blur(15px); /* تأثير الزجاج */
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-overlay-links {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      list-style: none;
+      text-align: center;
+      padding: 0;
+    }
+
+    .nav-overlay-links li a {
+      color: #d4af37;
+      font-size: 28px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .nav-overlay-links li a:hover {
+      color: #fff;
+      letter-spacing: 2px;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 35px;
+      left: 5%; /* زر الإغلاق على اليسار */
+      background: none;
+      border: none;
+      font-size: 40px;
+      color: #d4af37;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-menu:hover { color: #fff; transform: rotate(90deg); }
+
+    /* =========================================
+       إصلاحات وتنسيقات الأقسام القديمة
+       ========================================= */
+    .hero {
+        padding-top: 120px !important; /* إضافة مساحة لكي لا يغطي الشريط النص */
+    }
+
     .custom-icon {
       width: 42px;
       height: 42px;
-      stroke: #d4af37; /* ذهبي فخم */
+      stroke: #d4af37; 
       transition: all 0.3s ease !important;
     }
 
@@ -28,14 +171,13 @@
       border: none !important;
       border-radius: 0 !important;
       box-shadow: none !important;
-      opacity: 1 !important; /* منع الشفافية القديمة */
+      opacity: 1 !important; 
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 15px;
     }
 
-    /* 3. حل مشكلة اختفاء الأيقونات والتفاعل عند مرور الماوس */
     .feature-card:hover .icon, .service-card:hover .service-icon {
       opacity: 1 !important;
       background: transparent !important;
@@ -43,11 +185,10 @@
 
     .feature-card:hover .custom-icon, .service-card:hover .custom-icon {
       transform: scale(1.15) !important;
-      stroke: #d4af37 !important; /* المحافظة على اللون الذهبي */
-      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4)); /* توهج ذهبي خفيف */
+      stroke: #d4af37 !important; 
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4)); 
     }
 
-    /* 4. تنسيق الزر الثانوي (احجز مقابلة) ليكون تفاعلياً وأنيقاً */
     .hero-buttons {
       display: flex;
       gap: 15px;
@@ -57,8 +198,8 @@
 
     .secondary-btn {
       background: transparent !important;
-      color: #d4af37 !important; /* نص ذهبي */
-      border: 2px solid #d4af37 !important; /* إطار ذهبي */
+      color: #d4af37 !important; 
+      border: 2px solid #d4af37 !important; 
       padding: 12px 28px !important;
       font-size: 16px !important;
       font-weight: 700 !important;
@@ -68,29 +209,55 @@
     }
 
     .secondary-btn:hover {
-      background: #d4af37 !important; /* يمتلئ بالذهبي */
-      color: #0b3c33 !important; /* النص يصبح زمردي */
-      transform: translateY(-3px) !important; /* يرتفع للأعلى */
+      background: #d4af37 !important; 
+      color: #0b3c33 !important; 
+      transform: translateY(-3px) !important; 
       box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2) !important;
+    }
+
+    /* استجابة الشاشات الصغيرة جداً */
+    @media (max-width: 450px) {
+        .header-action { display: none; } /* إخفاء زر التواصل في الشاشات الصغيرة جداً للترتيب */
+        .cta-btn { padding: 6px 12px !important; font-size: 14px !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- الشريط العلوي -->
-  <header>
+  <!-- الشريط العلوي الاحترافي الجديد -->
+  <header class="main-header">
+    
+    <!-- اليمين: زر التواصل -->
+    <div class="header-action">
+      <button class="cta-btn">تواصل معنا</button>
+    </div>
+
+    <!-- المنتصف: الشعار -->
     <div class="logo">
-      <!-- استبدلنا النص بصورة الشعار. الصق الرابط هنا -->
       <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/ENSI%20Logo%20-%202.png?raw=true" alt="ENSI Events" class="navbar-logo">
     </div>
-    <ul class="nav-links">
+
+    <!-- اليسار: أيقونة القائمة -->
+    <div class="menu-toggle-wrapper">
+      <button class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- القائمة المنبثقة (تظهر عند النقر) -->
+  <nav class="nav-overlay" id="nav-overlay">
+    <button class="close-menu" id="close-menu">&times;</button>
+    <ul class="nav-overlay-links">
       <li><a href="#">الرئيسية</a></li>
       <li><a href="#">لماذا نحن؟</a></li>
       <li><a href="#">خدماتنا</a></li>
       <li><a href="#">ورش العمل</a></li>
     </ul>
-    <button class="cta-btn">تواصل معنا</button>
-  </header>
+  </nav>
 
   <!-- القسم الرئيسي (واجهة البداية) -->
   <section class="hero">
@@ -255,6 +422,21 @@
       <p>جميع الحقوق محفوظة &copy; 2026 ENSI Events.</p>
     </div>
   </footer>
+
+  <!-- سكربت تفعيل القائمة المنبثقة -->
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+    const navOverlay = document.getElementById('nav-overlay');
+
+    menuToggle.addEventListener('click', () => {
+      navOverlay.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      navOverlay.classList.remove('active');
+    });
+  </script>
 
   <!-- كود Vercel Analytics للموقع الرئيسي -->
   <script>

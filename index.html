@@ -11,10 +11,10 @@
        متغيرات التحكم السريع (CSS Variables)
        ========================================= */
     :root {
-      /* قم بزيادة هذا الرقم لتكبير الشعار على شاشات الكمبيوتر */
-      --desktop-logo-width: 150px; 
+      /* اللون الأساسي لهوية ENSI */
+      --brand-gold: #FBF3B5; 
       
-      /* قم بزيادة هذا الرقم لتكبير الشعار على شاشات الهواتف */
+      --desktop-logo-width: 150px; 
       --mobile-logo-width: 100px; 
     }
 
@@ -25,7 +25,6 @@
       position: absolute !important; 
       top: 0; left: 0; right: 0;
       height: 90px;
-      /* استخدام الشبكة (Grid) يعطينا تحكماً أدق في توسيط العناصر بغض النظر عن أحجامها */
       display: grid !important;
       grid-template-columns: 1fr auto 1fr;
       align-items: center !important;
@@ -42,14 +41,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      grid-column: 2; /* يضمن بقاءه في المنتصف التام */
+      grid-column: 2; 
     }
     
     .navbar-logo {
-      /* الحل النهائي: الاعتماد على العرض كعامل أساسي، وترك الطول يتكيف تلقائياً */
       width: var(--desktop-logo-width) !important;
       height: auto !important; 
-      /* إزالة القيود الصارمة السابقة */
       max-height: none !important;
       max-width: none !important;
       object-fit: contain;
@@ -66,8 +63,8 @@
 
     .cta-btn {
        background: transparent !important;
-       border: 1px solid #d4af37 !important;
-       color: #d4af37 !important;
+       border: 1px solid var(--brand-gold) !important;
+       color: var(--brand-gold) !important;
        padding: 8px 20px !important;
        border-radius: 5px !important;
        font-weight: bold !important;
@@ -77,9 +74,9 @@
     }
 
     .cta-btn:hover { 
-        background: #d4af37 !important; 
+        background: var(--brand-gold) !important; 
         color: #0b3c33 !important; 
-        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2) !important;
+        box-shadow: 0 5px 15px rgba(251, 243, 181, 0.2) !important;
     }
 
     /* =========================================
@@ -111,7 +108,7 @@
       display: block;
       width: 32px;
       height: 2px;
-      background-color: #d4af37;
+      background-color: var(--brand-gold);
       transition: background-color 0.3s ease;
     }
 
@@ -153,7 +150,7 @@
     }
 
     .nav-overlay-links li a {
-      color: #d4af37;
+      color: var(--brand-gold);
       font-size: 28px;
       text-decoration: none;
       font-weight: bold;
@@ -173,7 +170,7 @@
       background: none;
       border: none;
       font-size: 40px;
-      color: #d4af37;
+      color: var(--brand-gold);
       cursor: pointer;
       transition: 0.3s;
     }
@@ -190,7 +187,7 @@
     .custom-icon {
       width: 42px;
       height: 42px;
-      stroke: #d4af37; 
+      stroke: var(--brand-gold); 
       transition: all 0.3s ease !important;
     }
 
@@ -214,8 +211,8 @@
 
     .feature-card:hover .custom-icon, .service-card:hover .custom-icon {
       transform: scale(1.15) !important;
-      stroke: #d4af37 !important; 
-      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4)); 
+      stroke: var(--brand-gold) !important; 
+      filter: drop-shadow(0 0 8px rgba(251, 243, 181, 0.4)); 
     }
 
     .hero-buttons {
@@ -227,8 +224,8 @@
 
     .secondary-btn {
       background: transparent !important;
-      color: #d4af37 !important; 
-      border: 2px solid #d4af37 !important; 
+      color: var(--brand-gold) !important; 
+      border: 2px solid var(--brand-gold) !important; 
       padding: 12px 28px !important;
       font-size: 16px !important;
       font-weight: 700 !important;
@@ -238,10 +235,10 @@
     }
 
     .secondary-btn:hover {
-      background: #d4af37 !important; 
+      background: var(--brand-gold) !important; 
       color: #0b3c33 !important; 
       transform: translateY(-3px) !important; 
-      box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2) !important;
+      box-shadow: 0 8px 15px rgba(251, 243, 181, 0.2) !important;
     }
 
     /* =========================================
@@ -259,7 +256,6 @@
         }
         
         .navbar-logo {
-            /* تطبيق المتغير الخاص بالهاتف */
             width: var(--mobile-logo-width) !important; 
         }
     }

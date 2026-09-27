@@ -7,33 +7,71 @@
   <link rel="stylesheet" href="style.css">
   
   <style>
-    /* تنسيقات الشعار والأيقونات الجديدة (يمكنك نقلها لملف style.css لاحقاً لترتيب الكود) */
-    .hero-logo-img {
-      max-width: 220px; /* يمكنك تكبير أو تصغير الشعار من هنا */
-      height: auto;
-      margin: 0 auto 25px auto;
+    /* 1. تنسيق شعار الشريط العلوي */
+    .navbar-logo {
+      max-height: 40px; /* يمكنك تعديل الارتفاع حسب حجم الصورة */
+      width: auto;
       display: block;
     }
-    
+
+    /* 2. تنسيقات الأيقونات الفخمة وإلغاء خلفيات style.css القديمة */
     .custom-icon {
-      width: 38px;
-      height: 38px;
-      stroke: #d4af37; /* اللون الذهبي الفاخر */
-      margin-bottom: 15px;
-      transition: all 0.3s ease;
+      width: 42px;
+      height: 42px;
+      stroke: #d4af37; /* ذهبي فخم */
+      transition: all 0.3s ease !important;
     }
 
-    /* تأثير بسيط عند مرور الماوس على الأيقونات */
-    .feature-card:hover .custom-icon, 
-    .service-card:hover .custom-icon {
-      transform: scale(1.1);
-      stroke: #0b3c33; /* تتغير للزمردي عند التأشير */
-    }
-
-    .icon, .service-icon {
+    .service-icon, .icon {
+      background: transparent !important; 
+      background-color: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      opacity: 1 !important; /* منع الشفافية القديمة */
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    /* 3. حل مشكلة اختفاء الأيقونات والتفاعل عند مرور الماوس */
+    .feature-card:hover .icon, .service-card:hover .service-icon {
+      opacity: 1 !important;
+      background: transparent !important;
+    }
+
+    .feature-card:hover .custom-icon, .service-card:hover .custom-icon {
+      transform: scale(1.15) !important;
+      stroke: #d4af37 !important; /* المحافظة على اللون الذهبي */
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4)); /* توهج ذهبي خفيف */
+    }
+
+    /* 4. تنسيق الزر الثانوي (احجز مقابلة) ليكون تفاعلياً وأنيقاً */
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .secondary-btn {
+      background: transparent !important;
+      color: #d4af37 !important; /* نص ذهبي */
+      border: 2px solid #d4af37 !important; /* إطار ذهبي */
+      padding: 12px 28px !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      border-radius: 8px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .secondary-btn:hover {
+      background: #d4af37 !important; /* يمتلئ بالذهبي */
+      color: #0b3c33 !important; /* النص يصبح زمردي */
+      transform: translateY(-3px) !important; /* يرتفع للأعلى */
+      box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2) !important;
     }
   </style>
 </head>
@@ -42,7 +80,8 @@
   <!-- الشريط العلوي -->
   <header>
     <div class="logo">
-      <h1>ENSI</h1> 
+      <!-- استبدلنا النص بصورة الشعار. الصق الرابط هنا -->
+      <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/ENSI%20Logo%20-%202.png?raw=true" alt="ENSI Events" class="navbar-logo">
     </div>
     <ul class="nav-links">
       <li><a href="#">الرئيسية</a></li>
@@ -56,9 +95,6 @@
   <!-- القسم الرئيسي (واجهة البداية) -->
   <section class="hero">
     <div class="hero-content">
-      <!-- مكان شعار ENSI (ضع الرابط داخل علامتي التنصيص) -->
-      <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/ENSI%20Logo.png?raw=true" alt="ENSI Logo" class="hero-logo-img">
-      
       <h2>نحو تجربة تُصنع بإحساس</h2>
       <p>نُنظم المناسبات ونصمم التجارب التي تبقى في الذاكرة</p>
       <div class="hero-buttons">

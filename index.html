@@ -22,7 +22,6 @@
        تجاوز (Overrides) شامل لجميع الألوان القديمة
        ========================================= */
     
-    /* العناوين الرئيسية، الفرعية، عناوين التذييل، واللوجو النصي */
     .hero-content h2, 
     .section-title,
     .feature-card h4,
@@ -32,30 +31,26 @@
         color: var(--brand-gold) !important;
     }
 
-    /* الخطوط التزيينية التي تظهر أسفل عناوين الأقسام */
     .section-title::after,
     .section-title::before {
         background-color: var(--brand-gold) !important;
     }
 
-    /* أيقونات الميتا في قسم ورش العمل */
     .meta-icon {
         color: var(--brand-gold) !important;
     }
 
-    /* تفاعلات الروابط في الموقع بالكامل */
     .nav-links li a:hover,
     .links-col ul li a:hover,
     .footer-links a:hover {
         color: var(--brand-gold) !important;
     }
 
-    /* الأزرار الأساسية (الممتلئة) والشارات */
     .primary-btn,
     .register-link-btn,
     .active-badge {
         background-color: var(--brand-gold) !important;
-        color: #0b3c33 !important; /* نص زمردي داكن ليتناسب مع الذهبي الفاتح */
+        color: #0b3c33 !important; 
         border: 1px solid var(--brand-gold) !important;
         transition: all 0.3s ease !important;
     }
@@ -64,18 +59,6 @@
     .register-link-btn:hover {
         box-shadow: 0 5px 15px rgba(251, 243, 181, 0.4) !important;
         transform: translateY(-2px) !important;
-    }
-
-    /* زر/خانة إنستغرام في التذييل */
-    .social-icon {
-        color: var(--brand-gold) !important;
-        border: 1px solid var(--brand-gold) !important;
-        transition: all 0.3s ease !important;
-    }
-
-    .social-icon:hover {
-        background-color: var(--brand-gold) !important;
-        color: #0b3c33 !important;
     }
 
     /* =========================================
@@ -115,7 +98,6 @@
       grid-column: 3;
     }
 
-    /* زر تواصل معنا */
     .cta-btn {
        background: transparent !important;
        border: 1px solid var(--brand-gold) !important;
@@ -169,7 +151,7 @@
     }
 
     /* =========================================
-       تنسيقات القائمة المنبثقة (Overlay Menu)
+       تنسيقات القائمة المنبثقة
        ========================================= */
     .nav-overlay {
       position: fixed;
@@ -274,7 +256,6 @@
       margin-top: 25px;
     }
 
-    /* زر احجز مقابلة (المفرغ) */
     .secondary-btn {
       background: transparent !important;
       color: var(--brand-gold) !important; 
@@ -294,35 +275,78 @@
       box-shadow: 0 8px 15px rgba(251, 243, 181, 0.2) !important;
     }
 
-    /* تنسيق شعار التذييل */
+    /* =========================================
+       تنسيقات التذييل الجديدة (Footer)
+       ========================================= */
     .footer-img-logo {
-        width: 120px; /* تم ضبط العرض ليتناسب مع الكلمة السابقة */
+        width: 120px; 
         height: auto;
         margin-bottom: 15px;
         display: block;
+    }
+
+    /* تنسيق قائمة التواصل لإضافة الأيقونات بجانب النص */
+    .contact-list {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .contact-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .contact-svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--brand-gold);
+        flex-shrink: 0;
+    }
+
+    /* تنسيق أزرار السوشيال ميديا */
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 1px solid var(--brand-gold) !important;
+        color: var(--brand-gold) !important;
+        text-decoration: none;
+        transition: all 0.3s ease !important;
+    }
+
+    .social-svg {
+        width: 22px;
+        height: 22px;
+        stroke: currentColor; 
+        fill: none;
+    }
+
+    .social-icon:hover {
+        background-color: var(--brand-gold) !important;
+        color: #0b3c33 !important;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(251, 243, 181, 0.2);
     }
 
     /* =========================================
        استجابة الشاشات الصغيرة (الجوال)
        ========================================= */
     @media (max-width: 600px) {
-        .main-header {
-            padding: 0 15px !important; 
-        }
-        
-        .cta-btn { 
-            padding: 6px 12px !important; 
-            font-size: 12px !important; 
-            border-width: 1px !important;
-        }
-        
-        .navbar-logo {
-            width: var(--mobile-logo-width) !important; 
-        }
-
-        .footer-img-logo {
-            width: 100px;
-        }
+        .main-header { padding: 0 15px !important; }
+        .cta-btn { padding: 6px 12px !important; font-size: 12px !important; border-width: 1px !important; }
+        .navbar-logo { width: var(--mobile-logo-width) !important; }
+        .footer-img-logo { width: 100px; }
     }
   </style>
 </head>
@@ -477,10 +501,10 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-col brand-col">
-        <!-- استبدال النص بصورة الشعار -->
         <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events Logo" class="footer-img-logo">
         <p class="footer-desc">نُنظم المناسبات ونصمم التجارب التي تبقى في الذاكرة. نعتني بأدق التفاصيل لنضمن لك مناسبة استثنائية.</p>
       </div>
+      
       <div class="footer-col links-col">
         <h4>روابط سريعة</h4>
         <ul>
@@ -490,16 +514,47 @@
           <li><a href="#">لماذا نحن؟</a></li>
         </ul>
       </div>
+      
+      <!-- تحديث قسم التواصل ليكون احترافياً -->
       <div class="footer-col contact-col">
         <h4>تواصل معنا</h4>
-        <ul>
-          <li>📧 ensieventstr@gmail.com</li>
-          <li>📍 إسطنبول، تركيا</li>
+        <ul class="contact-list">
+          <li>
+            <!-- أيقونة الإيميل الاحترافية -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="contact-svg">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <span>ensieventstr@gmail.com</span>
+          </li>
+          <li>
+            <!-- أيقونة الموقع الجغرافي الاحترافية -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="contact-svg">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>إسطنبول، تركيا</span>
+          </li>
         </ul>
+        
         <div class="social-links">
-          <a href="#" class="social-icon" title="Instagram">Instagram</a>
+          <!-- رابط إنستغرام -->
+          <a href="https://www.instagram.com/ensievents?stkn=OWoxeWV3c3U5ZHFy" target="_blank" class="social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" class="social-svg" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <!-- رابط تيك توك -->
+          <a href="https://www.tiktok.com/@ensievents?_r=1&_t=ZS-9A5m2ySubQX" target="_blank" class="social-icon" title="TikTok">
+            <svg viewBox="0 0 24 24" class="social-svg" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+          </a>
         </div>
       </div>
+      
     </div>
     <div class="footer-bottom">
       <p>جميع الحقوق محفوظة &copy; 2026 ENSI Events.</p>

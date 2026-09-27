@@ -25,7 +25,8 @@
     .service-card h4,
     .workshop-title,
     .footer-col h4,
-    .about-preview h3 {
+    .about-preview h3,
+    .about-intro h3 {
         color: var(--brand-gold) !important;
     }
 
@@ -184,14 +185,29 @@
     .close-menu:hover { color: #fff; transform: rotate(90deg); }
 
     /* =========================================
-       تنسيقات الأقسام الجديدة (النبذة والخدمات المصغرة)
+       تنسيقات الأقسام الجديدة 
        ========================================= */
     .hero { padding-top: 120px !important; }
     .hero-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
     
+    /* تنسيقات قسم النبذة التعريفية (من نحن؟) */
+    .about-intro {
+        text-align: center;
+        padding: 80px 5% 40px; /* تقليل الحشوة السفلية ليتصل بقسم الفلسفة بسلاسة */
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .about-intro p {
+        font-size: 18px;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        color: #e0e0e0;
+    }
+
+    /* تنسيقات قسم فلسفة ENSI */
     .about-preview {
         text-align: center;
-        padding: 80px 5%;
+        padding: 40px 5% 80px; /* تقليل الحشوة العلوية */
         max-width: 800px;
         margin: 0 auto;
     }
@@ -284,14 +300,21 @@
     </div>
   </section>
 
-  <!-- 2. نبذة مختصرة عن ENSI -->
+  <!-- 2. النبذة التعريفية المباشرة (من نحن؟) -->
+  <section class="about-intro">
+    <h3 class="section-title">من نحن؟</h3>
+    <p>نحن <strong>ENSI Events</strong>، شركة رائدة متخصصة في تنظيم وإدارة الفعاليات في إسطنبول وخارجها. نقدم حلولاً متكاملة لتحويل رؤيتك إلى واقع ملموس، سواء كنت تخطط لمؤتمر احترافي، حفل زفاف أسطوري، أو ورشة عمل تفاعلية. نحن نعتني بكل التفاصيل لنقدم لك ولضيوفك تجربة لا تُنسى.</p>
+    <a href="services.html" class="outline-btn">تصفح كافة خدماتنا</a>
+  </section>
+
+  <!-- 3. فلسفة ENSI -->
   <section class="about-preview">
     <h3 class="section-title">فلسفة ENSI</h3>
     <p>في ENSI Events، لا نكتفي بتنظيم الفعاليات، بل نصنع قصصاً بصرية وتجارب حسية متكاملة. نؤمن بأن كل تفصيل مهما كان صغيراً هو جزء من لوحة فنية كبرى. من الفكرة الأولى وحتى اللحظة الأخيرة، فريقنا الشغوف يكرس خبرته لضمان أن تكون مناسبتك استثنائية، فريدة، وتعكس هويتك بأرقى المعايير.</p>
-    <a href="about.html" class="outline-btn">اكتشف قصتنا الكاملة</a>
+    <a href="about.html" class="primary-btn">اكتشف قصتنا الكاملة</a>
   </section>
 
-  <!-- 3. لمحة عن الخدمات الأساسية -->
+  <!-- 4. لمحة عن الخدمات الأساسية -->
   <section class="services-preview">
     <h3 class="section-title">بعض ما نقدمه</h3>
     <div class="services-grid-mini">
@@ -320,7 +343,7 @@
     <a href="services.html" class="primary-btn">عرض كافة خدماتنا</a>
   </section>
 
-  <!-- 4. ورش العمل القادمة -->
+  <!-- 5. ورش العمل القادمة -->
   <section class="workshops-section">
     <h3 class="section-title">ورش العمل القادمة</h3>
     <div class="workshop-card-minimal">

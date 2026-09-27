@@ -25,7 +25,6 @@
     /* العناوين الرئيسية، الفرعية، عناوين التذييل، واللوجو النصي */
     .hero-content h2, 
     .section-title,
-    .footer-logo,
     .feature-card h4,
     .service-card h4,
     .workshop-title,
@@ -295,6 +294,14 @@
       box-shadow: 0 8px 15px rgba(251, 243, 181, 0.2) !important;
     }
 
+    /* تنسيق شعار التذييل */
+    .footer-img-logo {
+        width: 120px; /* تم ضبط العرض ليتناسب مع الكلمة السابقة */
+        height: auto;
+        margin-bottom: 15px;
+        display: block;
+    }
+
     /* =========================================
        استجابة الشاشات الصغيرة (الجوال)
        ========================================= */
@@ -311,6 +318,10 @@
         
         .navbar-logo {
             width: var(--mobile-logo-width) !important; 
+        }
+
+        .footer-img-logo {
+            width: 100px;
         }
     }
   </style>
@@ -466,7 +477,8 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-col brand-col">
-        <h2 class="footer-logo">ENSI</h2>
+        <!-- استبدال النص بصورة الشعار -->
+        <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events Logo" class="footer-img-logo">
         <p class="footer-desc">نُنظم المناسبات ونصمم التجارب التي تبقى في الذاكرة. نعتني بأدق التفاصيل لنضمن لك مناسبة استثنائية.</p>
       </div>
       <div class="footer-col links-col">

@@ -289,27 +289,30 @@
 
                 <h3 class="form-section-title">احجزي مقعدكِ الآن</h3>
 
-                <form id="workshopForm">
+                                <form id="workshopForm" name="workshopForm">
                     <div class="form-group">
                         <label>الاسم الأول</label>
-                        <input type="text" class="form-control" required placeholder="أدخلي اسمكِ الأول">
+                        <!-- تمت إضافة name="firstName" -->
+                        <input type="text" name="firstName" class="form-control" required placeholder="أدخلي اسمكِ الأول">
                     </div>
 
                     <div class="form-group">
                         <label>الاسم الأخير</label>
-                        <input type="text" class="form-control" required placeholder="أدخلي اسم العائلة">
+                        <!-- تمت إضافة name="lastName" -->
+                        <input type="text" name="lastName" class="form-control" required placeholder="أدخلي اسم العائلة">
                     </div>
 
                     <div class="form-group">
                         <label>رقم الواتساب (للتواصل وإرسال التفاصيل)</label>
-                        <!-- تطبيق كلاس phone-input لضبط جهة النص والاتجاه -->
-                        <input type="tel" class="form-control phone-input" required placeholder="الرقم مع رمز الدولة">
+                        <!-- تمت إضافة name="whatsapp" -->
+                        <input type="tel" name="whatsapp" class="form-control phone-input" required placeholder="الرقم مع رمز الدولة">
                     </div>
 
-                    <button type="submit" class="submit-btn">تأكيد التسجيل</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">تأكيد التسجيل</button>
                 </form>
             </div>
 
+            <!-- الحقيبة السفلية -->
             <div class="bottom-bag-container">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3965.png?raw=true" class="bottom-bag-img" alt="حقيبة ورد الخريف">
             </div>
@@ -317,11 +320,10 @@
         </div>
     </div>
 
-    <!-- نافذة نجاح التسجيل -->
+    <!-- نافذة نجاح التسجيل (Modal) -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content">
             <h3>شكراً لتسجيلكِ! 🍂</h3>
-            <!-- تحديث الرسالة لتشمل بيانات الدفع -->
             <p class="main-msg">تم استلام طلبكِ بنجاح. سيقوم فريقنا بالتواصل معكِ قريباً عبر الواتساب لتزويدكِ بكافة تفاصيل الورشة وإرسال بيانات الدفع لتأكيد الحجز النهائي.</p>
             <p class="secondary-msg">هل ترغبين بحجز مقعد لشخص آخر؟ أغلقي هذه النافذة واملئي النموذج ببياناته.</p>
             <button class="close-modal-btn" id="closeModal">حسناً</button>
@@ -332,12 +334,36 @@
         const form = document.getElementById('workshopForm');
         const modal = document.getElementById('successModal');
         const closeModalBtn = document.getElementById('closeModal');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // ضع الرابط الذي نسخته من Google Apps Script بين علامات التنصيص هنا 👇
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzaPFLpqKjJGyXKy0itQ7dCKgMDGYrhd5nnQjB20FD5XigVS7_TpjjzzE_YO2RVf-/exec';
 
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
-            modal.classList.add('active');
+            
+            // تغيير شكل الزر أثناء الإرسال ليعرف المستخدم أن الطلب قيد التنفيذ
+            submitBtn.innerHTML = 'جاري إرسال الطلب...';
+            submitBtn.disabled = true;
+
+            let requestBody = new FormData(form);
+
+            // إرسال البيانات إلى Google Sheets
+            fetch(scriptURL, { method: 'POST', body: requestBody })
+                .then(response => {
+                    modal.classList.add('active'); // إظهار رسالة النجاح
+                    submitBtn.innerHTML = 'تأكيد التسجيل'; // إعادة الزر لشكله الطبيعي
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('عذراً، حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.');
+                    submitBtn.innerHTML = 'تأكيد التسجيل';
+                    submitBtn.disabled = false;
+                });
         });
 
+        // إغلاق النافذة وتفريغ الحقول
         closeModalBtn.addEventListener('click', function() {
             modal.classList.remove('active');
             form.reset(); 

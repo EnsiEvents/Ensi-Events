@@ -7,6 +7,12 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- كود التتبع الخاص بـ Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
     <style>
         /* =========================================
            المتغيرات (Variables)
@@ -224,7 +230,7 @@
         .bottom-bag-container {
             width: 100%; display: flex; justify-content: center; margin-top: -10px;
             background: rgba(0,0,0,0.1); border-top: 1px solid var(--glass-border); padding-top: 20px;
-            border-radius: 0 0 20px 20px; /* ضمان تطابق الحواف السفلية مع الإطار الزجاجي */
+            border-radius: 0 0 20px 20px;
         }
         .bottom-bag-img {
             width: 100%; max-width: 400px; height: auto;
@@ -258,7 +264,6 @@
     <div class="page-wrapper">
         <div class="glass-form-container">
             
-            <!-- القناع لحبس الوردة داخل الإطار الزجاجي -->
             <div class="decorative-mask">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3966.png?raw=true" class="flower-left-inside" alt="Autumn Flowers">
             </div>
@@ -266,7 +271,6 @@
             <div class="flip-container">
                 <div class="flip-inner" id="flipInner">
                     
-                    <!-- 1. واجهة الفورم الأمامية -->
                     <div class="front-face">
                         <div class="cobranding">
                             <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events">
@@ -304,11 +308,9 @@
                         </form>
                     </div>
 
-                    <!-- 2. بطاقة التأكيد الخلفية الفاخرة (تظهر عند الدوران) -->
                     <div class="back-face">
                         <div class="ticket-wrapper">
                             
-                            <!-- الترويسة بالشعارات المشتركة -->
                             <div class="ticket-header">
                                 <div class="ticket-cobranding">
                                     <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events">
@@ -317,7 +319,6 @@
                                 </div>
                             </div>
                             
-                            <!-- محتوى البطاقة -->
                             <div class="ticket-body">
                                 <div class="ticket-name" id="ticketNameDisplay">مرحباً، شكراً لتسجيلكِ!</div>
                                 <div class="ticket-msg">
@@ -326,7 +327,6 @@
                                 </div>
                             </div>
                             
-                            <!-- تذييل البطاقة -->
                             <div class="ticket-footer">
                                 <button class="new-booking-btn" id="newBookingBtn">تسجيل مقعد إضافي</button>
                             </div>
@@ -337,7 +337,6 @@
                 </div>
             </div>
 
-            <!-- الحقيبة السفلية -->
             <div class="bottom-bag-container">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3965.png?raw=true" class="bottom-bag-img" alt="حقيبة ورد الخريف">
             </div>
@@ -369,10 +368,17 @@
                     const userName = firstNameInput.value;
                     ticketNameDisplay.innerHTML = `مرحباً ${userName}،<br>شكراً لتسجيلكِ! 🍂`;
 
-                    // تفعيل حركة 3D FLIP لقلب الفورم وإظهار التذكرة
+                    // تفعيل حركة 3D FLIP
                     flipInner.classList.add('is-flipped');
 
-                    // إعادة الزر لشكله الطبيعي في حال أرادت التسجيل مرة أخرى
+                    // 🎯 إرسال الحدث إلى Vercel Analytics لتسجيل نجاح الحجز
+                    if (window.va) {
+                        window.va('event', 'Workshop_Registration_Success', {
+                            workshop_name: 'ورد الخريف'
+                        });
+                    }
+
+                    // إعادة الزر لشكله الطبيعي
                     submitBtn.innerHTML = 'تأكيد التسجيل'; 
                     submitBtn.disabled = false;
                 })
@@ -386,10 +392,7 @@
 
         // العودة للفورم لتسجيل شخص آخر
         newBookingBtn.addEventListener('click', function() {
-            // إرجاع الفورم
             flipInner.classList.remove('is-flipped');
-            
-            // تفريغ البيانات بعد انتهاء الحركة (نصف ثانية)
             setTimeout(() => {
                 form.reset(); 
             }, 500);

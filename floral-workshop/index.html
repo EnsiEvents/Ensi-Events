@@ -249,4 +249,112 @@
 
                     <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/Title.png?raw=true" class="workshop-title-img" alt="ورشة ورد الخريف">
 
-                    <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة،
+                    <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة، لنصنع معاً حقيبة زهور تعكس إبداعكِ وروح الموسم.</p>
+
+                    <div class="registration-note">
+                        ملاحظة: في حال الرغبة بتسجيل أكثر من شخص، يُرجى تعبئة وتأكيد البيانات لكل شخص على حدة.
+                    </div>
+
+                    <h3 class="form-section-title">احجزي مقعدكِ الآن</h3>
+
+                    <form id="workshopForm" name="workshopForm">
+                        <div class="form-group">
+                            <label>الاسم الأول</label>
+                            <input type="text" id="firstNameInput" name="firstName" class="form-control" required placeholder="أدخلي اسمكِ الأول">
+                        </div>
+
+                        <div class="form-group">
+                            <label>الاسم الأخير</label>
+                            <input type="text" name="lastName" class="form-control" required placeholder="أدخلي اسم العائلة">
+                        </div>
+
+                        <div class="form-group">
+                            <label>رقم الواتساب (للتواصل وإرسال التفاصيل)</label>
+                            <input type="tel" name="whatsapp" class="form-control phone-input" required placeholder="الرقم مع رمز الدولة">
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">تأكيد التسجيل</button>
+                    </form>
+                </div>
+
+                <!-- 2. واجهة التذكرة الإلكترونية (مخفية افتراضياً) -->
+                <div class="ticket-view" id="ticketView">
+                    <div class="ticket-icon">🎟️</div>
+                    <div class="ticket-name" id="ticketNameDisplay">مرحباً، شكراً لتسجيلكِ!</div>
+                    <div class="ticket-msg">تم استلام طلبكِ بنجاح 🍂</div>
+                    
+                    <div class="ticket-divider"></div>
+                    
+                    <div class="ticket-payment-info">
+                        سيقوم فريقنا بالتواصل معكِ قريباً عبر الواتساب لتزويدكِ بكافة تفاصيل الورشة وإرسال بيانات الدفع لتأكيد الحجز النهائي.
+                    </div>
+
+                    <button class="new-booking-btn" id="newBookingBtn">تسجيل مقعد إضافي</button>
+                </div>
+
+            </div>
+
+            <!-- الحقيبة السفلية -->
+            <div class="bottom-bag-container">
+                <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3965.png?raw=true" class="bottom-bag-img" alt="حقيبة ورد الخريف">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('workshopForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formView = document.getElementById('formView');
+        const ticketView = document.getElementById('ticketView');
+        const ticketNameDisplay = document.getElementById('ticketNameDisplay');
+        const firstNameInput = document.getElementById('firstNameInput');
+        const newBookingBtn = document.getElementById('newBookingBtn');
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzaPFLpqKjJGyXKy0itQ7dCKgMDGYrhd5nnQjB20FD5XigVS7_TpjjzzE_YO2RVf-/exec';
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            submitBtn.innerHTML = 'جاري تأكيد الحجز...';
+            submitBtn.disabled = true;
+
+            let requestBody = new FormData(form);
+
+            fetch(scriptURL, { method: 'POST', body: requestBody })
+                .then(response => {
+                    // التقاط الاسم الأول ووضعه في التذكرة
+                    const userName = firstNameInput.value;
+                    ticketNameDisplay.innerHTML = `مرحباً ${userName}،<br>شكراً لتسجيلكِ!`;
+
+                    // حركة الأنيميشن: إخفاء الفورم وإظهار التذكرة
+                    formView.classList.add('hidden');
+                    setTimeout(() => {
+                        ticketView.classList.add('active');
+                    }, 300); // تأخير بسيط للسلاسة
+
+                    // إعادة زر الإرسال لشكله الطبيعي في الخلفية
+                    submitBtn.innerHTML = 'تأكيد التسجيل'; 
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('عذراً، حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.');
+                    submitBtn.innerHTML = 'تأكيد التسجيل';
+                    submitBtn.disabled = false;
+                });
+        });
+
+        // زر حجز مقعد جديد (العودة للفورم)
+        newBookingBtn.addEventListener('click', function() {
+            // حركة الأنيميشن: إخفاء التذكرة وإظهار الفورم
+            ticketView.classList.remove('active');
+            setTimeout(() => {
+                form.reset(); // تفريغ الحقول
+                formView.classList.remove('hidden');
+            }, 300);
+        });
+    </script>
+
+</body>
+</html>

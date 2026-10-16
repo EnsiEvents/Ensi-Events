@@ -178,7 +178,7 @@
         .workshop-title-img { width: 100%; max-width: 400px; display: block; margin: 0 auto 15px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
         .workshop-description { text-align: center; font-size: 15px; line-height: 1.6; color: #dcdcdc; margin-bottom: 20px; padding: 0 10px; }
 
-        /* ======== قسم تفاصيل الورشة الجديد ======== */
+        /* ======== قسم تفاصيل الورشة المحدث ======== */
         .details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -194,6 +194,15 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none; /* لمنع ظهور خط تحت الرابط */
+            color: inherit;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        /* تأثير لطيف عند تمرير الماوس على الأزرار/الروابط */
+        a.detail-item:hover {
+            background: rgba(251, 243, 181, 0.12);
+            transform: translateY(-2px);
         }
 
         .detail-item svg {
@@ -217,7 +226,18 @@
             font-size: 14px;
             font-weight: 700;
             color: #fff;
+            line-height: 1.4;
         }
+
+        .detail-note {
+            font-size: 11px;
+            font-weight: 500;
+            color: #dcdcdc;
+            opacity: 0.8;
+            margin-right: 2px;
+        }
+
+        /* ========================================= */
 
         .registration-note {
             text-align: center; font-size: 13px; color: var(--gold);
@@ -263,7 +283,7 @@
             .front-face, .back-face { padding: 30px 20px; }
             .rosaria-text { font-size: 20px; }
             .flower-left-inside { width: 250px; left: -50px; top: 15%; }
-            .details-grid { grid-template-columns: 1fr; gap: 10px; }
+            .details-grid { grid-template-columns: 1fr; gap: 10px; } /* يتم ترتيب الشبكة عمودياً في الجوال */
         }
     </style>
 </head>
@@ -304,7 +324,7 @@
 
                         <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة، لنصنع معاً حقيبة زهور تعكس إبداعكِ وروح الموسم.</p>
 
-                        <!-- شبكة تفاصيل الورشة الأنيقة المضافة هنا -->
+                        <!-- شبكة تفاصيل الورشة المحدثة بالكامل -->
                         <div class="details-grid">
                             
                             <!-- التاريخ -->
@@ -321,29 +341,30 @@
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                                 <div class="detail-text">
                                     <span class="detail-label">الوقت</span>
-                                    <span class="detail-value">04:00 - 07:00 مساءً</span>
+                                    <span class="detail-value">05:00 - 09:00 مساءً</span>
                                 </div>
                             </div>
                             
-                            <!-- المكان -->
-                            <div class="detail-item">
+                            <!-- المكان (رابط يفتح الخرائط) -->
+                            <a href="https://maps.app.goo.gl/k7cSHKGm3drqGKGH6?g_st=ic" target="_blank" class="detail-item">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                 <div class="detail-text">
                                     <span class="detail-label">المكان</span>
-                                    <span class="detail-value">إسطنبول - مركز الفعاليات</span>
+                                    <span class="detail-value">مقهى البركة <span class="detail-note">(TUBA Cafe سابقاً)</span></span>
                                 </div>
-                            </div>
+                            </a>
                             
                             <!-- التكلفة -->
                             <div class="detail-item">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
                                 <div class="detail-text">
                                     <span class="detail-label">التكلفة</span>
-                                    <span class="detail-value">950 ليرة</span>
+                                    <span class="detail-value">950 ليرة <span class="detail-note">(شامل جميع المستلزمات)</span></span>
                                 </div>
                             </div>
 
                         </div>
+                        <!-- نهاية شبكة التفاصيل -->
 
                         <div class="registration-note">
                             ملاحظة: في حال الرغبة بتسجيل أكثر من شخص، يُرجى تعبئة وتأكيد البيانات لكل شخص على حدة.

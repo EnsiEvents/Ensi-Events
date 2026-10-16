@@ -38,7 +38,7 @@
             background: linear-gradient(-45deg, #1b271d, #3e271a, #261618, #1a241c);
             background-size: 400% 400%;
             animation: gradientBreathing 20s ease infinite;
-            z-index: 0; /* تم التعديل لتكون الطبقة الأساسية */
+            z-index: 0;
         }
 
         @keyframes gradientBreathing {
@@ -48,23 +48,22 @@
         }
 
         /* =========================================
-           تأثير التساقط (الأوراق واليقطين) - تم الإصلاح
+           تأثير التساقط (الأوراق واليقطين)
            ========================================= */
         .falling-elements-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 1; /* تم التعديل لتظهر أمام الخلفية وخلف الفورم */
+            z-index: 1; 
             overflow: hidden;
         }
 
         .falling-item {
             position: absolute;
-            top: -15vh; /* تبدأ من خارج الشاشة بالأعلى */
+            top: -15vh; 
             animation: fallAnimation linear infinite;
         }
 
-        /* إعدادات التساقط للأوراق المختلفة (أعداد أكبر) */
         .leaf-a { left: 10%; width: 45px; animation-duration: 15s; animation-delay: 0s; filter: blur(1px); opacity: 0.6; }
         .leaf-b { left: 80%; width: 55px; animation-duration: 18s; animation-delay: 2s; filter: blur(2px); opacity: 0.4; }
         .leaf-c { left: 30%; width: 40px; animation-duration: 14s; animation-delay: 5s; opacity: 0.7; }
@@ -72,7 +71,6 @@
         .leaf-e { left: 50%; width: 35px; animation-duration: 12s; animation-delay: 11s; filter: blur(3px); opacity: 0.3; }
         .leaf-f { left: 15%; width: 50px; animation-duration: 19s; animation-delay: 14s; opacity: 0.6; }
         
-        /* اليقطين المتساقط (أثقل قليلاً وأبطأ) */
         .pump-a { left: 25%; width: 60px; animation-duration: 20s; animation-delay: 1s; opacity: 0.7; }
         .pump-b { left: 75%; width: 50px; animation-duration: 22s; animation-delay: 6s; filter: blur(2px); opacity: 0.5; }
         .pump-c { left: 45%; width: 55px; animation-duration: 18s; animation-delay: 12s; opacity: 0.6; }
@@ -92,7 +90,7 @@
             flex-direction: column;
             align-items: center;
             padding: 40px 20px 0; 
-            z-index: 10; /* فوق كل شيء */
+            z-index: 10; 
         }
 
         .glass-form-container {
@@ -123,7 +121,7 @@
         }
 
         /* =========================================
-           الورد الجانبي (مدمج داخل التأثير الزجاجي)
+           الورد الجانبي 
            ========================================= */
         .flower-left-inside {
             position: absolute;
@@ -143,7 +141,7 @@
         }
 
         /* =========================================
-           اللوجو والعنوان والوصف
+           اللوجو والعنوان والوصف والملاحظات
            ========================================= */
         .cobranding {
             display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;
@@ -157,7 +155,20 @@
         }
 
         .workshop-description {
-            text-align: center; font-size: 15px; line-height: 1.6; color: #dcdcdc; margin-bottom: 35px; padding: 0 10px;
+            text-align: center; font-size: 15px; line-height: 1.6; color: #dcdcdc; margin-bottom: 15px; padding: 0 10px;
+        }
+
+        /* التنبيه الخاص بتسجيل أكثر من شخص */
+        .registration-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--gold);
+            background: rgba(251, 243, 181, 0.05);
+            border: 1px dashed rgba(251, 243, 181, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         .form-section-title {
@@ -193,7 +204,7 @@
         .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(251, 243, 181, 0.3); }
 
         /* =========================================
-           حقيبة الورد السفلية (مدمجة في الزجاج)
+           حقيبة الورد السفلية
            ========================================= */
         .bottom-bag-container {
             width: 100%; display: flex; justify-content: center; margin-top: -10px;
@@ -221,7 +232,9 @@
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-content h3 { font-size: 28px; margin-bottom: 15px; }
-        .modal-content p { font-size: 16px; line-height: 1.6; color: #dcdcdc; margin-bottom: 25px; }
+        .modal-content p.main-msg { font-size: 16px; line-height: 1.6; color: #dcdcdc; margin-bottom: 15px; }
+        .modal-content p.secondary-msg { font-size: 14px; color: #a0a0a0; margin-bottom: 25px; line-height: 1.5; }
+        
         .close-modal-btn {
             background: transparent; border: 1px solid var(--gold); color: var(--gold);
             padding: 10px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: 0.3s;
@@ -237,32 +250,25 @@
 </head>
 <body>
 
-    <!-- الخلفية المتحركة -->
     <div class="animated-bg"></div>
 
-    <!-- العناصر المتساقطة (أوراق ويقطين) بعد تعديل الطبقات -->
     <div class="falling-elements-container">
-        <!-- 6 أوراق -->
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3967.png?raw=true" class="falling-item leaf-a" alt="Leaf">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3967.png?raw=true" class="falling-item leaf-b" alt="Leaf">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3967.png?raw=true" class="falling-item leaf-c" alt="Leaf">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3967.png?raw=true" class="falling-item leaf-d" alt="Leaf">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3967.png?raw=true" class="falling-item leaf-e" alt="Leaf">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3967.png?raw=true" class="falling-item leaf-f" alt="Leaf">
-        <!-- 3 يقطينات -->
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3968.png?raw=true" class="falling-item pump-a" alt="Pumpkin">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3968.png?raw=true" class="falling-item pump-b" alt="Pumpkin">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3968.png?raw=true" class="falling-item pump-c" alt="Pumpkin">
     </div>
 
     <div class="page-wrapper">
-        <!-- الحاوية الزجاجية الكلية -->
         <div class="glass-form-container">
             
-            <!-- الورد الجانبي المدمج -->
             <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3966.png?raw=true" class="flower-left-inside" alt="Autumn Flowers">
 
-            <!-- مساحة المحتوى -->
             <div class="form-content-padding">
                 <div class="cobranding">
                     <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events">
@@ -272,8 +278,12 @@
 
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/Title.png?raw=true" class="workshop-title-img" alt="ورشة ورد الخريف">
 
-                <!-- الوصف -->
                 <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة، لنصنع معاً حقيبة زهور تعكس إبداعكِ وروح الموسم.</p>
+
+                <!-- ملاحظة التسجيل المتعدد -->
+                <div class="registration-note">
+                    ملاحظة: في حال الرغبة بتسجيل أكثر من شخص، يُرجى تعبئة وتأكيد البيانات لكل شخص على حدة.
+                </div>
 
                 <h3 class="form-section-title">احجزي مقعدكِ الآن</h3>
 
@@ -290,14 +300,14 @@
 
                     <div class="form-group">
                         <label>رقم الواتساب (للتواصل وإرسال التفاصيل)</label>
-                        <input type="tel" class="form-control" required placeholder="مثال: +905XX XXX XX XX" dir="ltr">
+                        <!-- تم تعديل Placeholder وتفعيل الاتجاه التلقائي -->
+                        <input type="tel" class="form-control" required placeholder="الرقم مع رمز الدولة" dir="auto">
                     </div>
 
                     <button type="submit" class="submit-btn">تأكيد التسجيل</button>
                 </form>
             </div>
 
-            <!-- الحقيبة السفلية -->
             <div class="bottom-bag-container">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3965.png?raw=true" class="bottom-bag-img" alt="حقيبة ورد الخريف">
             </div>
@@ -305,11 +315,13 @@
         </div>
     </div>
 
-    <!-- نافذة نجاح التسجيل (Modal) -->
+    <!-- نافذة نجاح التسجيل -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content">
             <h3>شكراً لتسجيلكِ! 🍂</h3>
-            <p>تم استلام طلبكِ بنجاح. سيقوم فريقنا بالتواصل معكِ قريباً عبر الواتساب لتأكيد الحجز وتزويدكِ بكافة تفاصيل الورشة.</p>
+            <p class="main-msg">تم استلام طلبكِ بنجاح. سيقوم فريقنا بالتواصل معكِ قريباً عبر الواتساب لتأكيد الحجز وتزويدكِ بكافة تفاصيل الورشة.</p>
+            <!-- السطر المضاف لاقتراح تسجيل شخص آخر -->
+            <p class="secondary-msg">هل ترغبين بحجز مقعد لشخص آخر؟ أغلقي هذه النافذة واملئي النموذج ببياناته.</p>
             <button class="close-modal-btn" id="closeModal">حسناً</button>
         </div>
     </div>

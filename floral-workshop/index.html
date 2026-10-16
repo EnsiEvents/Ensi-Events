@@ -158,17 +158,10 @@
             text-align: center; font-size: 15px; line-height: 1.6; color: #dcdcdc; margin-bottom: 15px; padding: 0 10px;
         }
 
-        /* التنبيه الخاص بتسجيل أكثر من شخص */
         .registration-note {
-            text-align: center;
-            font-size: 13px;
-            color: var(--gold);
-            background: rgba(251, 243, 181, 0.05);
-            border: 1px dashed rgba(251, 243, 181, 0.4);
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            line-height: 1.5;
+            text-align: center; font-size: 13px; color: var(--gold);
+            background: rgba(251, 243, 181, 0.05); border: 1px dashed rgba(251, 243, 181, 0.4);
+            padding: 10px; border-radius: 8px; margin-bottom: 25px; line-height: 1.5;
         }
 
         .form-section-title {
@@ -191,8 +184,15 @@
             border-radius: 8px; padding: 12px 15px; color: #fff; font-size: 16px;
             transition: all 0.3s ease; outline: none;
         }
+        
         .form-control:focus {
             border-color: var(--gold); background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 10px rgba(251, 243, 181, 0.1);
+        }
+
+        /* تنسيق خاص لحقل الواتساب لضبط الاتجاه والمحاذاة */
+        .phone-input {
+            text-align: right;
+            direction: ltr;
         }
 
         /* زر التسجيل */
@@ -232,7 +232,10 @@
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-content h3 { font-size: 28px; margin-bottom: 15px; }
+        
+        /* رسالة التأكيد وبيانات الدفع */
         .modal-content p.main-msg { font-size: 16px; line-height: 1.6; color: #dcdcdc; margin-bottom: 15px; }
+        
         .modal-content p.secondary-msg { font-size: 14px; color: #a0a0a0; margin-bottom: 25px; line-height: 1.5; }
         
         .close-modal-btn {
@@ -280,7 +283,6 @@
 
                 <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة، لنصنع معاً حقيبة زهور تعكس إبداعكِ وروح الموسم.</p>
 
-                <!-- ملاحظة التسجيل المتعدد -->
                 <div class="registration-note">
                     ملاحظة: في حال الرغبة بتسجيل أكثر من شخص، يُرجى تعبئة وتأكيد البيانات لكل شخص على حدة.
                 </div>
@@ -300,8 +302,8 @@
 
                     <div class="form-group">
                         <label>رقم الواتساب (للتواصل وإرسال التفاصيل)</label>
-                        <!-- تم تعديل Placeholder وتفعيل الاتجاه التلقائي -->
-                        <input type="tel" class="form-control" required placeholder="الرقم مع رمز الدولة" dir="auto">
+                        <!-- تطبيق كلاس phone-input لضبط جهة النص والاتجاه -->
+                        <input type="tel" class="form-control phone-input" required placeholder="الرقم مع رمز الدولة">
                     </div>
 
                     <button type="submit" class="submit-btn">تأكيد التسجيل</button>
@@ -319,8 +321,8 @@
     <div class="modal-overlay" id="successModal">
         <div class="modal-content">
             <h3>شكراً لتسجيلكِ! 🍂</h3>
-            <p class="main-msg">تم استلام طلبكِ بنجاح. سيقوم فريقنا بالتواصل معكِ قريباً عبر الواتساب لتأكيد الحجز وتزويدكِ بكافة تفاصيل الورشة.</p>
-            <!-- السطر المضاف لاقتراح تسجيل شخص آخر -->
+            <!-- تحديث الرسالة لتشمل بيانات الدفع -->
+            <p class="main-msg">تم استلام طلبكِ بنجاح. سيقوم فريقنا بالتواصل معكِ قريباً عبر الواتساب لتزويدكِ بكافة تفاصيل الورشة وإرسال بيانات الدفع لتأكيد الحجز النهائي.</p>
             <p class="secondary-msg">هل ترغبين بحجز مقعد لشخص آخر؟ أغلقي هذه النافذة واملئي النموذج ببياناته.</p>
             <button class="close-modal-btn" id="closeModal">حسناً</button>
         </div>

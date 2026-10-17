@@ -33,6 +33,9 @@
             overflow-x: hidden;
             background-color: var(--dark-olive);
             color: var(--gold);
+            /* حل مشكلة التمرير المطاطي (Rubber-banding) في سفاري دون التأثير على التصميم */
+            overscroll-behavior-y: none;
+            touch-action: pan-y;
         }
 
         /* =========================================
@@ -194,15 +197,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none; /* لمنع ظهور خط تحت الرابط */
-            color: inherit;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        /* تأثير لطيف عند تمرير الماوس على الأزرار/الروابط */
-        a.detail-item:hover {
-            background: rgba(251, 243, 181, 0.12);
-            transform: translateY(-2px);
         }
 
         .detail-item svg {
@@ -283,7 +277,7 @@
             .front-face, .back-face { padding: 30px 20px; }
             .rosaria-text { font-size: 20px; }
             .flower-left-inside { width: 250px; left: -50px; top: 15%; }
-            .details-grid { grid-template-columns: 1fr; gap: 10px; } /* يتم ترتيب الشبكة عمودياً في الجوال */
+            .details-grid { grid-template-columns: 1fr; gap: 10px; }
         }
     </style>
 </head>
@@ -324,7 +318,7 @@
 
                         <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة، لنصنع معاً حقيبة زهور تعكس إبداعكِ وروح الموسم.</p>
 
-                        <!-- شبكة تفاصيل الورشة المحدثة بالكامل -->
+                        <!-- شبكة تفاصيل الورشة المحدثة (بدون روابط خارجية) -->
                         <div class="details-grid">
                             
                             <!-- التاريخ -->
@@ -345,14 +339,14 @@
                                 </div>
                             </div>
                             
-                            <!-- المكان (رابط يفتح الخرائط) -->
-                            <a href="https://maps.app.goo.gl/k7cSHKGm3drqGKGH6?g_st=ic" target="_blank" class="detail-item">
+                            <!-- المكان -->
+                            <div class="detail-item">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                 <div class="detail-text">
                                     <span class="detail-label">المكان</span>
-                                    <span class="detail-value">مقهى البركة <span class="detail-note">(TUBA Cafe سابقاً)</span></span>
+                                    <span class="detail-value">كاياشهير - مقهى البركة <span class="detail-note">(TUBA Cafe سابقاً)</span></span>
                                 </div>
-                            </a>
+                            </div>
                             
                             <!-- التكلفة -->
                             <div class="detail-item">
@@ -364,7 +358,6 @@
                             </div>
 
                         </div>
-                        <!-- نهاية شبكة التفاصيل -->
 
                         <div class="registration-note">
                             ملاحظة: في حال الرغبة بتسجيل أكثر من شخص، يُرجى تعبئة وتأكيد البيانات لكل شخص على حدة.

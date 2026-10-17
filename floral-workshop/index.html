@@ -28,12 +28,16 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
         
-        body, html {
+        /* تفعيل التمرير السلس على مستوى الصفحة بالكامل */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
             min-height: 100vh;
             overflow-x: hidden;
             background-color: var(--dark-olive);
             color: var(--gold);
-            /* تمت إزالة أوامر تجميد التمرير ليعود سفاري لعمله الطبيعي السلس */
         }
 
         /* =========================================
@@ -179,7 +183,7 @@
         .workshop-title-img { width: 100%; max-width: 400px; display: block; margin: 0 auto 15px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
         .workshop-description { text-align: center; font-size: 15px; line-height: 1.6; color: #dcdcdc; margin-bottom: 20px; padding: 0 10px; }
 
-        /* ======== قسم تفاصيل الورشة المحدث ======== */
+        /* ======== قسم تفاصيل الورشة ======== */
         .details-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -295,7 +299,7 @@
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3968.png?raw=true" class="falling-item pump-c" alt="Pumpkin">
     </div>
 
-    <div class="page-wrapper">
+    <div class="page-wrapper" id="topOfForm">
         <div class="glass-form-container">
             
             <div class="decorative-mask">
@@ -316,7 +320,6 @@
 
                         <p class="workshop-description">انضمي إلينا في تجربة خريفية دافئة، حيث نمزج بين فنون تنسيق الزهور بألوان الخريف الساحرة وتفاصيل اليقطين الأنيقة، لنصنع معاً حقيبة زهور تعكس إبداعكِ وروح الموسم.</p>
 
-                        <!-- شبكة تفاصيل الورشة -->
                         <div class="details-grid">
                             
                             <!-- التاريخ -->
@@ -444,7 +447,13 @@
 
                     flipInner.classList.add('is-flipped');
 
-                    // إرسال الحدث إلى Vercel بالكلمة الصحيحة (track)
+                    // الانزلاق التلقائي والسلس لأعلى الفورم لرؤية التذكرة كاملة
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+
+                    // إرسال الحدث إلى Vercel
                     if (window.va) {
                         window.va('track', 'Workshop_Registration_Success', {
                             workshop_name: 'ورد الخريف'

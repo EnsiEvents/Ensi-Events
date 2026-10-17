@@ -300,7 +300,7 @@
     </div>
 
     <div class="page-wrapper" id="topOfForm">
-        <div class="glass-form-container">
+        <div class="glass-form-container" id="mainGlassContainer">
             
             <div class="decorative-mask">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_3966.png?raw=true" class="flower-left-inside" alt="Autumn Flowers">
@@ -429,6 +429,7 @@
         const ticketNameDisplay = document.getElementById('ticketNameDisplay');
         const firstNameInput = document.getElementById('firstNameInput');
         const newBookingBtn = document.getElementById('newBookingBtn');
+        const mainGlassContainer = document.getElementById('mainGlassContainer');
 
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzaPFLpqKjJGyXKy0itQ7dCKgMDGYrhd5nnQjB20FD5XigVS7_TpjjzzE_YO2RVf-/exec';
 
@@ -447,10 +448,10 @@
 
                     flipInner.classList.add('is-flipped');
 
-                    // الانزلاق التلقائي والسلس لأعلى الفورم لرؤية التذكرة كاملة
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
+                    // التمرير الذكي ليضع الصندوق الزجاجي في منتصف الشاشة تماماً
+                    mainGlassContainer.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
                     });
 
                     // إرسال الحدث إلى Vercel

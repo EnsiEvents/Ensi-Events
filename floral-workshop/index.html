@@ -49,10 +49,15 @@
         html[dir="ltr"] .detail-text { text-align: left; }
         html[dir="rtl"] .detail-text { text-align: right; }
         
-        /* إجبار حقل الهاتف دائماً على أن يكون من اليسار لليمين */
+        /* ضبط اتجاه حقل الهاتف ومحاذاته الذكية */
         .phone-input { 
-            text-align: left !important; 
             direction: ltr !important; 
+        }
+        html[dir="rtl"] .phone-input { 
+            text-align: right !important; 
+        }
+        html[dir="ltr"] .phone-input { 
+            text-align: left !important; 
         }
 
         html[dir="ltr"] .detail-note { margin-left: 3px; margin-right: 0; }
@@ -458,8 +463,7 @@
                                     <span class="ar-text">رقم الواتساب (للتواصل وإرسال التفاصيل)</span>
                                     <span class="en-text">WhatsApp Number (for contact & details)</span>
                                 </label>
-                                <!-- تمت إضافة خاصية dir="ltr" لضمان بقاء اتجاه الأرقام من اليسار لليمين دائماً -->
-                                <input type="tel" id="whatsappInput" name="whatsapp" class="form-control phone-input" dir="ltr" required data-ph-ar="الرقم مع رمز الدولة" data-ph-en="Number with country code" placeholder="الرقم مع رمز الدولة">
+                                <input type="tel" id="whatsappInput" name="whatsapp" class="form-control phone-input" required data-ph-ar="الرقم مع رمز الدولة" data-ph-en="Number with country code" placeholder="الرقم مع رمز الدولة">
                             </div>
 
                             <button type="submit" class="submit-btn" id="submitBtn">

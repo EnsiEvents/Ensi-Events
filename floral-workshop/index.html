@@ -49,8 +49,11 @@
         html[dir="ltr"] .detail-text { text-align: left; }
         html[dir="rtl"] .detail-text { text-align: right; }
         
-        html[dir="ltr"] .phone-input { text-align: left; }
-        html[dir="rtl"] .phone-input { text-align: right; }
+        /* إجبار حقل الهاتف دائماً على أن يكون من اليسار لليمين */
+        .phone-input { 
+            text-align: left !important; 
+            direction: ltr !important; 
+        }
 
         html[dir="ltr"] .detail-note { margin-left: 3px; margin-right: 0; }
         html[dir="rtl"] .detail-note { margin-right: 3px; margin-left: 0; }
@@ -306,8 +309,7 @@
             border-radius: 8px; padding: 12px 15px; color: #fff; font-size: 16px; transition: all 0.3s ease; outline: none;
         }
         .form-control:focus { border-color: var(--gold); background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 10px rgba(251, 243, 181, 0.1); }
-        .phone-input { direction: ltr; }
-
+        
         .submit-btn {
             width: 100%; background: var(--gold); color: var(--dark-olive); border: none;
             padding: 15px; font-size: 18px; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; margin-top: 10px;
@@ -456,7 +458,8 @@
                                     <span class="ar-text">رقم الواتساب (للتواصل وإرسال التفاصيل)</span>
                                     <span class="en-text">WhatsApp Number (for contact & details)</span>
                                 </label>
-                                <input type="tel" name="whatsapp" class="form-control phone-input" required data-ph-ar="الرقم مع رمز الدولة" data-ph-en="Number with country code" placeholder="الرقم مع رمز الدولة">
+                                <!-- تمت إضافة خاصية dir="ltr" لضمان بقاء اتجاه الأرقام من اليسار لليمين دائماً -->
+                                <input type="tel" id="whatsappInput" name="whatsapp" class="form-control phone-input" dir="ltr" required data-ph-ar="الرقم مع رمز الدولة" data-ph-en="Number with country code" placeholder="الرقم مع رمز الدولة">
                             </div>
 
                             <button type="submit" class="submit-btn" id="submitBtn">
@@ -515,6 +518,7 @@
         const firstNameInput = document.getElementById('firstNameInput');
         const newBookingBtn = document.getElementById('newBookingBtn');
         const mainGlassContainer = document.getElementById('mainGlassContainer');
+        const whatsappInput = document.getElementById('whatsappInput');
 
         let currentLang = 'ar'; // اللغة الافتراضية
 
@@ -541,6 +545,11 @@
             }
         }
 
+        // فلترة ذكية لحقل رقم الواتساب تمنع لصق أي نصوص وتسمح فقط بالأرقام والرموز الصحيحة
+        whatsappInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^\d\+\s\(\)\-]/g, '');
+        });
+
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzaPFLpqKjJGyXKy0itQ7dCKgMDGYrhd5nnQjB20FD5XigVS7_TpjjzzE_YO2RVf-/exec';
 
         form.addEventListener('submit', function(e) {
@@ -551,6 +560,12 @@
             submitBtn.disabled = true;
 
             let requestBody = new FormData(form);
+
+            // إضافة علامة اقتباس أحادية (') قبل رقم الواتساب لمنع Google Sheets من اعتباره معادلة رياضية
+            let phoneVal = requestBody.get('whatsapp');
+            if (phoneVal) {
+                requestBody.set('whatsapp', "'" + phoneVal);
+            }
 
             fetch(scriptURL, { method: 'POST', body: requestBody })
                 .then(response => {

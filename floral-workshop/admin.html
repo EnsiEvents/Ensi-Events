@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم - ورشة ورد الخريف</title>
+    <title>إدارة التسجيل والحضور | ENSI Events</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #FBF3B5;
             --dark-olive: #1a241c;
-            --glass-bg: rgba(20, 30, 20, 0.6);
+            --glass-bg: rgba(20, 30, 20, 0.7);
             --glass-border: rgba(251, 243, 181, 0.2);
+            --green: #4CAF50;
+            --orange: #FF9800;
+            --gray: #9E9E9E;
+            --red: #F44336;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
@@ -24,10 +28,10 @@
         }
 
         .admin-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 30px;
@@ -43,26 +47,13 @@
             margin-bottom: 30px;
         }
 
-        .header-title {
-            color: var(--gold);
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .cobranding {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .cobranding img { height: 30px; }
-        .cobranding .separator { width: 1px; height: 20px; background-color: var(--glass-border); }
-        .cobranding .rosaria-text { font-size: 16px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+        .header-title { color: var(--gold); font-size: 26px; font-weight: 800; }
+        .cobranding img { height: 35px; }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
             margin-bottom: 30px;
         }
 
@@ -72,19 +63,43 @@
             border-radius: 12px;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
 
-        .stat-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--gold);
-            margin-bottom: 5px;
+        .stat-value { font-size: 28px; font-weight: 800; color: var(--gold); margin-bottom: 5px; }
+        .stat-label { font-size: 13px; color: #a0a0a0; }
+        .cash-note { font-size: 11px; color: var(--red); margin-top: 5px; font-weight: 700; }
+
+        /* التبويبات Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+            padding: 5px;
+            border-radius: 10px;
         }
 
-        .stat-label {
-            font-size: 14px;
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
             color: #a0a0a0;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
         }
+
+        .tab-btn.active {
+            background: var(--gold);
+            color: var(--dark-olive);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .registrations-list {
             background: rgba(0,0,0,0.3);
@@ -93,60 +108,43 @@
             overflow: hidden;
         }
 
-        .list-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: rgba(251, 243, 181, 0.1);
-            padding: 15px 20px;
-            font-weight: 700;
-            color: var(--gold);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
         .list-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px 20px;
             border-bottom: 1px solid rgba(251, 243, 181, 0.05);
             transition: background 0.3s;
         }
 
-        .list-item:hover {
-            background: rgba(251, 243, 181, 0.05);
-        }
+        .list-item:hover { background: rgba(251, 243, 181, 0.05); }
+        .list-item:last-child { border-bottom: none; }
 
-        .list-item:last-child {
-            border-bottom: none;
-        }
+        .item-name { color: #fff; font-weight: 700; font-size: 16px; margin-bottom: 5px; }
+        .item-phone { color: #a0a0a0; font-size: 14px; direction: ltr; display: inline-block; }
 
-        .item-name { color: #fff; font-weight: 500; }
-        .item-phone { color: #a0a0a0; direction: ltr; text-align: right; }
-
-        .action-btn {
-            display: block;
-            width: 100%;
-            background: var(--gold);
-            color: var(--dark-olive);
-            border: none;
-            padding: 15px;
-            font-size: 16px;
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            margin-top: 30px;
-            transition: 0.3s;
+            display: inline-block;
         }
 
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(251, 243, 181, 0.3);
-        }
+        .badge.green { background: rgba(76, 175, 80, 0.2); color: var(--green); border: 1px solid var(--green); }
+        .badge.orange { background: rgba(255, 152, 0, 0.2); color: var(--orange); border: 1px solid var(--orange); }
+        .badge.gray { background: rgba(158, 158, 158, 0.2); color: var(--gray); border: 1px solid var(--gray); }
+        .badge.gold { background: rgba(251, 243, 181, 0.2); color: var(--gold); border: 1px solid var(--gold); margin-bottom: 5px; }
+        .badge.cash { background: rgba(244, 67, 54, 0.2); color: var(--red); border: 1px solid var(--red); }
+        .badge.bank { background: rgba(76, 175, 80, 0.1); color: #8bc34a; border: 1px solid rgba(139, 195, 74, 0.5); }
+
+        .loading-msg { text-align: center; color: var(--gold); font-size: 18px; font-weight: 700; padding: 40px; }
 
         @media (max-width: 600px) {
             .header { flex-direction: column; gap: 15px; align-items: flex-start; }
-            .stats-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; gap: 10px; }
+            .list-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .list-item > div:last-child { align-self: flex-end; text-align: right; }
         }
     </style>
 </head>
@@ -154,45 +152,149 @@
 
     <div class="admin-container">
         <div class="header">
-            <div class="header-title">لوحة التحكم التسجيلات</div>
+            <div class="header-title">إدارة التسجيل والحضور</div>
             <div class="cobranding">
                 <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events">
-                <div class="separator"></div>
-                <div class="rosaria-text">ROSARIA</div>
             </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">--</div>
-                <div class="stat-label">إجمالي المشتركات</div>
+        <div id="loader" class="loading-msg">جاري مزامنة البيانات مع النظام... ⏳</div>
+
+        <div id="dashboard" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="valTotal">0</div>
+                    <div class="stat-label">إجمالي المسجلين (قاعدة البيانات)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="valConfirmed">0</div>
+                    <div class="stat-label">المشتركات المؤكدات (الحضور)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="valRevenue">0 ₺</div>
+                    <div class="stat-label">الإيرادات المتوقعة (للمؤكدين)</div>
+                    <div class="cash-note" id="valCashCount"></div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">-- ليرة</div>
-                <div class="stat-label">الإيرادات المتوقعة</div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('tab-main')">التسجيلات العامة</button>
+                <button class="tab-btn" onclick="switchTab('tab-attendance')">سجل الحضور المؤكد</button>
+            </div>
+
+            <!-- التبويبة الأولى: الكل -->
+            <div id="tab-main" class="tab-content active">
+                <div class="registrations-list" id="listMain">
+                    <!-- سيتم حقن البيانات هنا -->
+                </div>
+            </div>
+
+            <!-- التبويبة الثانية: الحضور -->
+            <div id="tab-attendance" class="tab-content">
+                <div class="registrations-list" id="listAttendance">
+                    <!-- سيتم حقن البيانات هنا -->
+                </div>
             </div>
         </div>
-
-        <div class="registrations-list">
-            <div class="list-header">
-                <div>الاسم</div>
-                <div>رقم الواتساب</div>
-            </div>
-            <!-- هذه بيانات توضيحية لشكل اللوحة -->
-            <div class="list-item">
-                <div class="item-name">سارة محمد</div>
-                <div class="item-phone">+90 555 123 4567</div>
-            </div>
-            <div class="list-item">
-                <div class="item-name">نورة عبدالله</div>
-                <div class="item-phone">+90 555 987 6543</div>
-            </div>
-        </div>
-
-        <a href="https://docs.google.com/spreadsheets/d/1Irkeydm0CzHbiRQ4QE_-PuiM4OCYejIbFEL2o0Caju0/edit" target="_blank" class="action-btn">
-            فتح ملف Google Sheets للإدارة الكاملة
-        </a>
     </div>
 
+    <script>
+        // رابط الـ Apps Script الخاص بك (وهو نفسه المستخدم في الفورم الأساسي)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzaPFLpqKjJGyXKy0itQ7dCKgMDGYrhd5nnQjB20FD5XigVS7_TpjjzzE_YO2RVf-/exec';
+
+        // وظيفة التبديل بين التبويبات
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // جلب البيانات من النظام
+        fetch(scriptURL)
+            .then(res => res.json())
+            .then(data => {
+                let mainData = data.mainData;
+                let attendanceData = data.attendanceData;
+
+                // إزالة صف العناوين الأول
+                if (mainData.length > 0) mainData.shift();
+                if (attendanceData.length > 0) attendanceData.shift();
+
+                let expectedRevenue = 0;
+                let cashCount = 0;
+
+                // 1. بناء قائمة التسجيلات العامة (التبويبة الأولى)
+                let mainHtml = '';
+                mainData.forEach(row => {
+                    // row[1]=الاسم، row[2]=العائلة، row[3]=الرقم، row[5]=حالة التواصل
+                    if (row[1] && row[1] !== "") {
+                        let status = row[5] || 'قيد الانتظار';
+                        let colorClass = 'gray';
+                        if (status === 'تم التأكيد') colorClass = 'green';
+                        else if (status === 'تم التواصل') colorClass = 'orange';
+
+                        mainHtml += `
+                            <div class="list-item">
+                                <div>
+                                    <div class="item-name">${row[1]} ${row[2] || ''}</div>
+                                    <div class="item-phone">${row[3]}</div>
+                                </div>
+                                <div><span class="badge ${colorClass}">${status}</span></div>
+                            </div>
+                        `;
+                    }
+                });
+
+                // 2. بناء قائمة سجل الحضور (التبويبة الثانية)
+                let attHtml = '';
+                attendanceData.forEach(row => {
+                    // حسب الـ Query: 0=الاسم، 1=العائلة، 2=الرقم، 3=المبلغ(G)، 4=طريقة الدفع(H)
+                    if (row[0] && row[0] !== "") {
+                        let amount = parseInt(row[3]) || 0;
+                        let method = row[4] || 'غير محدد';
+                        
+                        expectedRevenue += amount;
+                        let isCash = (method === 'كاش يوم الورشة');
+                        if (isCash) cashCount++;
+
+                        attHtml += `
+                            <div class="list-item">
+                                <div>
+                                    <div class="item-name">${row[0]} ${row[1] || ''}</div>
+                                    <div class="item-phone">${row[2]}</div>
+                                </div>
+                                <div style="text-align: left;">
+                                    <span class="badge gold">${amount} ₺</span><br>
+                                    <span class="badge ${isCash ? 'cash' : 'bank'}">${method}</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                // تحديث الإحصائيات في الصفحة
+                document.getElementById('valTotal').innerText = mainData.length;
+                document.getElementById('valConfirmed').innerText = attendanceData.length;
+                document.getElementById('valRevenue').innerText = expectedRevenue + ' ₺';
+                
+                if(cashCount > 0) {
+                    document.getElementById('valCashCount').innerText = `⚠️ تنبيه: ${cashCount} مشتركات سيدفعن كاش`;
+                }
+
+                // حقن القوائم
+                document.getElementById('listMain').innerHTML = mainHtml || '<div style="padding:20px;text-align:center">لا توجد تسجيلات بعد</div>';
+                document.getElementById('listAttendance').innerHTML = attHtml || '<div style="padding:20px;text-align:center">لا يوجد حضور مؤكد بعد</div>';
+
+                // إخفاء رسالة التحميل وإظهار اللوحة
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('loader').innerText = 'حدث خطأ أثناء مزامنة البيانات. يرجى تحديث الصفحة.';
+                document.getElementById('loader').style.color = 'var(--red)';
+            });
+    </script>
 </body>
 </html>

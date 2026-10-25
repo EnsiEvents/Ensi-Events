@@ -65,7 +65,7 @@
             background: rgba(251, 243, 181, 0.05);
             border: 1px solid rgba(251, 243, 181, 0.15);
             border-radius: 16px;
-            padding: 30px 10px; /* زيادة الـ Padding لتصبح مربعة أكثر */
+            padding: 30px 10px; 
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -167,7 +167,7 @@
         .badge.gold { background: rgba(251, 243, 181, 0.15); color: var(--gold); border: 1px solid rgba(251, 243, 181, 0.3); }
         .badge.cash { background: rgba(244, 67, 54, 0.15); color: var(--red); border: 1px solid rgba(244, 67, 54, 0.3); }
         .badge.bank { background: rgba(76, 175, 80, 0.1); color: #8bc34a; border: 1px solid rgba(139, 195, 74, 0.3); }
-        /* شارة تم الحضور الزرقاء */
+        /* شارة تم الحضور الزرقاء (بدون إيموجي) */
         .badge.blue { background: rgba(33, 150, 243, 0.15); color: var(--blue); border: 1px solid rgba(33, 150, 243, 0.4); }
 
         .loading-msg { text-align: center; color: var(--gold); font-size: 16px; font-weight: 700; padding: 40px; }
@@ -277,7 +277,6 @@
                 // 1. بناء قائمة التسجيلات العامة
                 let mainHtml = '';
                 mainData.forEach(row => {
-                    // بناءً على ترتيب الشيت الأساسي: الاسم=1، العائلة=2، الواتساب=3، حالة التواصل=5
                     if (row[1] && row[1] !== "") {
                         totalRegistered++;
                         let status = row[5] || 'قيد الانتظار';
@@ -297,14 +296,19 @@
                     }
                 });
 
-                // 2. بناء قائمة سجل الحضور (بالمؤشرات الدقيقة)
+                // 2. بناء قائمة سجل الحضور (بالمؤشرات الدقيقة وتنظيف الأرقام)
                 let attHtml = '';
                 attendanceData.forEach(row => {
                     // المصفوفة من دالة السحب QUERY:
                     // 0=الاسم, 1=العائلة, 2=الواتساب, 3=المبلغ, 4=طريقة الدفع, 5=حالة الاستلام, 6=تأكيد الحضور (Checkbox)
                     if (row[0] && row[0] !== "") {
                         confirmedCount++;
-                        let amount = parseInt(row[3]) || 0;
+                        
+                        // تنظيف النص واستخراج الرقم الصافي فقط لحل مشكلة (0)
+                        let rawAmount = String(row[3] || '0');
+                        let cleanAmount = rawAmount.replace(/[^\d]/g, ''); 
+                        let amount = parseInt(cleanAmount, 10) || 0;
+                        
                         let method = row[4] || 'غير محدد';
                         let payStatus = row[5] || 'قيد الانتظار';
                         
@@ -328,8 +332,8 @@
                         let methodClass = (method === 'حوالة بنكية') ? 'bank' : 'cash';
                         let statusClass = (payStatus === 'تم الاستلام') ? 'green' : 'gray';
 
-                        // شارة الحضور
-                        let attendanceBadge = isAttended ? `<span class="badge blue">✔️ تم الحضور</span>` : '';
+                        // شارة الحضور بدون إيموجي
+                        let attendanceBadge = isAttended ? `<span class="badge blue">تم الحضور</span>` : '';
 
                         attHtml += `
                             <div class="list-item">

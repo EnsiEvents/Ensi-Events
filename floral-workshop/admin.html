@@ -15,6 +15,7 @@
             --orange: #FF9800;
             --gray: #9E9E9E;
             --red: #F44336;
+            --blue: #2196F3;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
@@ -38,7 +39,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* تنسيق الهيدر والشعار */
+        /* تنسيق الهيدر والشعار بالمنتصف */
         .header {
             display: flex;
             flex-direction: column;
@@ -47,13 +48,14 @@
             border-bottom: 1px solid var(--glass-border);
             padding-bottom: 25px;
             margin-bottom: 25px;
-            gap: 15px;
+            gap: 10px;
+            text-align: center;
         }
 
-        .cobranding img { height: 60px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
-        .header-title { color: var(--gold); font-size: 20px; font-weight: 700; letter-spacing: 1px; }
+        .cobranding img { height: 80px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+        .header-title { color: var(--gold); font-size: 22px; font-weight: 700; letter-spacing: 1px; }
 
-        /* شبكة الإحصائيات (المربعات) */
+        /* شبكة الإحصائيات (مربعات بدلاً من مستطيلات) */
         .stats-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
         
         .stats-row-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -63,7 +65,7 @@
             background: rgba(251, 243, 181, 0.05);
             border: 1px solid rgba(251, 243, 181, 0.15);
             border-radius: 16px;
-            padding: 25px 10px;
+            padding: 30px 10px; /* زيادة الـ Padding لتصبح مربعة أكثر */
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -76,11 +78,11 @@
         .stat-card.green-box { border-color: rgba(76, 175, 80, 0.4); background: rgba(76, 175, 80, 0.05); }
         .stat-card.red-box { border-color: rgba(244, 67, 54, 0.4); background: rgba(244, 67, 54, 0.05); }
 
-        .stat-value { font-size: 26px; font-weight: 800; color: var(--gold); margin-bottom: 8px; }
+        .stat-value { font-size: 28px; font-weight: 800; color: var(--gold); margin-bottom: 8px; }
         .stat-card.green-box .stat-value { color: var(--green); }
         .stat-card.red-box .stat-value { color: var(--red); }
         
-        .stat-label { font-size: 13px; color: #a0a0a0; font-weight: 500; }
+        .stat-label { font-size: 13px; color: #a0a0a0; font-weight: 500; line-height: 1.4; }
 
         /* شريط التنبيه للكاش */
         .cash-alert {
@@ -93,7 +95,7 @@
             font-weight: 700;
             font-size: 14px;
             margin-bottom: 30px;
-            display: none; /* يظهر فقط إذا كان هناك كاش */
+            display: none;
         }
 
         /* التبويبات Tabs */
@@ -146,9 +148,9 @@
 
         .item-name { color: #fff; font-weight: 700; font-size: 16px; margin-bottom: 5px; }
         .item-phone { color: #a0a0a0; font-size: 14px; direction: ltr; display: inline-block; }
-        .item-details { display: flex; flex-direction: column; gap: 5px; align-items: flex-end; }
+        .item-details { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
         
-        .badges-row { display: flex; gap: 5px; }
+        .badges-row { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end;}
 
         .badge {
             padding: 4px 10px;
@@ -165,6 +167,8 @@
         .badge.gold { background: rgba(251, 243, 181, 0.15); color: var(--gold); border: 1px solid rgba(251, 243, 181, 0.3); }
         .badge.cash { background: rgba(244, 67, 54, 0.15); color: var(--red); border: 1px solid rgba(244, 67, 54, 0.3); }
         .badge.bank { background: rgba(76, 175, 80, 0.1); color: #8bc34a; border: 1px solid rgba(139, 195, 74, 0.3); }
+        /* شارة تم الحضور الزرقاء */
+        .badge.blue { background: rgba(33, 150, 243, 0.15); color: var(--blue); border: 1px solid rgba(33, 150, 243, 0.4); }
 
         .loading-msg { text-align: center; color: var(--gold); font-size: 16px; font-weight: 700; padding: 40px; }
 
@@ -172,7 +176,7 @@
             .stats-row-3 { grid-template-columns: 1fr; }
             .list-item { flex-direction: column; align-items: flex-start; gap: 15px; }
             .item-details { align-items: flex-start; width: 100%; }
-            .badges-row { flex-wrap: wrap; }
+            .badges-row { justify-content: flex-start; }
         }
     </style>
 </head>
@@ -196,11 +200,11 @@
                 <div class="stats-row-2">
                     <div class="stat-card">
                         <div class="stat-value" id="valTotal">0</div>
-                        <div class="stat-label">إجمالي المسجلين (الكل)</div>
+                        <div class="stat-label">إجمالي المسجلين<br>(الكل)</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="valConfirmed">0</div>
-                        <div class="stat-label">المثبتين (الحضور المؤكد)</div>
+                        <div class="stat-label">المثبتين<br>(الحضور المؤكد)</div>
                     </div>
                 </div>
 
@@ -208,20 +212,20 @@
                 <div class="stats-row-3">
                     <div class="stat-card">
                         <div class="stat-value" id="valExpectedRev">0 ₺</div>
-                        <div class="stat-label">الإيرادات المتوقعة</div>
+                        <div class="stat-label">الإيرادات المتوقعة<br>(للمؤكدين)</div>
                     </div>
                     <div class="stat-card green-box">
                         <div class="stat-value" id="valReceivedRev">0 ₺</div>
-                        <div class="stat-label">الإيرادات المستلمة</div>
+                        <div class="stat-label">الإيرادات المستلمة<br>(حوالة + استلام)</div>
                     </div>
                     <div class="stat-card red-box">
                         <div class="stat-value" id="valUnreceivedRev">0 ₺</div>
-                        <div class="stat-label">الإيرادات الغير مستلمة</div>
+                        <div class="stat-label">الإيرادات الغير مستلمة<br>(كاش قيد الانتظار)</div>
                     </div>
                 </div>
             </div>
 
-            <!-- شريط تنبيه الكاش المستقل -->
+            <!-- شريط تنبيه الكاش -->
             <div class="cash-alert" id="cashAlertBox">
                 ⚠️ تنبيه: <span id="cashCountNumber">0</span> مشتركات سيقومون بالدفع كاش يوم الورشة
             </div>
@@ -259,6 +263,7 @@
                 let mainData = data.mainData;
                 let attendanceData = data.attendanceData;
 
+                // إزالة صف العناوين للحسابات
                 if (mainData.length > 0) mainData.shift();
                 if (attendanceData.length > 0) attendanceData.shift();
 
@@ -272,7 +277,7 @@
                 // 1. بناء قائمة التسجيلات العامة
                 let mainHtml = '';
                 mainData.forEach(row => {
-                    // row[1]=الاسم، row[2]=العائلة، row[3]=الرقم، row[5]=حالة التواصل
+                    // بناءً على ترتيب الشيت الأساسي: الاسم=1، العائلة=2، الواتساب=3، حالة التواصل=5
                     if (row[1] && row[1] !== "") {
                         totalRegistered++;
                         let status = row[5] || 'قيد الانتظار';
@@ -292,31 +297,39 @@
                     }
                 });
 
-                // 2. بناء قائمة سجل الحضور والأمور المالية
+                // 2. بناء قائمة سجل الحضور (بالمؤشرات الدقيقة)
                 let attHtml = '';
                 attendanceData.forEach(row => {
-                    // بناءً على الـ Query: 0=الاسم، 1=العائلة، 2=الرقم، 3=المبلغ(G)، 4=طريقة الدفع(H)، 5=حالة الاستلام(I)
+                    // المصفوفة من دالة السحب QUERY:
+                    // 0=الاسم, 1=العائلة, 2=الواتساب, 3=المبلغ, 4=طريقة الدفع, 5=حالة الاستلام, 6=تأكيد الحضور (Checkbox)
                     if (row[0] && row[0] !== "") {
                         confirmedCount++;
                         let amount = parseInt(row[3]) || 0;
                         let method = row[4] || 'غير محدد';
                         let payStatus = row[5] || 'قيد الانتظار';
                         
+                        // قراءة حالة الحضور (إذا كان المربع مؤشر TRUE)
+                        let isAttended = (row[6] === true || row[6] === 'TRUE' || row[6] === 'true');
+                        
                         expectedRevenue += amount;
                         
-                        // احتساب المستلم وغير المستلم بذكاء
+                        // المعادلة المالية: يعتبر مستلم إذا كان حوالة أو إذا تم استلام الكاش
                         let isReceived = (payStatus === 'تم الاستلام' || method === 'حوالة بنكية');
                         
                         if (isReceived) {
                             receivedRevenue += amount;
                         } else {
                             unreceivedRevenue += amount;
+                            // إذا لم يُستلم وهو كاش، أضفه لتنبيه الكاش
                             if (method === 'كاش يوم الورشة') pendingCashCount++;
                         }
 
                         // تحديد ألوان الشارات
                         let methodClass = (method === 'حوالة بنكية') ? 'bank' : 'cash';
                         let statusClass = (payStatus === 'تم الاستلام') ? 'green' : 'gray';
+
+                        // شارة الحضور
+                        let attendanceBadge = isAttended ? `<span class="badge blue">✔️ تم الحضور</span>` : '';
 
                         attHtml += `
                             <div class="list-item">
@@ -329,6 +342,7 @@
                                     <div class="badges-row">
                                         <span class="badge ${methodClass}">${method}</span>
                                         <span class="badge ${statusClass}">${payStatus}</span>
+                                        ${attendanceBadge}
                                     </div>
                                 </div>
                             </div>
@@ -336,14 +350,14 @@
                     }
                 });
 
-                // تحديث الأرقام في اللوحة
+                // تحديث الأرقام في الداشبورد
                 document.getElementById('valTotal').innerText = totalRegistered;
                 document.getElementById('valConfirmed').innerText = confirmedCount;
                 document.getElementById('valExpectedRev').innerText = expectedRevenue + ' ₺';
                 document.getElementById('valReceivedRev').innerText = receivedRevenue + ' ₺';
                 document.getElementById('valUnreceivedRev').innerText = unreceivedRevenue + ' ₺';
                 
-                // إظهار تنبيه الكاش فقط إذا كان هناك عدد متبقي
+                // تنبيه الكاش
                 if(pendingCashCount > 0) {
                     document.getElementById('cashCountNumber').innerText = pendingCashCount;
                     document.getElementById('cashAlertBox').style.display = 'block';

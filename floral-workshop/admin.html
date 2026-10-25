@@ -167,7 +167,8 @@
         .badge.gold { background: rgba(251, 243, 181, 0.15); color: var(--gold); border: 1px solid rgba(251, 243, 181, 0.3); }
         .badge.cash { background: rgba(244, 67, 54, 0.15); color: var(--red); border: 1px solid rgba(244, 67, 54, 0.3); }
         .badge.bank { background: rgba(76, 175, 80, 0.1); color: #8bc34a; border: 1px solid rgba(139, 195, 74, 0.3); }
-        /* شارة تم الحضور الزرقاء (بدون إيموجي) */
+        
+        /* شارة تم الحضور الزرقاء الأنيقة (بدون إيموجي) */
         .badge.blue { background: rgba(33, 150, 243, 0.15); color: var(--blue); border: 1px solid rgba(33, 150, 243, 0.4); }
 
         .loading-msg { text-align: center; color: var(--gold); font-size: 16px; font-weight: 700; padding: 40px; }
@@ -216,11 +217,11 @@
                     </div>
                     <div class="stat-card green-box">
                         <div class="stat-value" id="valReceivedRev">0 ₺</div>
-                        <div class="stat-label">الإيرادات المستلمة<br>(حوالة + استلام)</div>
+                        <div class="stat-label">الإيرادات المستلمة</div>
                     </div>
                     <div class="stat-card red-box">
                         <div class="stat-value" id="valUnreceivedRev">0 ₺</div>
-                        <div class="stat-label">الإيرادات الغير مستلمة<br>(كاش قيد الانتظار)</div>
+                        <div class="stat-label">الإيرادات الغير مستلمة</div>
                     </div>
                 </div>
             </div>
@@ -296,35 +297,31 @@
                     }
                 });
 
-                // 2. بناء قائمة سجل الحضور (بالمؤشرات الدقيقة وتنظيف الأرقام)
+                // 2. بناء قائمة سجل الحضور بدقة محاسبية
                 let attHtml = '';
                 attendanceData.forEach(row => {
-                    // المصفوفة من دالة السحب QUERY:
-                    // 0=الاسم, 1=العائلة, 2=الواتساب, 3=المبلغ, 4=طريقة الدفع, 5=حالة الاستلام, 6=تأكيد الحضور (Checkbox)
                     if (row[0] && row[0] !== "") {
                         confirmedCount++;
                         
-                        // تنظيف النص واستخراج الرقم الصافي فقط لحل مشكلة (0)
+                        // الفلتر الذكي: يقرأ الرقم الصافي مع الحفاظ على النقطة العشرية ويتجاهل أي نص أو رمز
                         let rawAmount = String(row[3] || '0');
-                        let cleanAmount = rawAmount.replace(/[^\d]/g, ''); 
-                        let amount = parseInt(cleanAmount, 10) || 0;
+                        let cleanAmount = rawAmount.replace(/[^\d.]/g, ''); 
+                        let amount = parseFloat(cleanAmount) || 0;
                         
                         let method = row[4] || 'غير محدد';
                         let payStatus = row[5] || 'قيد الانتظار';
                         
-                        // قراءة حالة الحضور (إذا كان المربع مؤشر TRUE)
-                        let isAttended = (row[6] === true || row[6] === 'TRUE' || row[6] === 'true');
+                        // قراءة حالة الحضور بدقة
+                        let isAttended = (String(row[6]).toUpperCase() === 'TRUE');
                         
                         expectedRevenue += amount;
                         
-                        // المعادلة المالية: يعتبر مستلم إذا كان حوالة أو إذا تم استلام الكاش
-                        let isReceived = (payStatus === 'تم الاستلام' || method === 'حوالة بنكية');
-                        
-                        if (isReceived) {
+                        // الإيرادات المستلمة والغير مستلمة تُحسب بناءً على حالة (تم الاستلام) فقط
+                        if (payStatus === 'تم الاستلام') {
                             receivedRevenue += amount;
                         } else {
                             unreceivedRevenue += amount;
-                            // إذا لم يُستلم وهو كاش، أضفه لتنبيه الكاش
+                            // تحديث عداد الكاش للذين لم يتم استلام مبالغهم
                             if (method === 'كاش يوم الورشة') pendingCashCount++;
                         }
 
@@ -332,7 +329,7 @@
                         let methodClass = (method === 'حوالة بنكية') ? 'bank' : 'cash';
                         let statusClass = (payStatus === 'تم الاستلام') ? 'green' : 'gray';
 
-                        // شارة الحضور بدون إيموجي
+                        // شارة الحضور الجديدة (رسمية وبدون إيموجي)
                         let attendanceBadge = isAttended ? `<span class="badge blue">تم الحضور</span>` : '';
 
                         attHtml += `

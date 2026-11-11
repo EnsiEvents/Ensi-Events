@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل - أمسية بين الألوان والورد | ENSI & Rosaria</title>
+    <title>تسجيل - أمسية بين الألوان والورد | ENSI</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
@@ -73,7 +73,6 @@
            ========================================= */
         .animated-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            /* دمج بين الخمري ولون خلفية الإعلان البني الدافئ */
             background: linear-gradient(-45deg, #2A0A10, #4a2113, #1f0b0f, #371418);
             background-size: 400% 400%;
             animation: gradientBreathing 15s ease infinite; z-index: 0;
@@ -152,15 +151,19 @@
         @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
 
         /* =========================================
-           الشال الخمري (الماسك الجانبي)
+           الشال الخمري (الماسك الجانبي والعمودي)
            ========================================= */
         .decorative-mask {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             overflow: hidden; border-radius: 20px; pointer-events: none; z-index: 0;
+            /* قناع عمودي: تلاشي من الأعلى والأسفل */
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
         }
 
         .side-decor-inside {
-            position: absolute; top: 5%; left: -60px; width: 350px; pointer-events: none;
+            position: absolute; top: 15%; left: -60px; width: 350px; pointer-events: none;
+            /* قناع أفقي: تلاشي نحو اليمين */
             -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 65%);
             mask-image: linear-gradient(to right, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 65%);
             animation: gentleFloat 6s ease-in-out infinite alternate;
@@ -184,10 +187,10 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3); backdrop-filter: blur(5px);
         }
         .ticket-header { background: rgba(244, 227, 197, 0.15); padding: 20px; border-bottom: 1px solid rgba(244, 227, 197, 0.2); border-radius: 15px 15px 0 0; display: flex; justify-content: center; align-items: center; }
-        .ticket-cobranding { display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .ticket-cobranding img { height: 30px; }
-        .ticket-cobranding .separator { width: 1px; height: 20px; background-color: var(--glass-border); }
-        .ticket-cobranding .rosaria-text { font-size: 18px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+        
+        /* تعديل الشعار في بطاقة التأكيد */
+        .ticket-cobranding { display: flex; align-items: center; justify-content: center; }
+        .ticket-cobranding img { height: 40px; }
         
         .ticket-body { padding: 40px 20px; text-align: center; border-bottom: 1px solid rgba(244, 227, 197, 0.2); }
         .ticket-name { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 15px; line-height: 1.5;}
@@ -200,10 +203,9 @@
         /* =========================================
            الفورم الداخلي وتفاصيل الورشة
            ========================================= */
-        .cobranding { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px; margin-top: 15px; }
-        .cobranding img { height: 40px; }
-        .separator { width: 1px; height: 30px; background-color: var(--glass-border); }
-        .rosaria-text { font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+        /* تعديل الشعار في الواجهة الأمامية */
+        .cobranding { display: flex; align-items: center; justify-content: center; margin-bottom: 30px; margin-top: 15px; }
+        .cobranding img { height: 50px; }
 
         .workshop-title-img { width: 100%; max-width: 400px; display: block; margin: 0 auto 15px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); }
         .workshop-description { text-align: center; font-size: 15px; line-height: 1.7; color: #f0f0f0; margin-bottom: 25px; padding: 0 10px; }
@@ -242,8 +244,7 @@
 
         @media (max-width: 768px) {
             .front-face, .back-face { padding: 30px 20px; }
-            .rosaria-text { font-size: 20px; }
-            .side-decor-inside { width: 250px; left: -40px; top: 5%; }
+            .side-decor-inside { width: 250px; left: -40px; top: 15%; }
             .details-grid { grid-template-columns: 1fr; gap: 10px; }
         }
     </style>
@@ -252,7 +253,6 @@
 
     <div class="animated-bg"></div>
 
-    <!-- الصنوبر المتساقط -->
     <div class="pinecones-container">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_4554.png?raw=true" class="pinecone pc-1" alt="Pinecone">
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_4554.png?raw=true" class="pinecone pc-2" alt="Pinecone">
@@ -261,7 +261,6 @@
         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_4554.png?raw=true" class="pinecone pc-5" alt="Pinecone">
     </div>
 
-    <!-- جزيئات الضوء الدافئة -->
     <div class="fireflies-container">
         <div class="firefly ff-1"></div>
         <div class="firefly ff-2"></div>
@@ -278,7 +277,6 @@
                 <button id="btn-en" onclick="setLanguage('en')">EN</button>
             </div>
 
-            <!-- صورة الشال الخمري (الماسك) -->
             <div class="decorative-mask">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_4559.png?raw=true" class="side-decor-inside" alt="Scarf Decor">
             </div>
@@ -287,13 +285,11 @@
                 <div class="flip-inner" id="flipInner">
                     
                     <div class="front-face">
+                        <!-- تم إزالة فاصل Rosaria وتوسيط شعار ENSI -->
                         <div class="cobranding">
                             <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events">
-                            <div class="separator"></div>
-                            <div class="rosaria-text">ROSARIA</div>
                         </div>
 
-                        <!-- صورة العنوان -->
                         <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_4566.png?raw=true" class="workshop-title-img" alt="أمسية بين الألوان والورد">
 
                         <p class="workshop-description">
@@ -386,10 +382,9 @@
                         <div class="ticket-wrapper">
                             
                             <div class="ticket-header">
+                                <!-- تم إزالة فاصل Rosaria وتوسيط شعار ENSI في التذكرة أيضاً -->
                                 <div class="ticket-cobranding">
                                     <img src="https://raw.githubusercontent.com/EnsiEvents/Ensi-Events/4819495e2ec21a6a5eae64ffcf60d1d8bb67049c/ENSI%20Logo.svg" alt="ENSI Events">
-                                    <div class="separator"></div>
-                                    <div class="rosaria-text">ROSARIA</div>
                                 </div>
                             </div>
                             
@@ -416,7 +411,6 @@
                 </div>
             </div>
 
-            <!-- الصورة السفلية (الأصيص والهوت شوكليت) -->
             <div class="bottom-bag-container">
                 <img src="https://github.com/EnsiEvents/Ensi-Events/blob/main/floral-workshop/IMG_4550.png?raw=true" class="bottom-decor-img" alt="Pot and Hot Chocolate">
             </div>
@@ -459,7 +453,6 @@
             this.value = this.value.replace(/[^\d\+\s\(\)\-]/g, '');
         });
 
-        // نفس رابط الدالة السابقة
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzaPFLpqKjJGyXKy0itQ7dCKgMDGYrhd5nnQjB20FD5XigVS7_TpjjzzE_YO2RVf-/exec';
 
         form.addEventListener('submit', function(e) {

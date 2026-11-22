@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدماتنا | ENSI Events</title>
+  <meta name="description" content="استكشف خدمات ENSI Events في إسطنبول: تنظيم وإدارة الفعاليات، تصميم وتجهيز الديكور، الورش الإبداعية، والهوية البصرية والمطبوعات لكافة أنواع المناسبات.">
+  <meta name="theme-color" content="#06231d">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:site_name" content="ENSI Events">
+  <meta property="og:title" content="خدماتنا | ENSI Events">
+  <meta property="og:description" content="خدمات متكاملة في تنظيم وإدارة الفعاليات والمناسبات والورش الإبداعية في إسطنبول بأدق التفاصيل.">
+
+  <!-- أيقونة الموقع -->
+  <link rel="icon" type="image/svg+xml" href="ENSI%20Logo.svg">
+
+  <!-- الخطوط العربية العصرية المعتمدة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ملف التنسيقات الموحد -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- شريط تقدم التمرير الرفيع -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- الشريط العلوي الذكي -->
+  <header class="main-header" id="main-header">
+    <div class="menu-toggle-wrapper">
+      <button
+        type="button"
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="فتح القائمة الرئيسية"
+        aria-controls="nav-overlay"
+        aria-expanded="false"
+      >
+        <span class="menu-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="menu-toggle-label">القائمة</span>
+      </button>
+    </div>
+
+    <div class="logo-container">
+      <a href="index.html" aria-label="العودة إلى الصفحة الرئيسية لـ ENSI Events">
+        <img src="ENSI%20Logo.svg" alt="ENSI Events" class="navbar-logo" width="134" height="46">
+      </a>
+    </div>
+
+    <div class="header-action">
+      <a href="booking.html" class="header-cta" data-magnetic data-magnetic-strength="0.2">
+        <span class="btn-text" data-magnetic-text>احجز مقابلة</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- القائمة المنبثقة الشاملة -->
+  <nav class="nav-overlay" id="nav-overlay" aria-label="التنقل الرئيسي" aria-hidden="true">
+    <button type="button" class="close-menu" id="close-menu" aria-label="إغلاق القائمة">&times;</button>
+
+    <ul class="nav-overlay-links">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="about.html">لماذا نحن؟</a></li>
+      <li><a href="services.html">خدماتنا</a></li>
+      <li><a href="portfolio.html">أعمالنا السابقة</a></li>
+      <li><a href="booking.html">احجز مقابلة</a></li>
+      <li><a href="contact.html">تواصل معنا</a></li>
+    </ul>
+
+    <div class="nav-overlay-footer">
+      <span>إسطنبول، تركيا</span>
+      <a href="mailto:ensieventstr@gmail.com" class="ltr-inline">ensieventstr@gmail.com</a>
+      <a href="https://www.instagram.com/ensievents?stkn=OWoxeWV3c3U5ZHFy" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@ensievents?_r=1&_t=ZS-9A5m2ySubQX" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ==================================================================
+         1. واجهة الصفحة الداخلية (Page Hero — Deep Emerald)
+         ================================================================== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <nav class="breadcrumb" aria-label="مسار التنقل" data-hero-reveal>
+            <a href="index.html">الرئيسية</a>
+            <span class="breadcrumb-sep" aria-hidden="true">/</span>
+            <span aria-current="page">خدماتنا</span>
+          </nav>
+
+          <h1 class="page-hero-title" data-hero-reveal>
+            خدمات متكاملة لتصميم وتنظيم فعاليتك
+          </h1>
+
+          <p class="page-hero-lead" data-hero-reveal>
+            نبتكر وندير فعاليات وورش عمل تجمع الناس وتترك أثراً حقيقياً. لا نكتفي بالتنظيم التقليدي،
+            بل نبني تجربة متكاملة تراعي كل تفصيل من الفكرة الأولى وحتى نهاية الحدث.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         2. الخدمات الأساسية الست (Warm Muted Sand #E4DBCC)
+         ================================================================== -->
+    <section class="core-services-section" id="core-services" data-theme="light">
+      <div class="container">
+        <div class="section-header-center" data-reveal>
+          <span class="section-eyebrow">ما نقدمه</span>
+          <h2 class="section-heading">حلول مرنة تغطي كل جانب من جوانب الحدث</h2>
+          <p class="section-lead">
+            سواء كنت تحتاج إدارة شاملة للفعالية من الصفر أو تجهيزاً فنياً ومطبوعات وهوية مكانية،
+            فريقنا يضبط كل عنصر بدقة وتناسق.
+          </p>
+        </div>
+
+        <div class="core-services-grid" data-stagger>
+          <!-- 01 -->
+          <article class="core-service-card" data-stagger-item>
+            <div class="core-service-top">
+              <div class="core-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                  <line x1="16" x2="16" y1="2" y2="6"></line>
+                  <line x1="8" x2="8" y1="2" y2="6"></line>
+                  <line x1="3" x2="21" y1="10" y2="10"></line>
+                </svg>
+              </div>
+              <span class="core-service-num" aria-hidden="true">01</span>
+            </div>
+            <h3>تنظيم المناسبات والفعاليات</h3>
+            <p>
+              تخطيط وتنظيم متكامل للمؤتمرات، الحفلات، حفلات التخرج، واللقاءات الخاصة بدقة وإبداع
+              يضمن انسجام جميع فقرات الحدث.
+            </p>
+            <span class="core-service-scope">تخطيط شامل &bull; جدولة &bull; تنسيق موردين</span>
+          </article>
+
+          <!-- 02 -->
+          <article class="core-service-card" data-stagger-item>
+            <div class="core-service-top">
+              <div class="core-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3L22 4"></path>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+              </div>
+              <span class="core-service-num" aria-hidden="true">02</span>
+            </div>
+            <h3>إدارة المناسبات ميدانياً</h3>
+            <p>
+              إدارة احترافية تهتم بكل التفاصيل قبل وأثناء وبعد الفعالية؛ من استقبال الضيوف وتنسيق الفرق
+              حتى الإغلاق السلس للحدث بدون أي توتر عليك.
+            </p>
+            <span class="core-service-scope">إشراف ميداني &bull; استقبال &bull; إدارة الوقت</span>
+          </article>
+
+          <!-- 03 -->
+          <article class="core-service-card" data-stagger-item>
+            <div class="core-service-top">
+              <div class="core-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                  <line x1="3" x2="21" y1="9" y2="9"></line>
+                  <line x1="9" x2="9" y1="21" y2="9"></line>
+                </svg>
+              </div>
+              <span class="core-service-num" aria-hidden="true">03</span>
+            </div>
+            <h3>تصميم وتجهيز الفعاليات والديكور</h3>
+            <p>
+              تصميم ديكورات وتجهيزات مكانية تتناسب مع فكرة وأجواء مناسبتك، مع تنسيق متكامل للألوان
+              والإضاءة وتوزيع المساحات والطاولات.
+            </p>
+            <span class="core-service-scope">ديكور مخصص &bull; توزيع المساحة &bull; ثيم لوني</span>
+          </article>
+
+          <!-- 04 -->
+          <article class="core-service-card" data-stagger-item>
+            <div class="core-service-top">
+              <div class="core-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                </svg>
+              </div>
+              <span class="core-service-num" aria-hidden="true">04</span>
+            </div>
+            <h3>ورش العمل والأنشطة الإبداعية</h3>
+            <p>
+              تصميم وتنفيذ ورش تفاعلية وأنشطة إبداعية تجذب المشاركين وتلهمهم، مع تجهيز كامل للأدوات
+              والضيافة وإدارة التجربة للأفراد والمجموعات والشركات.
+            </p>
+            <span class="core-service-scope">تطوير الفكرة &bull; تجهيز الأدوات &bull; ضيافة وتنظيم</span>
+          </article>
+
+          <!-- 05 -->
+          <article class="core-service-card" data-stagger-item>
+            <div class="core-service-top">
+              <div class="core-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
+              <span class="core-service-num" aria-hidden="true">05</span>
+            </div>
+            <h3>الهوية البصرية والمطبوعات</h3>
+            <p>
+              تصميم هوية بصرية متكاملة ومطبوعات مخصصة للفعالية؛ من لوحات الترحيب وبطاقات الضيوف
+              إلى الهدايا التذكارية التي تعكس طابع حدثك باحتراف.
+            </p>
+            <span class="core-service-scope">بطاقات ترحيب &bull; لوحات &bull; مطبوعات مخصصة</span>
+          </article>
+
+          <!-- 06 -->
+          <article class="core-service-card" data-stagger-item>
+            <div class="core-service-top">
+              <div class="core-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <span class="core-service-num" aria-hidden="true">06</span>
+            </div>
+            <h3>إتقان التفاصيل وتجربة الضيوف</h3>
+            <p>
+              نركز على التفاصيل الصغيرة التي تحدث فرقاً كبيراً؛ تنسيق الضيافة، ترتيب الهدايا،
+              والمراجعة النهائية لكل عنصر ليعيش ضيوفك تجربة سلسة ومميزة.
+            </p>
+            <span class="core-service-scope">مراجعة الجودة &bull; ضيافة &bull; تجربة حضور متكاملة</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         3. أنواع الفعاليات والمناسبات التسع (Deep Emerald + Card Spotlight)
+         ================================================================== -->
+    <section class="event-types-section" id="event-types">
+      <div class="container">
+        <div class="section-header-center" data-reveal>
+          <span class="section-eyebrow">أنواع الفعاليات والمناسبات</span>
+          <h2 class="section-heading">نصمم وننظم تجارب تناسب كل مناسبة</h2>
+          <p class="section-lead">
+            اختر نوع مناسبتك القادمة للبدء بترتيب التفاصيل وحجز مقابلة أولية مع فريقنا.
+          </p>
+        </div>
+
+        <div class="event-types-grid" data-stagger>
+          <!-- 1 -->
+          <a href="booking.html?type=wedding" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+              </div>
+              <h3>حفلات الخطوبة والزفاف</h3>
+            </div>
+            <p>نصمم أجواء رومانسية وتفاصيل متناغمة تعبر عن قصتكم وتليق بليلتكم الخاصة.</p>
+            <span class="event-type-link">
+              احجز لمناسبتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 2 -->
+          <a href="booking.html?type=birthday" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"></path>
+                  <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"></path>
+                  <path d="M2 21h20"></path>
+                  <path d="M7 8v3"></path>
+                  <path d="M12 8v3"></path>
+                  <path d="M17 8v3"></path>
+                </svg>
+              </div>
+              <h3>أعياد الميلاد</h3>
+            </div>
+            <p>نجعل يومك مميزاً بتفاصيله؛ من الثيم والديكور حتى الضيافة والترتيبات الخاصة.</p>
+            <span class="event-type-link">
+              احجز لمناسبتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 3 -->
+          <a href="booking.html?type=graduation" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <h3>حفلات التخرج</h3>
+            </div>
+            <p>ننظم لحظات تليق بنجاحك وتستحق الاحتفال مع العائلة والأصدقاء بأجواء منظمة ومبهجة.</p>
+            <span class="event-type-link">
+              احجز لمناسبتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 4 -->
+          <a href="booking.html?type=student" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h3>الفعاليات الطلابية</h3>
+            </div>
+            <p>ندعم الأنشطة والروابط الطلابية وننظم فعاليات تفاعلية تجمعكم وتصنع ذكريات جامعية لا تُنسى.</p>
+            <span class="event-type-link">
+              احجز لفعاليتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 5 -->
+          <a href="booking.html?type=workshop" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                </svg>
+              </div>
+              <h3>الورش الفنية والإبداعية</h3>
+            </div>
+            <p>تجارب عملية ملهمة تنمي المهارات وتطلق الإبداع، مجهزة بالكامل للأفراد والمجموعات الخاصة.</p>
+            <span class="event-type-link">
+              اطلب ورشة خاصة
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 6 -->
+          <a href="booking.html?type=exhibition" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21h18"></path>
+                  <path d="M5 21V7l8-4v18"></path>
+                  <path d="M19 21V11l-6-4"></path>
+                </svg>
+              </div>
+              <h3>الملتقيات والمعارض</h3>
+            </div>
+            <p>تنظيم احترافي للأفكار والمبادرات التي تستحق الانتشار، مع تجهيز الأجنحة وإدارة حركة الزوار.</p>
+            <span class="event-type-link">
+              احجز لفعاليتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 7 -->
+          <a href="booking.html?type=private" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+              </div>
+              <h3>المناسبات الخاصة</h3>
+            </div>
+            <p>جلسات عائلية، تجمعات خاصة، وتجارب مصممة على مقاس دائرتك القريبة بخصوصية واهتمام دقيق.</p>
+            <span class="event-type-link">
+              احجز لمناسبتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 8 -->
+          <a href="booking.html?type=corporate" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                  <path d="M9 22v-4h6v4"></path>
+                  <path d="M8 6h.01"></path>
+                  <path d="M16 6h.01"></path>
+                  <path d="M12 6h.01"></path>
+                  <path d="M12 10h.01"></path>
+                  <path d="M12 14h.01"></path>
+                  <path d="M16 10h.01"></path>
+                  <path d="M16 14h.01"></path>
+                  <path d="M8 10h.01"></path>
+                  <path d="M8 14h.01"></path>
+                </svg>
+              </div>
+              <h3>فعاليات الشركات</h3>
+            </div>
+            <p>نصمم فعاليات احترافية، إطلاق منتجات، وأنشطة بناء فرق تعكس هوية شركتكم وترفع مستوى الحضور.</p>
+            <span class="event-type-link">
+              تواصل للشركات
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+
+          <!-- 9 -->
+          <a href="booking.html?type=outdoor" class="event-type-card" data-stagger-item data-spotlight>
+            <div class="event-type-head">
+              <div class="event-type-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+              </div>
+              <h3>الفعاليات الخارجية</h3>
+            </div>
+            <p>تصاميم وتجهيزات مرنة تناسب المساحات المفتوحة والحدائق ومختلف الأجواء والطقوس الموسمية.</p>
+            <span class="event-type-link">
+              احجز لفعاليتك
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         4. شريط الربط بطريقة العمل والحجز (Warm Muted Sand #E4DBCC)
+         ================================================================== -->
+    <section class="services-bridge" data-theme="light">
+      <div class="container">
+        <div class="bridge-box" data-reveal>
+          <div class="bridge-content">
+            <span class="section-eyebrow">الخطوة التالية</span>
+            <h2 class="section-heading">عندك فكرة خاصة؟ خلينا نرتبها معاً</h2>
+            <p class="section-lead">
+              كل تفصيل يمكن تخصيصه حسب رؤيتك وميزانيتك. يمكنك الاطلاع على خطوات عملنا أو حجز مقابلة مباشرة لنبدأ التخطيط.
+            </p>
+          </div>
+
+          <div class="bridge-actions">
+            <a href="booking.html" class="btn btn-emerald" data-magnetic>
+              <span class="btn-text" data-magnetic-text>
+                احجز مقابلة الآن
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 12H5"></path>
+                  <path d="m12 19-7-7 7-7"></path>
+                </svg>
+              </span>
+            </a>
+
+            <a href="about.html" class="btn btn-outline-dark" data-magnetic>
+              <span class="btn-text" data-magnetic-text>تعرف على طريقة عملنا</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- التذييل المؤسسي الموحد -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" aria-label="ENSI Events">
+            <img src="ENSI%20Logo.svg" alt="ENSI Events Logo" class="footer-logo" width="124" height="44">
+          </a>
+          <p class="footer-desc">
+            تنظيم وإدارة الفعاليات، المناسبات، والورش الإبداعية في إسطنبول بتفاصيل دقيقة وتنفيذ متكامل.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="about.html">لماذا نحن؟</a></li>
+            <li><a href="services.html">خدماتنا</a></li>
+            <li><a href="portfolio.html">أعمالنا السابقة</a></li>
+            <li><a href="booking.html">احجز مقابلة</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>تواصل معنا</h4>
+          <ul class="contact-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <a href="mailto:ensieventstr@gmail.com" class="ltr-inline">ensieventstr@gmail.com</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="contact-svg" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>إسطنبول، تركيا</span>
+            </li>
+          </ul>
+
+          <div class="social-links">
+            <a
+              href="https://www.instagram.com/ensievents?stkn=OWoxeWV3c3U5ZHFy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="حساب ENSI Events على إنستغرام"
+              title="Instagram"
+            >
+              <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@ensievents?_r=1&_t=ZS-9A5m2ySubQX"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="حساب ENSI Events على تيك توك"
+              title="TikTok"
+            >
+              <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>جميع الحقوق محفوظة &copy; 2026 ENSI Events.</p>
+        <p>إسطنبول، تركيا</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- مكتبة GSAP 3 + ScrollTrigger -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- محرك التفاعل والأنيميشن الموحد -->
+  <script defer src="main.js"></script>
+
+  <!-- Vercel Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

@@ -1,78 +1,1630 @@
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+/* ==========================================================================
+   ENSI Events — Luxury Editorial Design System (style.css)
+   Palette: 60% Deep Emerald & Champagne Gold / 40% Warm Ivory, Burgundy & Terracotta
+   Typography: Amiri (Display) + Tajawal (UI & Body) | RTL-First & Safari Optimized
+   ========================================================================== */
 
 :root {
-  --primary-green: #0b3c33; 
-  --gold-accent: #d4af37; 
-  --light-cream: #fdfbf7; 
-  --white: #ffffff;
+  /* لوحة الألوان الداكنة (60%) */
+  --emerald-deep: #06231d;
+  --emerald-royal: #0b3c33;
+  --emerald-surface: #0e463c;
+  --emerald-border: rgba(251, 243, 181, 0.16);
+  --emerald-border-strong: rgba(251, 243, 181, 0.38);
+
+  /* لوحة الألوان العاجية الدافئة (40%) */
+  --ivory-warm: #f6f1e7;
+  --sand-soft: #ece4d5;
+  --ivory-card: #fbf8f2;
+  --ivory-border: rgba(11, 60, 51, 0.12);
+
+  /* الذهبي الثنائي الذكي */
+  --gold-champagne: #fbf3b5;
+  --gold-champagne-soft: rgba(251, 243, 181, 0.12);
+  --gold-antique: #9e7b3b;
+
+  /* اللمسات الدافئة (الخمري والـ Terracotta) */
+  --burgundy: #5a1e2a;
+  --burgundy-soft: rgba(90, 30, 42, 0.12);
+  --terracotta: #b85d3b;
+  --terracotta-soft: rgba(184, 93, 59, 0.14);
+
+  /* ألوان النصوص */
+  --text-on-dark: #f7f4ec;
+  --text-on-dark-muted: rgba(247, 244, 236, 0.76);
+  --text-on-light: #0b2d26;
+  --text-on-light-muted: rgba(11, 45, 38, 0.72);
+
+  /* الخطوط */
+  --font-display: 'Amiri', Georgia, serif;
+  --font-body: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* الأبعاد والمسافات */
+  --container-max: 1220px;
+  --header-height: 88px;
+  --section-pad-y: clamp(5rem, 8.5vw, 8.5rem);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* الانتقالات والظلال */
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-dark: 0 24px 60px rgba(3, 16, 13, 0.42);
+  --shadow-light: 0 20px 50px rgba(11, 45, 38, 0.08);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; direction: rtl; }
-body { background-color: var(--primary-green); color: var(--white); }
+/* --------------------------------------------------------------------------
+   1. التأسيس والتصفير النظيف (Base & Reset)
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background-color: var(--primary-green); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
-.logo h1 { color: var(--gold-accent); font-size: 28px; letter-spacing: 2px; }
-.nav-links { list-style: none; display: flex; gap: 30px; }
-.nav-links a { text-decoration: none; color: var(--white); font-size: 16px; transition: color 0.3s ease; }
-.nav-links a:hover { color: var(--gold-accent); }
-.cta-btn { background-color: transparent; color: var(--gold-accent); border: 1px solid var(--gold-accent); padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer; transition: all 0.3s ease; }
-.cta-btn:hover { background-color: var(--gold-accent); color: var(--primary-green); }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--emerald-deep);
+}
 
-.hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; background-color: var(--primary-green); position: relative; }
-.hero-content { max-width: 800px; padding: 20px; z-index: 2; }
-.hero-content h2 { color: var(--gold-accent); font-size: 55px; margin-bottom: 20px; font-weight: 700; }
-.hero-content p { color: var(--light-cream); font-size: 22px; margin-bottom: 40px; line-height: 1.6; }
-.hero-buttons { display: flex; gap: 20px; justify-content: center; }
-.primary-btn { background-color: var(--gold-accent); color: var(--primary-green); border: none; padding: 15px 35px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.primary-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
-.secondary-btn { background-color: transparent; color: var(--white); border: 1px solid var(--white); padding: 15px 35px; font-size: 18px; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
-.secondary-btn:hover { background-color: var(--white); color: var(--primary-green); }
+body {
+  font-family: var(--font-body);
+  background-color: var(--emerald-deep);
+  color: var(--text-on-dark);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-.why-us { padding: 80px 5%; background-color: #082d26; text-align: center; }
-.section-title { color: var(--gold-accent); font-size: 36px; margin-bottom: 50px; position: relative; display: inline-block; }
-.section-title::after { content: ''; position: absolute; width: 50%; height: 2px; background-color: var(--gold-accent); bottom: -10px; left: 25%; border-radius: 2px; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-.feature-card { border: 1px solid rgba(212, 175, 55, 0.2); padding: 40px 20px; border-radius: 12px; background-color: rgba(255, 255, 255, 0.02); transition: all 0.4s ease; }
-.feature-card:hover { border-color: var(--gold-accent); transform: translateY(-8px); background-color: rgba(212, 175, 55, 0.05); }
-.feature-card .icon { font-size: 45px; margin-bottom: 20px; }
-.feature-card h4 { color: var(--white); font-size: 22px; font-weight: 500; line-height: 1.6; }
+html.menu-open,
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
 
-.services { padding: 80px 5%; background-color: var(--primary-green); text-align: center; }
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
-.service-card { background-color: #082d26; border-right: 4px solid var(--primary-green); padding: 40px 30px; border-radius: 15px; text-align: right; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.service-card:hover { transform: translateY(-10px); border-right: 4px solid var(--gold-accent); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15); }
-.service-icon { font-size: 40px; margin-bottom: 20px; display: inline-block; padding: 15px; background-color: rgba(212, 175, 55, 0.1); border-radius: 50%; }
-.service-card h4 { color: var(--gold-accent); font-size: 24px; margin-bottom: 15px; font-weight: 700; }
-.service-card p { color: var(--light-cream); font-size: 16px; line-height: 1.8; opacity: 0.9; }
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
 
-.workshops-section { padding: 80px 5%; background-color: #082d26; text-align: center; }
-.workshop-card-minimal { display: flex; flex-wrap: wrap; background-color: var(--primary-green); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; overflow: hidden; margin-top: 40px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); text-align: right; transition: transform 0.3s ease; }
-.workshop-card-minimal:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.5); }
-.workshop-content { flex: 1; min-width: 300px; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-.active-badge { background-color: var(--gold-accent); color: var(--primary-green); padding: 8px 20px; border-radius: 25px; font-size: 14px; font-weight: 700; display: inline-block; margin-bottom: 25px; align-self: flex-start; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-.workshop-title { color: var(--gold-accent); font-size: 32px; margin-bottom: 20px; font-weight: 700; }
-.workshop-desc { color: var(--light-cream); font-size: 18px; line-height: 1.8; margin-bottom: 30px; opacity: 0.9; }
-.workshop-meta { display: flex; flex-direction: column; gap: 15px; margin-bottom: 40px; }
-.meta-item { color: var(--white); font-size: 16px; display: flex; align-items: center; gap: 12px; background-color: rgba(255, 255, 255, 0.03); padding: 10px 15px; border-radius: 8px; width: fit-content; }
-.meta-icon { font-size: 20px; }
-.register-link-btn { background-color: var(--gold-accent); color: var(--primary-green); text-decoration: none; text-align: center; padding: 18px 40px; font-size: 18px; font-weight: bold; border-radius: 8px; transition: all 0.3s ease; width: fit-content; }
-.register-link-btn:hover { background-color: #e5c354; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); transform: translateY(-3px); }
-.workshop-image-box { flex: 1; min-width: 300px; min-height: 300px; }
-.workshop-img { width: 100%; height: 100%; object-fit: cover; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-.site-footer { background-color: #051c17; padding: 60px 5% 20px; border-top: 2px solid rgba(212, 175, 55, 0.2); }
-.footer-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px; }
-.footer-col { flex: 1; min-width: 250px; }
-.footer-logo { color: var(--gold-accent); font-size: 32px; letter-spacing: 3px; margin-bottom: 15px; }
-.footer-desc { color: rgba(255, 255, 255, 0.7); font-size: 15px; line-height: 1.8; }
-.footer-col h4 { color: var(--gold-accent); font-size: 20px; margin-bottom: 20px; position: relative; display: inline-block; }
-.footer-col h4::after { content: ''; position: absolute; width: 30px; height: 2px; background-color: var(--gold-accent); bottom: -8px; right: 0; }
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 15px; color: rgba(255, 255, 255, 0.8); font-size: 15px; }
-.links-col ul li a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
-.links-col ul li a:hover { color: var(--gold-accent); padding-right: 5px; }
-.social-links { margin-top: 20px; display: flex; gap: 15px; }
-.social-icon { display: inline-block; padding: 8px 15px; background-color: rgba(212, 175, 55, 0.1); color: var(--gold-accent); text-decoration: none; border-radius: 5px; font-size: 14px; transition: all 0.3s ease; }
-.social-icon:hover { background-color: var(--gold-accent); color: #051c17; }
-.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+::selection {
+  background-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(90%, var(--container-max));
+  margin-inline: auto;
+}
+
+.ltr-inline {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   2. شريط التقدم الرفيع في أعلى الصفحة
+   -------------------------------------------------------------------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2.5px;
+  background: linear-gradient(to left, var(--gold-champagne), var(--terracotta));
+  transform-origin: right center;
+  transform: scaleX(0);
+  z-index: 1200;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* --------------------------------------------------------------------------
+   3. مكونات مشتركة (Typography, Eyebrows & Buttons)
+   -------------------------------------------------------------------------- */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gold-champagne);
+  margin-bottom: 16px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 30px;
+  height: 1.5px;
+  background-color: var(--terracotta);
+}
+
+[data-theme="light"] .section-eyebrow {
+  color: var(--burgundy);
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.2vw, 3.35rem);
+  font-weight: 700;
+  line-height: 1.28;
+  color: var(--gold-champagne);
+  margin-bottom: 20px;
+}
+
+[data-theme="light"] .section-heading {
+  color: var(--emerald-royal);
+}
+
+.section-lead {
+  font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+  line-height: 1.9;
+  color: var(--text-on-dark-muted);
+  max-width: 640px;
+}
+
+[data-theme="light"] .section-lead {
+  color: var(--text-on-light-muted);
+}
+
+.section-header-center {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: clamp(2.8rem, 5vw, 4.2rem);
+}
+
+.section-header-center .section-eyebrow {
+  justify-content: center;
+}
+
+.section-header-center .section-eyebrow::after {
+  content: '';
+  width: 30px;
+  height: 1.5px;
+  background-color: var(--terracotta);
+}
+
+.section-header-center .section-lead {
+  margin-inline: auto;
+}
+
+/* الأزرار (متوافقة مع الأزرار المغناطيسية) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background-color 0.35s var(--ease-luxury),
+              color 0.35s var(--ease-luxury),
+              border-color 0.35s var(--ease-luxury),
+              box-shadow 0.35s var(--ease-luxury);
+  position: relative;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  will-change: transform;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform 0.35s var(--ease-luxury);
+}
+
+.btn:hover .btn-icon {
+  transform: translateX(-4px);
+}
+
+.btn-primary {
+  background-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+  border: 1.5px solid var(--gold-champagne);
+  box-shadow: 0 10px 28px rgba(251, 243, 181, 0.16);
+}
+
+.btn-primary:hover {
+  background-color: #fff9d2;
+  border-color: #fff9d2;
+  box-shadow: 0 14px 34px rgba(251, 243, 181, 0.28);
+}
+
+.btn-secondary {
+  background-color: rgba(251, 243, 181, 0.06);
+  color: var(--gold-champagne);
+  border: 1.5px solid rgba(251, 243, 181, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+  border-color: var(--gold-champagne);
+}
+
+.btn-emerald {
+  background-color: var(--emerald-royal);
+  color: var(--gold-champagne);
+  border: 1.5px solid var(--emerald-royal);
+  box-shadow: 0 12px 28px rgba(11, 60, 51, 0.18);
+}
+
+.btn-emerald:hover {
+  background-color: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--ivory-warm);
+}
+
+.editorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--emerald-royal);
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--terracotta);
+  transition: color 0.3s ease, border-color 0.3s ease, gap 0.3s ease;
+}
+
+.editorial-link:hover {
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+  gap: 14px;
+}
+
+.editorial-link svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   4. الشريط العلوي الذكي (Adaptive Header)
+   -------------------------------------------------------------------------- */
+.main-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--header-height);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding-inline: 5%;
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(6, 35, 29, 0.78) 0%, rgba(6, 35, 29, 0) 100%);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.4s var(--ease-luxury),
+              border-color 0.4s var(--ease-luxury),
+              backdrop-filter 0.4s var(--ease-luxury),
+              height 0.4s var(--ease-luxury);
+}
+
+.main-header.is-scrolled {
+  height: 76px;
+  background: rgba(6, 35, 29, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(251, 243, 181, 0.14);
+}
+
+/* التكيف الذكي فوق الأقسام العاجية الفاتحة */
+.main-header.header-on-light {
+  background: rgba(246, 241, 231, 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(11, 60, 51, 0.1);
+}
+
+.menu-toggle-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 4px;
+  color: var(--gold-champagne);
+  transition: color 0.35s ease;
+}
+
+.menu-toggle-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 30px;
+}
+
+.menu-toggle-bars span {
+  display: block;
+  height: 1.8px;
+  width: 100%;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s var(--ease-luxury), width 0.35s var(--ease-luxury), opacity 0.25s ease;
+}
+
+.menu-toggle-bars span:nth-child(2) {
+  width: 72%;
+}
+
+.menu-toggle:hover .menu-toggle-bars span:nth-child(2) {
+  width: 100%;
+}
+
+.menu-toggle-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.main-header.header-on-light .menu-toggle {
+  color: var(--emerald-royal);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: clamp(104px, 12vw, 138px);
+  height: auto;
+  object-fit: contain;
+  transition: filter 0.4s ease, transform 0.35s var(--ease-luxury);
+}
+
+.logo-container a:hover .navbar-logo {
+  transform: scale(1.03);
+}
+
+/* قلب لون الشعار الذهبي الفاتح تلقائياً إلى زمردي داكن فوق الأقسام الفاتحة */
+.main-header.header-on-light .navbar-logo {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(35%) saturate(950%) hue-rotate(122deg) brightness(92%) contrast(96%);
+}
+
+.header-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(251, 243, 181, 0.55);
+  color: var(--gold-champagne);
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: background-color 0.35s var(--ease-luxury),
+              color 0.35s var(--ease-luxury),
+              border-color 0.35s var(--ease-luxury);
+}
+
+.header-cta:hover {
+  background-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+  border-color: var(--gold-champagne);
+}
+
+.main-header.header-on-light .header-cta {
+  border-color: var(--emerald-royal);
+  color: var(--emerald-royal);
+}
+
+.main-header.header-on-light .header-cta:hover {
+  background-color: var(--emerald-royal);
+  color: var(--gold-champagne);
+}
+
+/* --------------------------------------------------------------------------
+   5. القائمة المنبثقة (Full-Screen Luxury Overlay Menu)
+   -------------------------------------------------------------------------- */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(90, 30, 42, 0.28), transparent 45%),
+              rgba(6, 35, 29, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 5% 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s var(--ease-luxury), visibility 0.45s var(--ease-luxury);
+}
+
+.nav-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.close-menu {
+  position: absolute;
+  top: 24px;
+  right: 5%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 243, 181, 0.25);
+  color: var(--gold-champagne);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.35s var(--ease-luxury), background-color 0.3s ease, color 0.3s ease;
+}
+
+.close-menu:hover {
+  background-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+  transform: rotate(90deg);
+}
+
+.nav-overlay-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2.8vh, 26px);
+  margin-bottom: 42px;
+}
+
+.nav-overlay-links li a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--text-on-dark);
+  padding: 4px 12px;
+  transition: color 0.35s var(--ease-luxury), transform 0.35s var(--ease-luxury);
+}
+
+.nav-overlay-links li a::before {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: var(--terracotta);
+  transition: width 0.35s var(--ease-luxury);
+}
+
+.nav-overlay-links li a:hover,
+.nav-overlay-links li a.is-current {
+  color: var(--gold-champagne);
+  transform: translateX(-6px);
+}
+
+.nav-overlay-links li a:hover::before,
+.nav-overlay-links li a.is-current::before {
+  width: 26px;
+}
+
+.nav-overlay-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(251, 243, 181, 0.14);
+  font-size: 0.92rem;
+  color: var(--text-on-dark-muted);
+}
+
+.nav-overlay-footer a:hover {
+  color: var(--gold-champagne);
+}
+
+/* --------------------------------------------------------------------------
+   6. القسم 1: الواجهة الافتتاحية المتموجة (Hero Section — Dark Emerald)
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-height) + 40px) 5% 84px;
+  background-color: var(--emerald-deep);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* الخلفية الديناميكية المتموجة الخفيفة على المعالج */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.hero-orb-1 {
+  width: clamp(320px, 52vw, 720px);
+  height: clamp(320px, 52vw, 720px);
+  top: -14%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(16, 94, 79, 0.85) 0%, rgba(11, 60, 51, 0) 72%);
+  animation: orbDriftA 18s ease-in-out infinite alternate;
+}
+
+.hero-orb-2 {
+  width: clamp(280px, 44vw, 620px);
+  height: clamp(280px, 44vw, 620px);
+  bottom: -18%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(90, 30, 42, 0.62) 0%, rgba(90, 30, 42, 0) 70%);
+  animation: orbDriftB 22s ease-in-out infinite alternate;
+}
+
+.hero-orb-3 {
+  width: clamp(220px, 34vw, 460px);
+  height: clamp(220px, 34vw, 460px);
+  top: 38%;
+  left: 24%;
+  background: radial-gradient(circle, rgba(251, 243, 181, 0.18) 0%, rgba(251, 243, 181, 0) 70%);
+  animation: orbDriftC 25s ease-in-out infinite alternate;
+}
+
+/* طبقة خطوط معمارية هادئة تزيد الفخامة */
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to left, rgba(251, 243, 181, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(251, 243, 181, 0.03) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(circle at center, black 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at center, black 25%, transparent 78%);
+}
+
+@keyframes orbDriftA {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-55px, 40px, 0) scale(1.12); }
+}
+
+@keyframes orbDriftB {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(60px, -45px, 0) scale(1.15); }
+}
+
+@keyframes orbDriftC {
+  0% { transform: translate3d(0, 0, 0) scale(0.95); }
+  100% { transform: translate3d(-35px, -30px, 0) scale(1.12); }
+}
+
+.hero-content {
+  max-width: 860px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(251, 243, 181, 0.07);
+  border: 1px solid rgba(251, 243, 181, 0.22);
+  color: var(--gold-champagne);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 26px;
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--terracotta);
+  box-shadow: 0 0 10px var(--terracotta);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.65rem, 6.4vw, 5rem);
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--gold-champagne);
+  margin-bottom: 22px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.06rem, 1.8vw, 1.32rem);
+  line-height: 1.85;
+  color: var(--text-on-dark-muted);
+  max-width: 650px;
+  margin-inline: auto;
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+/* مؤشر التمرير السفلي */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(251, 243, 181, 0.65);
+  font-size: 0.78rem;
+  transition: color 0.3s ease;
+}
+
+.hero-scroll-cue:hover {
+  color: var(--gold-champagne);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--gold-champagne), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(0.5); opacity: 0.35; transform-origin: top; }
+  50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
+}
+
+/* --------------------------------------------------------------------------
+   7. القسم 2: الهوية والفلسفة (Brand Story — Warm Ivory 40%)
+   -------------------------------------------------------------------------- */
+.story-section {
+  background-color: var(--ivory-warm);
+  color: var(--text-on-light);
+  padding-block: var(--section-pad-y);
+  position: relative;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+.story-text-col p {
+  font-size: clamp(1.02rem, 1.3vw, 1.14rem);
+  line-height: 1.95;
+  color: var(--text-on-light-muted);
+  margin-bottom: 18px;
+}
+
+.story-text-col strong {
+  color: var(--emerald-royal);
+  font-weight: 700;
+}
+
+.story-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-block: 30px 34px;
+  padding-block: 22px;
+  border-top: 1px solid var(--ivory-border);
+  border-bottom: 1px solid var(--ivory-border);
+}
+
+.pillar-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--burgundy);
+  margin-bottom: 4px;
+}
+
+.pillar-item span {
+  font-size: 0.88rem;
+  color: var(--text-on-light-muted);
+}
+
+/* الإطار البصري المعماري (جاهز للصور الحقيقية ويعمل بأناقة كاملة كإطار فني حالياً) */
+.story-visual-col {
+  position: relative;
+}
+
+.arch-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 220px 220px var(--radius-md) var(--radius-md);
+  background: linear-gradient(155deg, var(--emerald-royal) 0%, var(--emerald-deep) 60%, #1d1518 100%);
+  border: 1px solid rgba(158, 123, 59, 0.35);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+}
+
+.arch-frame::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 208px 208px 10px 10px;
+  border: 1px solid rgba(251, 243, 181, 0.22);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.arch-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.arch-art-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--gold-champagne);
+}
+
+.arch-monogram {
+  width: 110px;
+  margin-inline: auto;
+  margin-bottom: 22px;
+  opacity: 0.92;
+}
+
+.arch-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+  line-height: 1.5;
+  color: var(--gold-champagne);
+  margin-bottom: 14px;
+}
+
+.arch-caption {
+  font-size: 0.86rem;
+  color: rgba(246, 241, 231, 0.72);
+}
+
+.story-floating-badge {
+  position: absolute;
+  bottom: 28px;
+  right: -24px;
+  background-color: var(--burgundy);
+  color: var(--ivory-warm);
+  padding: 18px 24px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 18px 40px rgba(90, 30, 42, 0.28);
+  border: 1px solid rgba(251, 243, 181, 0.2);
+  max-width: 245px;
+  z-index: 3;
+}
+
+.story-floating-badge span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--gold-champagne);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.story-floating-badge p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ivory-warm);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. القسم 3: ركائز خدماتنا (Signature Services — Deep Emerald)
+   -------------------------------------------------------------------------- */
+.services-section {
+  background: radial-gradient(circle at 85% 15%, rgba(16, 84, 71, 0.45), transparent 48%),
+              var(--emerald-royal);
+  padding-block: var(--section-pad-y);
+  position: relative;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 46px;
+}
+
+.service-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(6, 35, 29, 0.72) 0%, rgba(6, 35, 29, 0.42) 100%);
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.45s var(--ease-luxury),
+              border-color 0.45s var(--ease-luxury),
+              box-shadow 0.45s var(--ease-luxury);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 30px;
+  left: 30px;
+  height: 2px;
+  background: linear-gradient(to left, var(--gold-champagne), var(--terracotta), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--emerald-border-strong);
+  box-shadow: var(--shadow-dark);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.service-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background-color: var(--gold-champagne-soft);
+  border: 1px solid rgba(251, 243, 181, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-champagne);
+  transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s var(--ease-luxury);
+}
+
+.service-card:hover .service-icon-wrap {
+  background-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+  transform: scale(1.06);
+}
+
+.service-icon-wrap svg {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+}
+
+.service-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: rgba(251, 243, 181, 0.38);
+  font-weight: 700;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  color: var(--gold-champagne);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+
+.service-card p {
+  color: var(--text-on-dark-muted);
+  font-size: 0.98rem;
+  line-height: 1.85;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.service-tag {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--terracotta);
+}
+
+.section-cta-center {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   9. القسم 4: لمحة من عالمنا (Curated Portfolio Preview — Warm Ivory 40%)
+   -------------------------------------------------------------------------- */
+.portfolio-preview {
+  background-color: var(--ivory-warm);
+  color: var(--text-on-light);
+  padding-block: var(--section-pad-y);
+}
+
+.portfolio-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: clamp(2.4rem, 4.5vw, 3.6rem);
+  flex-wrap: wrap;
+}
+
+.portfolio-header-row .section-heading {
+  margin-bottom: 10px;
+}
+
+.portfolio-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.portfolio-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--sand-soft);
+  border: 1px solid var(--ivory-border);
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 360px;
+  transition: transform 0.45s var(--ease-luxury), box-shadow 0.45s var(--ease-luxury);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 55px rgba(11, 45, 38, 0.14);
+}
+
+.portfolio-card-featured {
+  grid-column: span 6;
+  min-height: 440px;
+}
+
+.portfolio-card-secondary {
+  grid-column: span 3;
+  min-height: 440px;
+}
+
+.portfolio-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* خلفيات فنية فاخرة تليق بالهوية حتى يتم إدراج صور الفعاليات الخاصة بكم */
+.portfolio-art-1 {
+  background: radial-gradient(circle at 25% 25%, rgba(184, 93, 59, 0.48), transparent 55%),
+              linear-gradient(145deg, #2a181c 0%, #5a1e2a 48%, #0b3c33 100%);
+}
+
+.portfolio-art-2 {
+  background: radial-gradient(circle at 75% 20%, rgba(251, 243, 181, 0.25), transparent 55%),
+              linear-gradient(155deg, #0b3c33 0%, #06231d 65%, #3d241c 100%);
+}
+
+.portfolio-art-3 {
+  background: radial-gradient(circle at 30% 30%, rgba(251, 243, 181, 0.22), transparent 50%),
+              linear-gradient(160deg, #4b2329 0%, #8a432d 52%, #0d352d 100%);
+}
+
+.portfolio-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-luxury);
+}
+
+.portfolio-card:hover .portfolio-media img,
+.portfolio-card:hover .portfolio-art-layer {
+  transform: scale(1.06);
+}
+
+.portfolio-art-layer {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s var(--ease-luxury);
+}
+
+.portfolio-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 35, 29, 0.92) 0%, rgba(6, 35, 29, 0.35) 52%, rgba(6, 35, 29, 0.08) 100%);
+  pointer-events: none;
+}
+
+.portfolio-info {
+  position: relative;
+  z-index: 2;
+  padding: 28px;
+  color: var(--ivory-warm);
+}
+
+.portfolio-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background-color: var(--burgundy);
+  color: var(--gold-champagne);
+  border: 1px solid rgba(251, 243, 181, 0.22);
+}
+
+.portfolio-tag.tag-terracotta {
+  background-color: var(--terracotta);
+  color: var(--ivory-warm);
+}
+
+.portfolio-info h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  color: var(--gold-champagne);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.portfolio-info p {
+  font-size: 0.92rem;
+  color: rgba(246, 241, 231, 0.84);
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   10. القسم 5: مساحة الورش القادمة (Upcoming Spotlight — Dark + Burgundy Glow)
+   -------------------------------------------------------------------------- */
+.workshop-spotlight {
+  position: relative;
+  background-color: var(--emerald-deep);
+  padding-block: var(--section-pad-y);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.workshop-spotlight::before {
+  content: '';
+  position: absolute;
+  width: 580px;
+  height: 580px;
+  top: 50%;
+  left: -120px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(90, 30, 42, 0.52) 0%, rgba(184, 93, 59, 0.16) 45%, transparent 72%);
+  filter: blur(55px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.spotlight-card {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(2rem, 4.5vw, 4rem);
+  align-items: center;
+  background: linear-gradient(135deg, rgba(11, 60, 51, 0.78) 0%, rgba(28, 22, 26, 0.66) 100%);
+  border: 1px solid rgba(251, 243, 181, 0.22);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 4rem);
+  box-shadow: var(--shadow-dark);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(184, 93, 59, 0.2);
+  border: 1px solid rgba(184, 93, 59, 0.55);
+  color: var(--gold-champagne);
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gold-champagne);
+  animation: pulseDot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.45; }
+}
+
+.spotlight-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.6vw, 2.85rem);
+  color: var(--gold-champagne);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.spotlight-desc {
+  color: var(--text-on-dark-muted);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 26px;
+}
+
+.spotlight-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(251, 243, 181, 0.14);
+  font-size: 0.9rem;
+  color: var(--text-on-dark);
+}
+
+.highlight-chip svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--gold-champagne);
+  flex-shrink: 0;
+}
+
+.spotlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+/* البطاقة البصرية الجانبية لقسم الورش (قابلة للاستبدال ببوستر الورشة بسهولة) */
+.spotlight-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle at 50% 28%, rgba(184, 93, 59, 0.32), transparent 58%),
+              linear-gradient(160deg, var(--burgundy) 0%, #241016 58%, var(--emerald-deep) 100%);
+  border: 1px solid rgba(251, 243, 181, 0.24);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px;
+}
+
+.spotlight-visual::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 10px;
+  border: 1px dashed rgba(251, 243, 181, 0.26);
+  pointer-events: none;
+}
+
+.spotlight-visual-tag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-champagne);
+  opacity: 0.85;
+  margin-bottom: 14px;
+}
+
+.spotlight-visual h4 {
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.6vw, 2.15rem);
+  color: var(--ivory-warm);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.spotlight-visual p {
+  font-size: 0.92rem;
+  color: rgba(246, 241, 231, 0.78);
+  max-width: 240px;
+}
+
+/* --------------------------------------------------------------------------
+   11. القسم 6: شريط الحجز الختامي (Closing CTA)
+   -------------------------------------------------------------------------- */
+.closing-cta {
+  background: linear-gradient(180deg, var(--emerald-deep) 0%, var(--emerald-royal) 100%);
+  padding-block: clamp(4.2rem, 7vw, 6.5rem);
+  border-top: 1px solid rgba(251, 243, 181, 0.1);
+}
+
+.closing-cta-box {
+  text-align: center;
+  max-width: 780px;
+  margin-inline: auto;
+  padding: clamp(2.4rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.2rem);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at top center, rgba(251, 243, 181, 0.08), transparent 65%),
+              rgba(6, 35, 29, 0.55);
+  border: 1px solid rgba(251, 243, 181, 0.2);
+}
+
+.closing-cta-box .section-heading {
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  margin-bottom: 16px;
+}
+
+.closing-cta-box .section-lead {
+  margin-inline: auto;
+  margin-bottom: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   12. التذييل المؤسسي (Site Footer)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #041713;
+  border-top: 1px solid rgba(251, 243, 181, 0.14);
+  padding: 72px 0 28px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 52px;
+}
+
+.footer-logo {
+  width: 126px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.footer-desc {
+  color: var(--text-on-dark-muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  max-width: 340px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold-champagne);
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  width: 32px;
+  height: 1.5px;
+  background-color: var(--terracotta);
+}
+
+.footer-links-list,
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.footer-links-list a {
+  color: var(--text-on-dark-muted);
+  font-size: 0.96rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links-list a:hover,
+.footer-links-list a.is-current {
+  color: var(--gold-champagne);
+  transform: translateX(-4px);
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-on-dark-muted);
+  font-size: 0.95rem;
+}
+
+.contact-list a {
+  transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+  color: var(--gold-champagne);
+}
+
+.contact-svg {
+  width: 19px;
+  height: 19px;
+  stroke: var(--gold-champagne);
+  flex-shrink: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 243, 181, 0.35);
+  color: var(--gold-champagne);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.35s var(--ease-luxury),
+              color 0.35s var(--ease-luxury),
+              transform 0.35s var(--ease-luxury),
+              border-color 0.35s var(--ease-luxury);
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.social-icon:hover {
+  background-color: var(--gold-champagne);
+  border-color: var(--gold-champagne);
+  color: var(--emerald-deep);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(251, 243, 181, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: rgba(247, 244, 236, 0.56);
+}
+
+/* --------------------------------------------------------------------------
+   13. التجاوب مع مختلف الشاشات (Tablet & Mobile Optimization)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .story-grid,
+  .spotlight-card {
+    grid-template-columns: 1fr;
+  }
+
+  .story-visual-col {
+    max-width: 480px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .story-floating-badge {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portfolio-card-featured {
+    grid-column: span 12;
+    min-height: 380px;
+  }
+
+  .portfolio-card-secondary {
+    grid-column: span 6;
+    min-height: 340px;
+  }
+
+  .spotlight-visual {
+    aspect-ratio: 16 / 10;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  .main-header {
+    padding-inline: 18px;
+  }
+
+  .menu-toggle-label {
+    display: none;
+  }
+
+  .header-cta {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .hero {
+    padding-inline: 20px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    width: min(100%, 300px);
+  }
+
+  .story-pillars {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-card-featured,
+  .portfolio-card-secondary {
+    grid-column: span 12;
+    min-height: 320px;
+  }
+
+  .spotlight-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .spotlight-actions .btn {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar-logo {
+    width: 96px;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
+
+  .service-card,
+  .spotlight-card {
+    padding: 26px 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. احترام تفضيل تقليل الحركة (Accessibility)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-orb,
+  .scroll-line,
+  .status-dot {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms;
+  }
+}

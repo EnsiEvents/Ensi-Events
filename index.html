@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENSI Events | نحو تجربة تُصنع بإحساس</title>
-  <meta name="description" content="ENSI Events — شركة متخصصة في تصميم وتنظيم الفعاليات، المناسبات الخاصة، والورش الإبداعية في إسطنبول بتجارب حسية استثنائية.">
+  <title>ENSI Events | نحو تجربة تصنع بإحساس</title>
+  <meta name="description" content="ENSI Events — فريق متخصص في تنظيم وإدارة الفعاليات، المناسبات الخاصة، والورش الإبداعية في إسطنبول بتفاصيل مدروسة وتنفيذ متقن.">
   <meta name="theme-color" content="#06231d">
 
   <!-- Open Graph / وسوم مشاركة الروابط في واتساب وإنستغرام -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_AR">
   <meta property="og:site_name" content="ENSI Events">
-  <meta property="og:title" content="ENSI Events | نحو تجربة تُصنع بإحساس">
-  <meta property="og:description" content="نُصمّم الفعاليات ونُنظّم التجارب الحسية والورش الإبداعية في إسطنبول بأدق التفاصيل.">
+  <meta property="og:title" content="ENSI Events | نحو تجربة تصنع بإحساس">
+  <meta property="og:description" content="نخطط وننفذ الفعاليات، المناسبات، والورش الإبداعية في إسطنبول بأسلوب يجمع بين التنظيم الدقيق والتفاصيل التي تترك أثراً حقيقياً.">
 
   <!-- أيقونة الموقع (Favicon) -->
   <link rel="icon" type="image/svg+xml" href="ENSI%20Logo.svg">
 
-  <!-- تسريع تحميل الخطوط العربية (Amiri + Tajawal) -->
+  <!-- تسريع تحميل الخطوط العربية العصرية (Alexandria + IBM Plex Sans Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- ملف التنسيقات الموحد -->
   <link rel="stylesheet" href="style.css">
@@ -52,7 +52,7 @@
 
     <div class="logo-container">
       <a href="index.html" aria-label="العودة إلى الصفحة الرئيسية لـ ENSI Events">
-        <img src="ENSI%20Logo.svg" alt="ENSI Events" class="navbar-logo" width="138" height="48">
+        <img src="ENSI%20Logo.svg" alt="ENSI Events" class="navbar-logo" width="134" height="46">
       </a>
     </div>
 
@@ -86,33 +86,34 @@
 
   <main>
     <!-- ==================================================================
-         القسم 1: الواجهة الافتتاحية المتموجة (Hero — Deep Emerald)
+         القسم 1: الواجهة الافتتاحية التفاعلية (Hero + Interactive Silk Canvas)
          ================================================================== -->
     <section class="hero" id="top">
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
-        <div class="hero-grid-lines"></div>
       </div>
 
+      <!-- لوحة الموجات الحريرية الذهبية والجزيئات المتفاعلة مع الماوس -->
+      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
       <div class="hero-content">
-        <div class="hero-badge" data-hero-reveal>
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          <span>إسطنبول &bull; تصميم وتنظيم الفعاليات والورش</span>
+        <div class="hero-eyebrow" data-hero-reveal>
+          <span>إسطنبول — تنظيم الفعاليات والتجارب الإبداعية</span>
         </div>
 
-        <h1 class="hero-title" data-hero-reveal>نحو تجربة تُصنع بإحساس</h1>
+        <h1 class="hero-title" data-hero-reveal>نحو تجربة تصنع بإحساس</h1>
 
         <p class="hero-subtitle" data-hero-reveal>
-          في <strong>ENSI Events</strong> نصوغ المناسبات، الفعاليات المؤسسية، والورش الإبداعية
-          بمعايير فنية دقيقة؛ لنحوّل كل لقاء إلى ذكرى دافئة تعكس هويتك وتبقى في الذاكرة.
+          في <strong>ENSI Events</strong> نخطط وننفذ الفعاليات، المناسبات، والورش الإبداعية
+          بأسلوب يجمع بين التنظيم الدقيق والتفاصيل التي تترك أثراً حقيقياً.
         </p>
 
         <div class="hero-buttons" data-hero-reveal>
           <a href="booking.html" class="btn btn-primary" data-magnetic>
             <span class="btn-text" data-magnetic-text>
-              احجز مقابلة استشارية
+              احجز مقابلة
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M19 12H5"></path>
                 <path d="m12 19-7-7 7-7"></path>
@@ -133,42 +134,40 @@
     </section>
 
     <!-- ==================================================================
-         القسم 2: الهوية والفلسفة (Brand Story — Warm Ivory 40%)
+         القسم 2: من نحن (Warm Muted Sand #E4DBCC)
          ================================================================== -->
     <section class="story-section" id="brand-story" data-theme="light">
       <div class="container">
         <div class="story-grid">
           <div class="story-text-col" data-reveal>
-            <span class="section-eyebrow">من نحن وفلسفتنا</span>
-            <h2 class="section-heading">لا ننظّم مجرد حدث، بل ننسج حكاية بصرية متكاملة</h2>
+            <span class="section-eyebrow">من نحن</span>
+            <h2 class="section-heading">نحول أفكارك إلى فعاليات متكاملة بتفاصيل مدروسة</h2>
 
             <p>
-              <strong>ENSI Events</strong> دار متخصصة في تصميم وإدارة الفعاليات والتجارب الإبداعية
-              انطلاقاً من إسطنبول. نجمع بين الانضباط المؤسسي في التخطيط والدفء الفني في التفاصيل،
-              سواء كان مشروعك مؤتمراً احترافياً، مناسبة خاصة، أو ورشة عمل تفاعلية.
+              <strong>ENSI Events</strong> فريق متخصص في تنظيم وإدارة الفعاليات والورش التفاعلية في إسطنبول.
+              نعمل مع الشركات والأفراد لبناء تجارب متكاملة تبدأ من الفكرة والتخطيط، وتنتهي بتنفيذ منظم ومريح لك ولضيوفك.
             </p>
             <p>
-              نؤمن بأن الفارق الحقيقي يسكن في التفاصيل غير المتوقعة؛ من إيقاع الإضاءة وتناغم الألوان،
-              حتى لحظة استقبال الضيف الأول ووداع الضيف الأخير.
+              نركز على ما يصنع الفرق فعلاً: وضوح الرؤية، تناسق المكان، وجودة التنظيم في كل لحظة من لحظات الحدث.
             </p>
 
             <div class="story-pillars">
               <div class="pillar-item">
-                <strong>إشراف متكامل</strong>
-                <span>من الفكرة الأولى حتى الإخراج النهائي</span>
+                <strong>تنظيم شامل</strong>
+                <span>نتابع كل مرحلة من التخطيط حتى نهاية الفعالية</span>
               </div>
               <div class="pillar-item">
-                <strong>هوية مفصّلة</strong>
-                <span>تصميم خاص يعكس روح كل مناسبة</span>
+                <strong>تصميم مخصص</strong>
+                <span>هوية بصرية ومكانية تناسب طبيعة حدثك</span>
               </div>
               <div class="pillar-item">
-                <strong>تفاصيل حسية</strong>
-                <span>تجارب دافئة تترك أثراً دائماً</span>
+                <strong>تنفيذ دقيق</strong>
+                <span>اهتمام حقيقي بالتفاصيل وتجربة الضيوف</span>
               </div>
             </div>
 
             <a href="about.html" class="editorial-link">
-              <span>اكتشف قصتنا ولماذا يختارنا عملاؤنا</span>
+              <span>تعرف أكثر على ENSI</span>
               <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M19 12H5"></path>
                 <path d="m12 19-7-7 7-7"></path>
@@ -178,17 +177,12 @@
 
           <div class="story-visual-col" data-reveal data-delay="0.12">
             <div class="arch-frame">
-              <!-- لاحقاً يمكنك استبدال div.arch-art-content بصورة حقيقية لفعالية: <img src="assets/images/story.webp" alt="..." loading="lazy" data-parallax> -->
-              <div class="arch-art-content" data-parallax>
-                <img src="ENSI%20Logo.svg" alt="" class="arch-monogram" aria-hidden="true">
-                <p class="arch-quote">«الجمال الحقيقي في كل فعالية هو الإحساس الذي يرافق ضيوفك بعد انتهائها»</p>
-                <span class="arch-caption">إسطنبول &bull; ENSI Events</span>
+              <!-- عند جاهزية صورتك الحقيقية، احذف div.arch-placeholder وضع السطر التالي مكانه:
+                   <img src="assets/images/story.webp" alt="فعاليات ENSI Events" class="arch-photo" loading="lazy" data-parallax> -->
+              <div class="arch-placeholder">
+                <img src="ENSI%20Logo.svg" alt="ENSI Events" class="arch-monogram">
+                <span class="arch-placeholder-note">إسطنبول &bull; فعاليات وورش إبداعية</span>
               </div>
-            </div>
-
-            <div class="story-floating-badge">
-              <span>فلسفة التنفيذ</span>
-              <p>كل تفصيل صغير هو جزء أصيل من لوحة فنية متكاملة.</p>
             </div>
           </div>
         </div>
@@ -196,20 +190,20 @@
     </section>
 
     <!-- ==================================================================
-         القسم 3: ركائز خدماتنا (Signature Services — Deep Emerald)
+         القسم 3: خدماتنا (Deep Emerald + Ambient Breathing + Card Spotlight)
          ================================================================== -->
     <section class="services-section" id="services">
       <div class="container">
         <div class="section-header-center" data-reveal>
-          <span class="section-eyebrow">مجالات خبرتنا</span>
-          <h2 class="section-heading">حلول متكاملة تُصمّم على مقاس رؤيتك</h2>
+          <span class="section-eyebrow">خدماتنا</span>
+          <h2 class="section-heading">كل ما تحتاجه لتخرج فعاليتك بأفضل صورة</h2>
           <p class="section-lead">
-            نقدم باقة مدروسة من الخدمات تغطي التخطيط، الهوية المكانية، وإدارة التجارب التفاعلية بأعلى معايير الدقة والأناقة.
+            نقدم خدمات مرنة تغطي الجوانب التنظيمية والفنية للفعاليات والمناسبات والورش.
           </p>
         </div>
 
         <div class="services-grid" data-stagger>
-          <article class="service-card" data-stagger-item>
+          <article class="service-card" data-stagger-item data-spotlight>
             <div class="service-card-top">
               <div class="service-icon-wrap" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -223,12 +217,12 @@
             </div>
             <h3>تنظيم وإدارة الفعاليات</h3>
             <p>
-              تخطيط وإدارة شاملة للمؤتمرات، الفعاليات المؤسسية، واللقاءات الخاصة مع جدولة دقيقة وتنسيق ميداني سلس لكل مرحلة.
+              تخطيط كامل وإشراف ميداني على المؤتمرات، الفعاليات المؤسسية، واللقاءات الخاصة لضمان سير الحدث بسلاسة.
             </p>
-            <span class="service-tag">إدارة وتنفيذ متكامل</span>
+            <span class="service-tag">إدارة وتنسيق</span>
           </article>
 
-          <article class="service-card" data-stagger-item>
+          <article class="service-card" data-stagger-item data-spotlight>
             <div class="service-card-top">
               <div class="service-icon-wrap" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -239,14 +233,14 @@
               </div>
               <span class="service-num" aria-hidden="true">02</span>
             </div>
-            <h3>تصميم وتجهيز المناسبات</h3>
+            <h3>تصميم وتجهيز المساحات</h3>
             <p>
-              ابتكار هويات مكانية وديكورات متناغمة تعبّر عن طابع الحدث، مع اختيار مدروس للخامات والألوان والإضاءة وتوزيع المساحات.
+              إعداد الديكور، التوزيع المكاني، وتنسيق الألوان والإضاءة بما يناسب هوية المناسبة وهدفها.
             </p>
-            <span class="service-tag">إخراج فني وهوية مكانية</span>
+            <span class="service-tag">تصميم وتجهيز</span>
           </article>
 
-          <article class="service-card" data-stagger-item>
+          <article class="service-card" data-stagger-item data-spotlight>
             <div class="service-card-top">
               <div class="service-icon-wrap" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -259,18 +253,18 @@
               </div>
               <span class="service-num" aria-hidden="true">03</span>
             </div>
-            <h3>الورش الإبداعية والتجارب</h3>
+            <h3>الورش والأنشطة التفاعلية</h3>
             <p>
-              تصميم وتنفيذ ورش عمل فنية وتفاعلية (موسمية أو مخصصة للشركات والمجموعات) تخلق تواصلاً إنسانياً دافئاً وقيمة مضافة.
+              تصميم وتنفيذ ورش فنية وتجارب جماعية مبتكرة للأفراد والشركات تضيف طابعاً مختلفاً وقيمة حقيقية.
             </p>
-            <span class="service-tag">تجارب تفاعلية وورش فنية</span>
+            <span class="service-tag">ورش وتجارب</span>
           </article>
         </div>
 
         <div class="section-cta-center" data-reveal>
           <a href="services.html" class="btn btn-primary" data-magnetic>
             <span class="btn-text" data-magnetic-text>
-              استعراض كافة خدماتنا
+              تصفح كافة الخدمات
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M19 12H5"></path>
                 <path d="m12 19-7-7 7-7"></path>
@@ -282,18 +276,18 @@
     </section>
 
     <!-- ==================================================================
-         القسم 4: لمحة من عالمنا (Portfolio Preview — Warm Ivory 40%)
+         القسم 4: لمحة من أعمالنا (Warm Muted Sand #E4DBCC)
          ================================================================== -->
     <section class="portfolio-preview" id="portfolio-preview" data-theme="light">
       <div class="container">
         <div class="portfolio-header-row" data-reveal>
           <div>
-            <span class="section-eyebrow">لمحة من عالمنا</span>
-            <h2 class="section-heading">أجواء صُمّمت لتُعاش وتُروى</h2>
+            <span class="section-eyebrow">أعمالنا</span>
+            <h2 class="section-heading">لمحة من الفعاليات والورش التي نفذناها</h2>
           </div>
 
           <a href="portfolio.html" class="editorial-link">
-            <span>تصفح معرض أعمالنا الكامل</span>
+            <span>عرض معرض الأعمال</span>
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M19 12H5"></path>
               <path d="m12 19-7-7 7-7"></path>
@@ -304,14 +298,14 @@
         <div class="portfolio-bento" data-stagger>
           <a href="portfolio.html" class="portfolio-card portfolio-card-featured" data-stagger-item>
             <div class="portfolio-media">
-              <!-- لاحقاً استبدل الطبقة التالية بصورة حقيقية: <img src="assets/images/work-1.webp" alt="..." loading="lazy" data-parallax> -->
+              <!-- لاحقاً استبدل الطبقة التالية بصورة حقيقية: <img src="assets/images/work-1.webp" alt="الورش الإبداعية" loading="lazy" data-parallax> -->
               <div class="portfolio-art-layer portfolio-art-1" data-parallax></div>
               <div class="portfolio-scrim"></div>
             </div>
             <div class="portfolio-info">
-              <span class="portfolio-tag">ورش فنية وتجارب موسمية</span>
-              <h3>تجارب تنسيق الزهور والفنون اليدوية</h3>
-              <p>جلسات إبداعية دافئة تجمع بين الذوق الفني، الضيافة الراقية، وتفاصيل بصرية متناغمة في قلب إسطنبول.</p>
+              <span class="portfolio-tag">ورش فنية</span>
+              <h3>الورش الإبداعية والموسمية</h3>
+              <p>تجارب تفاعلية تجمع الفن، الأجواء الدافئة، والتنظيم المتقن في إسطنبول.</p>
             </div>
           </a>
 
@@ -321,9 +315,9 @@
               <div class="portfolio-scrim"></div>
             </div>
             <div class="portfolio-info">
-              <span class="portfolio-tag">فعاليات ومناسبات</span>
-              <h3>تنظيم اللقاءات والفعاليات الخاصة</h3>
-              <p>إدارة متكاملة وتجربة حضور مصقولة تعكس رقي المناسبة.</p>
+              <span class="portfolio-tag">فعاليات</span>
+              <h3>المناسبات واللقاءات الخاصة</h3>
+              <p>تنظيم متكامل يركز على راحة الضيوف وجودة التجربة.</p>
             </div>
           </a>
 
@@ -333,9 +327,9 @@
               <div class="portfolio-scrim"></div>
             </div>
             <div class="portfolio-info">
-              <span class="portfolio-tag tag-terracotta">هوية مكانية</span>
-              <h3>تجهيز المساحات وتفاصيل الديكور</h3>
-              <p>تناغم لوني ومكاني يحوّل كل موقع إلى مساحة نابضة بالحياة.</p>
+              <span class="portfolio-tag tag-bronze">تصميم مكاني</span>
+              <h3>تنسيق المساحات والديكور</h3>
+              <p>تفاصيل بصرية متناسقة تمنح كل مكان طابعه الخاص.</p>
             </div>
           </a>
         </div>
@@ -347,18 +341,15 @@
          ================================================================== -->
     <section class="workshop-spotlight" id="workshops">
       <div class="container">
-        <div class="spotlight-card" data-reveal>
+        <div class="spotlight-card" data-reveal data-spotlight>
           <div class="spotlight-content">
-            <span class="status-pill">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span>قريباً في إسطنبول</span>
-            </span>
+            <span class="status-pill">قريباً</span>
 
-            <h2 class="spotlight-title">ترقبوا ورشتنا الإبداعية القادمة</h2>
+            <h2 class="spotlight-title">ترقبوا ورشتنا القادمة</h2>
 
             <p class="spotlight-desc">
-              نعمل حالياً خلف الكواليس على إعداد تجربة فنية موسمية جديدة تليق بكم؛ بتفاصيل دافئة،
-              مقاعد محدودة للحفاظ على جودة التجربة، وأجواء استثنائية تُعلن قريباً عبر منصاتنا الرسمية.
+              نجهز حالياً لتجربة جديدة ومميزة في إسطنبول بمقاعد محدودة وتفاصيل محضّرة بعناية.
+              تابعنا على إنستغرام لتعرف الموعد فور الإعلان عنه.
             </p>
 
             <div class="spotlight-highlights">
@@ -377,7 +368,7 @@
                   <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                <span>مقاعد محدودة وتجربة متكاملة</span>
+                <span>مقاعد محدودة</span>
               </div>
             </div>
 
@@ -390,7 +381,7 @@
                 data-magnetic
               >
                 <span class="btn-text" data-magnetic-text>
-                  تابعنا لتكون أول من يعلم
+                  تابعنا على إنستغرام
                   <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M19 12H5"></path>
                     <path d="m12 19-7-7 7-7"></path>
@@ -399,7 +390,7 @@
               </a>
 
               <a href="contact.html" class="btn btn-secondary" data-magnetic>
-                <span class="btn-text" data-magnetic-text>اطلب ورشة خاصة لمجموعتك</span>
+                <span class="btn-text" data-magnetic-text>احجز ورشة خاصة لمجموعتك</span>
               </a>
             </div>
           </div>
@@ -407,27 +398,27 @@
           <!-- عند إطلاق ورشة جديدة، يمكن استبدال محتوى هذا الصندوق ببوستر الورشة مباشرة -->
           <div class="spotlight-visual">
             <span class="spotlight-visual-tag">ENSI WORKSHOPS</span>
-            <h4>فصل جديد<br>يُصنع بإحساس</h4>
-            <p>الإعلان عن التفاصيل وفتح باب التسجيل قريباً عبر موقعنا وحسابنا على إنستغرام.</p>
+            <h4>تجربة جديدة<br>قريباً</h4>
+            <p>التفاصيل ورابط التسجيل تُعلن قريباً عبر حساباتنا الرسمية.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==================================================================
-         القسم 6: شريط الحجز الختامي (Closing CTA)
+         القسم 6: الدعوة الختامية (Closing CTA)
          ================================================================== -->
     <section class="closing-cta">
       <div class="container">
-        <div class="closing-cta-box" data-reveal>
-          <span class="section-eyebrow">لنبدأ الحديث</span>
-          <h2 class="section-heading">هل تخطط لفعالية أو تجربة استثنائية؟</h2>
+        <div class="closing-cta-box" data-reveal data-spotlight>
+          <span class="section-eyebrow">ابدأ معنا</span>
+          <h2 class="section-heading">عندك فكرة فعالية أو مناسبة قادمة؟</h2>
           <p class="section-lead">
-            شاركنا فكرتك، وسيتولى فريقنا تحويلها إلى تصور متكامل وتنفيذ يليق بتطلعاتك وضيوفك.
+            تواصل معنا لنناقش تفاصيل فكرتك ونبني معك خطة واضحة لتنفيذها بأفضل شكل.
           </p>
           <a href="booking.html" class="btn btn-primary" data-magnetic>
             <span class="btn-text" data-magnetic-text>
-              احجز مقابلة مع فريقنا
+              احجز مقابلة الآن
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M19 12H5"></path>
                 <path d="m12 19-7-7 7-7"></path>
@@ -445,10 +436,10 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="index.html" aria-label="ENSI Events">
-            <img src="ENSI%20Logo.svg" alt="ENSI Events Logo" class="footer-logo" width="126" height="44">
+            <img src="ENSI%20Logo.svg" alt="ENSI Events Logo" class="footer-logo" width="124" height="44">
           </a>
           <p class="footer-desc">
-            نُنظم المناسبات ونصمم التجارب التي تبقى في الذاكرة. نعتني بأدق التفاصيل لنقدم لك ولضيوفك حدثاً استثنائياً بكل المقاييس.
+            تنظيم وإدارة الفعاليات، المناسبات، والورش الإبداعية في إسطنبول بتفاصيل دقيقة وتنفيذ متكامل.
           </p>
         </div>
 
@@ -517,12 +508,12 @@
 
       <div class="footer-bottom">
         <p>جميع الحقوق محفوظة &copy; 2026 ENSI Events.</p>
-        <p>صُمّم بعناية في إسطنبول</p>
+        <p>إسطنبول، تركيا</p>
       </div>
     </div>
   </footer>
 
-  <!-- مكتبة GSAP 3 + ScrollTrigger (تحمل بأسلوب defer لسرعة فائقة) -->
+  <!-- مكتبة GSAP 3 + ScrollTrigger -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
